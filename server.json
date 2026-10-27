@@ -1,0 +1,10 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.teenxgrailed/needt",
+  "title": "Needt",
+  "description": "Your Needt planner over MCP: tasks, calendar, docs, habits, goals and memory, read and written with OAuth.",
+  "version": "1.0.0",
+  "websiteUrl": "https://needt.app/resources/mcp/",
+  "repository": { "url": "https://github.com/teenxgrailed/needt-plugin", "source": "github" },
+  "remotes": [ { "type": "streamable-http", "url": "https://mcp.needt.app/mcp" } ]
+}
