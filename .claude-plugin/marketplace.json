@@ -13,7 +13,7 @@
       "name": "needt",
       "source": "./plugins/needt",
       "description": "Your Needt planner in every chat, plus partner, search, prompt, asking, critic and youtube skills, and memory that follows you.",
-      "version": "0.5.2",
+      "version": "0.5.3",
       "license": "MIT",
       "homepage": "https://needt.app/resources/mcp/"
     }

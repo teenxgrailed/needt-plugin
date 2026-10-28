@@ -68,7 +68,22 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
   Similar but different → create, and mention the near-match.
 - **Documents are pages**: a report, brief, spec or notes go to a page linked from the task.
   A task description holds a few lines and links, never the whole text.
-- Titles and subtasks in the user's language, verb first, short.
+- **How a task is written** — like a person jotting it on paper, not like an AI:
+  - **The user's language, always.** The language they write to you in, even if the source
+    (mail, research, a prompt) is in another one. Never mix languages in one title.
+  - **Short and plain**: verb first, 2–6 words, the user's own words where possible —
+    "Call the print shop", "Позвонить в типографию". Not "Reach out to the print shop to
+    discuss and finalize the order details".
+  - **Nothing in the title but the action**: no time or date ("at 14:00", "tomorrow" — that is
+    `start` or the due date), no emoji, no symbols or brackets, no prefixes or tags ("TODO:",
+    "[Work]", "Step 1:", "#marketing", "Task:"), no priority words ("URGENT", "!!!"), no trailing
+    period.
+  - **No AI slop**: no filler verbs ("leverage", "optimize", "streamline", "ensure",
+    "оптимизировать процессы"), no vague outcomes ("Work on strategy", "Improve marketing"),
+    no motivational wording, no restating the project name in every task.
+  - **Description only when it adds something** the title cannot: a link, a number, who, the
+    one-line reason. Empty is fine.
+  - Subtasks follow the same rules.
 
 | Material | Becomes |
 |---|---|
@@ -149,4 +164,6 @@ a save that failed or ran without the connector; a wall of 30 micro-tasks; one t
 everything"; an entry step that is itself a project; duplicating a task that already exists;
 inventing ids, due dates or priorities; pinning without a time from the user; a description
 holding a whole report; asking which workspace when only one fits; deleting or touching other
-people's tasks without asking; saving memory for one-off details; a report longer than the work.
+people's tasks without asking; saving memory for one-off details; a report longer than the work;
+task titles in another language than the user's, with a time, emoji, symbols or prefixes in
+them, or written like AI copy instead of a short human note.
