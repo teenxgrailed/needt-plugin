@@ -1,6 +1,6 @@
 ---
-name: setup
-description: Checks Needt readiness in the current conversation — the project, the preferred tone, which tools and skills are actually exposed (search tools, clickable questions, sub-agents, Marketing and Small Business skills), and the user's Needt memory. On the first run it also tells the user, in a few lines, which tools the plugin uses and how to get the missing ones for free. Every other Needt skill runs this check first when the conversation has no Needt readiness line yet. Use directly for "set up Needt", "настрой Needt", "проверь что подключено", "what can Needt use here". Does not install plugins, connect accounts, or change settings.
+name: +setup
+description: Internal — other Needt skills run it automatically on first use. Checks Needt readiness in the current conversation — the project, the preferred tone, which tools and skills are actually exposed (search tools, clickable questions, sub-agents, Marketing and Small Business skills), and the user's Needt memory. On the first run it also tells the user, in a few lines, which tools the plugin uses and how to get the missing ones for free. Every other Needt skill runs this check first when the conversation has no Needt readiness line yet. Use directly for "set up Needt", "настрой Needt", "проверь что подключено", "what can Needt use here". Does not install plugins, connect accounts, or change settings.
 ---
 
 # Set up Needt
@@ -39,7 +39,7 @@ and do not call tools to test them.
 - **project** — the current project, or `unknown`.
 - **tone** — `casual` or `professional`, matched to how the user writes.
 - **search** — the source kinds that exist here, from this set: `web` (a web search tool),
-  `exa`, `firecrawl`, `youtube` (transcript tools), `x` (an X tool or a browser),
+  `exa`, `firecrawl`, `youtube` (transcript tools, or a shell with `yt-dlp` for the bundled script), `x` (an X tool or a browser),
   `github` (GitHub MCP, developer search or `gh`), `context7`, `papers` (a paper index),
   `browser`. `none` if none.
 - **questions** — `click` when a clickable question tool (`AskUserQuestion`) is listed,

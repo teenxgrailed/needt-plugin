@@ -7,12 +7,13 @@
 | Skill | Command | Purpose |
 |---|---|---|
 | Needt · Main | `/needt:needt` | Works your planner through the Needt connector: tasks, plans broken into tasks, today/next, reschedule, done, events, habits, pages, mail read into tasks, memory. Fires on its own on planner intents in EN/RU/UK/DE/ES/FR |
-| Partner | `/needt:partner` | Business partner: finds the better move, checks money in executed numbers, prepares the actual work |
+| Partner | `/needt:partner` | Main skill #2: a partner in everything — plans, moves, ideas, decisions, money. Uses every other skill and every tool the host exposes, does the work instead of advising, lands it in Needt |
 | Prompt | `/needt:prompt` | Turns a rough wish into one prompt sized to the task, with ideas and Needt skill stages built in |
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
+| YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
 | Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
-| Setup | `/needt:setup` | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
+| +Setup | `/needt:+setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
 
 Every skill looks for the `Needt ·` readiness line in the conversation first. If it is
 missing, the skill runs the short setup check, prints the line and continues the task in the
@@ -37,7 +38,8 @@ The main model keeps synthesis and decisions.
 
 Skills call each other through relative links (`../search/SKILL.md`), so the package works
 wherever the host can read skill files. Marketing and Small Business are optional external
-plugins that Partner uses when present. No MCP servers, hooks, schedulers or agents are bundled.
+plugins that Partner uses when present. No MCP servers, hooks, schedulers or agents are bundled; the only script is the youtube
+skill's transcript fetcher (Python standard library + `yt-dlp`).
 
 **Required and optional tools.** The Needt connector is required for the main skill and for
 memory; without it they fall back to text in the chat. Everything else — web search, YouTube
@@ -54,7 +56,7 @@ claude --plugin-dir /absolute/path/to/needt
 ```
 
 First run: connect the Needt connector (Customize > Connectors), then say anything planner-like
-or run `/needt:setup`. Setup onboards once and records "set up" in memory so it does not repeat.
+or run `/needt:+setup`. Setup onboards once and records "set up" in memory so it does not repeat.
 
 ## ChatGPT and Codex
 
@@ -70,6 +72,17 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.5.2 (2026-10-28)
+- New `youtube` ("Needt · YouTube"): reads a video from a link — title, channel, date, chapters,
+  description and a timestamped transcript via the bundled `scripts/transcript.py` (`yt-dlp`,
+  manual captions first, rolling auto-caption repeats removed), then Firecrawl, then a
+  transcript MCP. Answers the user's question with `[mm:ss]` citations. Search uses it to read
+  videos; setup counts `yt-dlp` as a YouTube source.
+
+0.5.1 (2026-10-28)
+- Partner rewritten as the second main skill: a 5-step loop (situation → real question → better move → work → land in Needt), routes to every skill and reads every host MCP, ideas as 2–4 grounded moves with a first step, plans that start today; money rigor kept in full.
+- memory.md carries the final `needt_remember` signature (no workspaceId; 400/400/409 errors; `updated` flag).
 
 0.5.0 (2026-10-28)
 - New main skill `needt` ("Needt · Main"): works the planner through the Needt connector —

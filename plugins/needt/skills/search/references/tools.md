@@ -17,7 +17,7 @@ fetch pages with shell commands, curl or scripts.
 | What pages a site has | `firecrawl_map` | before crawling, or to find a pricing / changelog page |
 | Several pages of one site | `firecrawl_crawl` | small `limit`; five pages usually answer it |
 | Papers | `firecrawl_research_*` | biomedical, scientific, arXiv |
-| YouTube guides | youtube-transcript MCP (`youtube_search_transcript`, `youtube_get_transcript`, `youtube_batch_transcripts`, `youtube_get_channel_videos`), web search `site:youtube.com` | see YouTube recipe |
+| YouTube guides | reading one video: the [youtube](../../youtube/SKILL.md) skill (bundled `yt-dlp` script first); finding videos: Firecrawl `youtube-com` provider via `firecrawl_scrape` with `alexandria` (`videos/search_videos`, `videos/video_details`, `videos/video_transcript`, `videos/video_comments`, `videos/channel_videos`, `videos/channel_shorts`, `videos/resolve_channel`); a youtube-transcript MCP when it works; web search `site:youtube.com` | see YouTube recipe |
 | X threads | web search / Exa with `site:x.com`, a browser or X tool when one exists | see X recipe |
 | JS-heavy or logged-in pages | the browser tools | when a fetch returns an empty shell; never when the setup line forbids browsers on this machine |
 
@@ -29,12 +29,22 @@ numbers they say on camera (prices, conversion, time per unit), and formats to c
 1. **Build 3–6 queries the way a guide would be titled**, not the way the user asked:
    "how I make faceless shorts 2026", "best TTS for YouTube shorts", "X vs Y honest review",
    "<tool> tutorial", "<niche> channel breakdown". Add the year for anything that moves fast.
-2. **Find candidates**: `youtube_search_transcript` or web search with `site:youtube.com` plus
-   the query; for a known channel, `youtube_get_channel_videos`. Prefer videos from the last
-   12 months with high views relative to the channel, and at least one small-channel video —
-   big channels sell, small ones show.
-3. **Pull transcripts in one batch** (`youtube_batch_transcripts`, 3–8 videos). Read the
-   description too: it is where the tools, links, discount codes and the real stack are listed.
+2. **Find candidates**: with Firecrawl, `firecrawl_scrape` + `alexandria: {provider:
+   "youtube-com", capability: "videos/search_videos", options: {query}}` (returns ids, titles,
+   views, dates); for a known channel, `videos/resolve_channel` then `videos/channel_videos`
+   or `videos/channel_shorts`. Otherwise web search with `site:youtube.com`. Prefer videos
+   from the last 12 months with high views relative to the channel, and at least one
+   small-channel video — big channels sell, small ones show.
+3. **Pull transcripts** with the [youtube](../../youtube/SKILL.md) skill: its bundled script
+   (`skills/youtube/scripts/transcript.py`, needs `yt-dlp`) works where scrapers get a 401 —
+   run it once per video, in parallel. Without a shell: `videos/video_transcript` with `{video_id}` (or `{url}`); the
+   `alexandria` field takes an array, so fetch 3–8 videos in one call. `videos/video_details`
+   gives the description — where the tools, links, discount codes and the real stack are
+   listed. `videos/video_comments` is the counter-evidence under a guide. Each capability
+   costs ~5 Firecrawl credits. A local youtube-transcript MCP (`youtube_get_transcript`,
+   `youtube_batch_transcripts`) is used when it works; a 401 or "IP blocked" from it means
+   YouTube is blocking unofficial scrapers from that network — switch to Firecrawl, do not
+   retry.
 4. **Extract**, per video: the steps in order; every tool, site or product named; every
    number with its context; the thing the author says *not* to do; the hook they used in the
    first 10 seconds (useful when the question is about content itself).

@@ -5,9 +5,14 @@ done, their goals, facts about their projects. It follows them across chats and 
 
 ## Where it is
 
-1. **`needt_remember`** (Needt connector; `content`, `kind: preference | pattern | goal | fact`,
-   optional `workspaceId`) — the primary store when the tool exists. Read with
-   `needt_list_memories`, edit with `needt_update_memory`, remove with `needt_forget_memory`.
+1. **`needt_remember`** (Needt connector; `content` 1–500 characters, `kind: preference |
+   pattern | goal | fact`, default `preference`; no `workspaceId` — the workspace comes from
+   the connection) — the primary store. Returns `{id, kind, content, source: "assistant",
+   createdAt, updated}`; `updated: true` means a near-duplicate line was refreshed instead of
+   added. Errors: memory switched off in the app → 400; sensitive content → 400 (do not
+   retry with a rewording); more than 500 assistant lines → 409, offer to clean old ones with
+   `needt_forget_memory`. Read with `needt_list_memories`, edit with `needt_update_memory`,
+   remove with `needt_forget_memory`.
 2. **Fallback — the page "Needt · Memory"** in the personal workspace, when the connector is
    present but `needt_remember` is not: find it with `needt_search` (create once with
    `needt_create_page` if missing), append one line per item with `needt_append_page`:

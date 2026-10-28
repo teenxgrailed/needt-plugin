@@ -1,10 +1,26 @@
 {
   "name": "needt",
-  "version": "0.5.0",
-  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, and memory that follows you.",
-  "author": { "name": "Needt", "email": "hello@needt.app", "url": "https://needt.app" },
+  "version": "0.5.2",
+  "description": "Needt: your planner in every chat, plus a business partner, a researcher that reads YouTube, X and GitHub, a prompt builder, a clickable interview, a plan critic, a YouTube reader, and memory that follows you.",
+  "author": {
+    "name": "Needt",
+    "email": "hello@needt.app",
+    "url": "https://needt.app"
+  },
   "homepage": "https://needt.app/resources/mcp/",
   "repository": "https://github.com/teenxgrailed/needt-plugin",
   "license": "MIT",
-  "keywords": ["planner", "calendar", "tasks", "memory", "business", "partner", "prompt", "research", "interview", "critic"]
+  "keywords": [
+    "planner",
+    "calendar",
+    "tasks",
+    "memory",
+    "business",
+    "partner",
+    "prompt",
+    "research",
+    "interview",
+    "critic",
+    "youtube"
+  ]
 }

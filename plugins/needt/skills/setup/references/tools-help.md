@@ -24,10 +24,15 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 ## YouTube transcripts
 
 - Gives: what a video actually says, so skills can cite talks, reviews and tutorials.
-- Free: several open-source YouTube-transcript MCP servers exist; none needs a paid key.
-- claude.ai / Desktop: Settings → Connectors → search for "YouTube transcript", or add a
-  local MCP server on Desktop. Claude Code: add the chosen server with `claude mcp add`
-  using the command from its README.
+- Best on a computer with a shell (Claude Code, Desktop with a terminal): `yt-dlp` — free, no
+  key, not blocked like scrapers. macOS `brew install yt-dlp`, otherwise `pipx install yt-dlp`.
+  The youtube skill's bundled script uses it.
+- Easiest without a shell: Firecrawl (below) already includes YouTube search, transcripts, details and
+  comments through its `youtube-com` provider — no separate server needed.
+- Free alternative: open-source YouTube-transcript MCP servers exist and need no key, but
+  YouTube blocks them from many networks (a 401 on every video means that); then use
+  Firecrawl. claude.ai / Desktop: Settings → Connectors → search for "YouTube transcript".
+  Claude Code: `claude mcp add` with the command from the server's README.
 
 ## Firecrawl
 

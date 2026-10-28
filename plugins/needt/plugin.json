@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "needt",
+  "version": "0.5.2",
+  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, and memory that follows you.",
+  "author": { "name": "Needt" },
+  "keywords": ["business", "partner", "prompt", "research", "search", "interview", "strategy"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "interface": {
+        "displayName": "Needt",
+        "shortDescription": "Think together, write the right prompt, find the good stuff.",
+        "longDescription": "Partner thinks with you and prepares business work. Prompt turns a rough wish into one well-built prompt sized to the task. Search finds the non-obvious good option, verified and sourced. Asking stress-tests a plan through rounds of clickable questions.",
+        "developerName": "Needt",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Help me get started: recommend a first move and prepare it.",
+          "Turn this rough idea into one strong prompt.",
+          "Find the best way to do this, with sources."
+        ]
+      }
+    }
+  }
+}
