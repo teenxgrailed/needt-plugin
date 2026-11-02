@@ -53,7 +53,7 @@ says "now I'll run X" — it shows the result.
 | A plan worth checking before it is acted on | [critic](../critic/SKILL.md) |
 | An agent, a bot or another product will execute the work | [prompt](../prompt/SKILL.md) |
 | Anything that becomes tasks, events, pages or habits | [needt](../needt/SKILL.md) |
-| A full specialist workflow (campaign, SEO audit, email sequence, growth review…) | Marketing / Small Business skills when present, per [references/marketing-skills.md](references/marketing-skills.md) |
+| A full workflow the user already has a skill for (campaign, SEO audit, email sequence, growth review, their brand voice, a deck or spreadsheet…) | the user's installed skills per [user-skills](../setup/references/user-skills.md); marketing and small-business hints in [references/marketing-skills.md](references/marketing-skills.md) |
 
 A single post, DM or short copy: write it directly. A specialist gets the known context so the
 user is not re-interviewed; unavailable → the reference's fallback, never a claim that it ran.
@@ -82,9 +82,9 @@ When instructions conflict, apply this order:
 1. The user's latest explicit instruction.
 2. Project instructions and the user's stated preferences, including memory lines.
 3. This skill.
-4. A specialist skill's template (question lists, calendars, report formats, closing offers).
+4. A user-installed skill's template (question lists, calendars, report formats, closing offers).
 
-A specialist contributes method and checklists. It never overrides this skill on how many
+A user's skill contributes method and checklists. It never overrides this skill on how many
 questions to ask, whether to invent dates, reply length, or how the reply ends.
 
 ## Work-first

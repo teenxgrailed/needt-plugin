@@ -93,6 +93,10 @@ Use the sections the size needs, in this order. Structure and examples:
    required sources, plus GitHub for anything about tools or code. For other products,
    replace each skill with plain instructions that do the same job
    ([references/structure.md](references/structure.md), portable version).
+5b. **Stages using the user's own skills**, when the executor is this host and the catalog
+   has a skill for a stage (their deploy runbook, their pptx skill, their code-review
+   checklist): name it the way the catalog lists it, per [user-skills](../setup/references/user-skills.md); for another product, plain
+   instructions that do the same job.
 6. **Parallel work** — say which stages are independent and may run as parallel sub-agents
    on a cheaper model, and which need the main model (synthesis, taste, the final call).
    Rules: [setup/references/delegation.md](../setup/references/delegation.md).

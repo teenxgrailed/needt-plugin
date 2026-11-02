@@ -24,6 +24,8 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 - [search](../search/SKILL.md) — a fact that would change a finding.
 - [partner](../partner/SKILL.md) — when the user wants the plan remade, not reviewed.
 - [needt](../needt/SKILL.md) — the revised plan as tasks.
+- The user's own skills ([user-skills](../setup/references/user-skills.md)) — a plan in their domain is checked against their
+  installed checklist or runbook when one exists, cited as a finding's source.
 
 ## 1. Start from zero
 

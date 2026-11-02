@@ -36,6 +36,8 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 - [prompt](../prompt/SKILL.md) — a milestone that a coding agent or another product will
   execute gets one prompt carrying the milestone, its evidence rule and the last handoff.
 - [learn](../learn/SKILL.md) — "roadmap for learning X" is a subject map there, not a board.
+- The user's own skills ([user-skills](../setup/references/user-skills.md)) — a milestone that is their workflow (deploy, review,
+  a deck) runs through their skill; the evidence rule still decides done.
 
 ## Commands
 

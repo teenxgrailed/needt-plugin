@@ -75,7 +75,7 @@ skipped a required kind says so in `Still unclear`.
 | A rule, a policy, a law | the **primary article, read in full**, and the exact clause quoted | an excerpt turns "X over 60 s with a claim is blocked" into "all X is blocked", and the dropped conditions decide the plan |
 | A market, competitors, suppliers | competitors' own pages + forums in the market's language + X + web | what exists, what it costs, what people complain about |
 | Anything scientific or medical | papers (research tools) + web | — |
-| Is there a skill, plugin, MCP server or tool for X; "can my AI do X" | **skill and tool directories** — the `find-skills` skill when present (`npx skills@1.7.4 find <query>`, skills.sh leaderboard), the MCP Registry, the host's own plugin/connector directory — + GitHub | a ready skill or connector beats a hand-built workflow; installs and stars show what is battle-tested |
+| Is there a skill, plugin, MCP server or tool for X; "can my AI do X" | **the installed catalog first** (the user may already have it — [user-skills](../setup/references/user-skills.md)), then **skill and tool directories** — the `find-skills` skill when present (`npx skills@1.7.4 find <query>`, skills.sh leaderboard), the MCP Registry, the host's own plugin/connector directory — + GitHub | a ready skill or connector beats a hand-built workflow; installs and stars show what is battle-tested |
 
 Recipes for YouTube, X and GitHub are in [references/tools.md](references/tools.md): how to
 build the queries, which tool to call, what to extract, how to cite.

@@ -37,6 +37,14 @@ what it would have done.
 | learn → **search** | a question that is really a lookup | the question, entirely |
 | needt → **plan** | "where are we / what's next on <project>", "done <milestone>", or a task whose `originPageId` is a `Plan ·` page | the request; plan reads the board and answers |
 
+## The user's own skills
+
+The catalog also holds skills the user installed or the host ships — document formats,
+design, code review, deploy, data, marketing, a brand voice. Any Needt skill hands the part
+they own to them (`skills: n` in the readiness line says how many exist), by the rules in
+[user-skills](user-skills.md): match by description, brief from what is known, deliver in
+the Needt skill's voice, never for what Needt owns.
+
 ## Rules that hold everywhere
 
 - The `Needt ·` line is printed once per conversation by whichever skill runs first; every

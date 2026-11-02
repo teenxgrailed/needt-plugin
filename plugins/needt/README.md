@@ -39,6 +39,11 @@ hand over to it in the same reply — a YouTube link goes to youtube, an unsure 
 (Quick), a missing answer to asking (short), a sequence that spans sessions to plan, work
 for one sitting to needt. The table of owners and hand-offs: `skills/setup/references/skills-map.md`.
 
+**Your own skills.** Setup counts the other skills in the host catalog (`skills: n`), and
+every Needt skill hands the part they own to them — a deck to your pptx skill, a deploy to your
+runbook, a campaign to your marketing skill — matched by description, briefed from what is
+known, delivered in the Needt skill's voice. Rules: `skills/setup/references/user-skills.md`.
+
 **Widgets.** Where the host renders chat widgets (Claude Desktop's `visualize` tool), the
 readiness line says `widgets: yes` and skills show what has a shape — today's list with Done
 buttons, option cards, money metrics, finding cards, a mechanism diagram — as a widget, with the
@@ -83,6 +88,13 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.12.0 (2026-11-02)
+
+- Every Needt skill can use the skills the user already has installed: setup counts them
+  (`skills: n`), the shared `setup/references/user-skills.md` says when to hand over, how
+  to brief, precedence and what stays with Needt; partner, prompt, needt, search, plan and
+  critic point at it. The marketing routing file keeps only its specifics.
 
 0.11.0 (2026-11-02)
 

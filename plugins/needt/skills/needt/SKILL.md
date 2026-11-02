@@ -39,7 +39,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 | A meeting or appointment with a time | `needt_create_event`; private ones `needt_mark_event_personal` |
 | Time that is not for work ("gym 7–8", "no meetings Friday") | `needt_create_personal_time` / `needt_update_personal_time` |
 | "Did my run", "log water" | `needt_search` / `needt_list` for the habit → `needt_log_habit` |
-| A note, a document, meeting notes, research to keep | `needt_create_page`, or `needt_append_page` to the page it belongs to; files via `needt_attach_file` |
+| A note, a document, meeting notes, research to keep | `needt_create_page`, or `needt_append_page` to the page it belongs to; files via `needt_attach_file`. A Word, Excel, PowerPoint or PDF file the user asked for is made by their skill for that format ([user-skills](../setup/references/user-skills.md)) and attached |
 | "Anything in my mail I need to do?" | read mail via `needt_list` / `needt_search` / `needt_get` → tasks from what needs action |
 | Focus, blocking distractions | `needt_blocking_profile` to see profiles, `needt_blocking` to start or stop |
 | Look something up in Needt | `needt_search` → `needt_get` |

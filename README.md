@@ -9,7 +9,7 @@
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.11.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.12.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -80,6 +80,8 @@ Every other skill reads it instead of checking again; the first time it appears 
 **Memory that follows you.** When you say *"remember…"*, *"never do X again"*, or correct how something was done, the plugin saves one line to your Needt memory (`Saved: …`) and every skill treats it as a standing instruction — in any chat, on any device. Secrets, health details and one-off facts are never saved. Turn it off any time in the Needt app.
 
 **The skills call each other.** One skill owns each kind of request and the others hand over in the same reply: a YouTube link → youtube, an unsure fact → search, a missing answer → asking, a sequence that spans sessions → plan, work for today → needt. The map of owners and hand-offs: `plugins/needt/skills/setup/references/skills-map.md`.
+
+**Uses your own skills too.** The readiness line counts the other skills in your catalog (`skills: n`), and every Needt skill hands the part they own to them — a deck to your pptx skill, a deploy to your runbook, a campaign to your marketing skill — briefed from what is already known and delivered in the Needt skill's voice. Rules: `plugins/needt/skills/setup/references/user-skills.md`.
 
 **Uses what your AI already has.** Skills route to the tools your host exposes — web search, Firecrawl, Exa, GitHub, Context7, YouTube — and say so when something is missing instead of faking it. On first run, setup lists free ways to add the missing ones in a few lines.
 

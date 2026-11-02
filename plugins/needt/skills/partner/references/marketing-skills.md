@@ -1,5 +1,9 @@
 # Specialist skill routing
 
+The general rules for using any skill the user has installed are in
+[user-skills](../../setup/references/user-skills.md); this file adds the marketing and
+small-business specifics.
+
 Names below are discovery hints, not guaranteed commands. The host's installed catalog and
 the skills' own descriptions decide what exists. Names may be namespaced
 (`marketing:campaign-plan`, `small-business:growth-pulse`) or bare.
