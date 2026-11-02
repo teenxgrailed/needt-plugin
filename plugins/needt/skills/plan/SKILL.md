@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Keeps a project's roadmap alive across sessions as a board in Needt — milestones, blockers, what is next, a handoff — drawn as a clickable metro map where widgets render. First call builds the board from a goal or a pasted plan; later calls read it back from Needt, compute next, mark done only on evidence, log each change. Use for "roadmap", "milestones", "plan this project", "where are we", "what's next on", "what's left", "project status", "pick up where we left off", "handoff", "next session", "plan:" commands, "/needt:plan"; RU "роадмап", "дорожная карта", "вехи", "спланируй проект", "где мы", "что дальше по", "что осталось", "статус проекта", "на чём остановились", "хэндофф"; UK "сплануй проєкт", "де ми", "що далі"; DE "Roadmap", "Meilensteine", "wo stehen wir", "Übergabe"; ES "hoja de ruta", "hitos", "dónde estamos"; FR "feuille de route", "jalons", "où en est-on". Not for a day or week schedule (needt), reviewing a plan (critic), deciding what to do (partner) or learning a subject (learn).
+description: Keeps a project roadmap alive across sessions as a board in Needt, with next steps computed and done marked only on evidence. Use for /needt:plan, roadmap, milestones, where are we, what's left, what's next on, handoff, plan commands; RU роадмап, вехи, где мы, что осталось, на чём остановились; UK роудмап, віхи, де ми, що залишилось; DE Roadmap, Meilensteine, wo stehen wir, Übergabe; ES hoja de ruta, hitos, dónde estamos, qué falta; FR feuille de route, jalons, où en est-on, passation. Not for day or week schedules, plan review or learning a subject.
 ---
 
 # Needt · Plan
@@ -41,18 +41,9 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 
 ## Commands
 
-Buttons and short messages the board understands, in any language (the English form is
-what the widget sends):
-
-| Message | Does |
-|---|---|
-| `plan: where are we` / "где мы", "status" | §3 state in four lines, the last handoff, the board |
-| `plan: open <milestone>` | the milestone's task: subtasks, evidence so far, what blocks it; offers Start or Done |
-| `plan: start <milestone>` | sets it `in_progress` (one at a time), log `start` |
-| `plan: done <milestone>` | asks for or finds the evidence (§4), completes, log `complete`, re-renders |
-| `plan: add <milestone> after <other>` | new task with `dependsOnId`, log `add` |
-| `plan: defer <milestone>` / `remove` | log `defer` with reason; `remove` deletes after the user confirms |
-| `plan: handoff` / "I'm stopping" | §7 block appended |
+`plan: where are we` · `open` · `start` · `done` · `add … after …` · `defer` / `remove` ·
+`handoff`, in any language; the table of what each does:
+[references/commands.md](references/commands.md) — read when a `plan:` message or board button arrives.
 
 ## 1. Find the board — every call
 
@@ -69,22 +60,10 @@ project). The board is what Needt returns now, never what this conversation or m
 
 ## 2. Create — first call only
 
-1. Milestones: 3–9 outcomes, each something that is either true or not, in the order they
-   are usually done, titled by needt's "How a task is written". From the user's goal, a
-   pasted plan, or a partner / critic result; a one-line summary of the goal stays with the
-   user for confirmation only when the milestones were invented, not pasted.
-2. `needt_create_project` with the project's name; then `needt_create_page` "Plan · <name>"
-   holding the milestone table (`# · milestone · after · status`) and a `## Log` heading.
-3. One `needt_create_task` per milestone: `projectId`, `autoSchedule: false` (a milestone is
-   not a calendar block), `dependsOnId` = the id of the milestone it waits on (one allowed;
-   further blockers go into the description as `blocked by: <titles>`), `originPageId` = the
-   plan page. A goal is optional and Pro-only: `needt_create_goal` linked by `projectIds`,
-   skipped silently when refused.
-4. `needt_update_project` with `description: "plan-page: <pageId>"`, and in an open folder
-   write `.needt/plan.json`.
-5. Report the board once (§6) and the first `Log` line: `- <date> · add · <n> milestones`.
-
-Re-running on a project that already has a board never creates a second one: §1 finds it.
+3–9 outcome milestones, then project, plan page, one task per milestone (`autoSchedule: false`,
+`dependsOnId`), `plan-page:` in the project description, `.needt/plan.json`, first log line.
+Steps: [references/create.md](references/create.md) — read on the first call. Re-running on a
+project that already has a board never creates a second one: §1 finds it.
 
 ## 3. State — computed, never stored
 
@@ -97,13 +76,17 @@ Re-running on a project that already has a board never creates a second one: §1
   skill proposes.
 
 "Where are we" is answered from these four sets and the last handoff, in four lines or fewer
-above the board. Never a stored "next".
+above the board. Never a stored "next": the handoff's "next session should" is advice,
+re-checked against these sets each time.
 
 ## 4. Done needs evidence
 
 A milestone is completed (`needt_complete_task`) only on one of: a merged PR or a commit the
 session can see; a file or artefact that exists; a test or check that passed in this session;
-the user saying it is done. The agent's own "I finished it" is not evidence — the milestone
+the user saying it is done — for a milestone with no external gate. A milestone gated by
+someone else (a review, a payment, an approval, a merge) needs the artefact or one confirming
+question ("the approval email arrived?") even when the user says done. The agent's own "I
+finished it" is not evidence — the milestone
 stays `current` and the log says `needs check: <what would prove it>`. The evidence goes into
 the log line.
 
@@ -119,25 +102,15 @@ permissions); the log keeps the line. A reorder changes `dependsOnId` with `need
 
 ## 6. The board
 
-- With `widgets: yes` (per [widgets](../setup/references/widgets.md)): one hand-written SVG,
-  no library, under 4 KB — a metro map. Milestones are stations on a line, in board order,
-  branches where a milestone waits on more than one; edges follow the blockers. Marks:
-  `✓` done, `●` current (a pulsing ring, off under `prefers-reduced-motion`), `○` next,
-  `✕` blocked. Labels are the milestone titles, shortened to fit. Every station is clickable
-  and sends `plan: open <milestone title>` through `sendPrompt`; at most four buttons under
-  the map: `Start <next>`, `Done: <current>`, `Where are we`, `Tilt` — the last one
-  re-renders the same SVG under a CSS `perspective` with `rotateX`/`rotateZ`, still
-  clickable. Colours from the host's CSS variables and ramp classes only. The explanation,
-  the four state lines and the handoff stay in text above the widget. After every change the
-  board is re-rendered with the same `title`.
-- With `widgets: no`: one line per milestone, same marks:
-  `✓ Auth flow · ● Billing · ○ Onboarding (after Billing) · ✕ Launch (blocked by Billing, Onboarding)`.
-- Without a Needt connector: `PLAN.md` in the open folder (or one block in the chat) with the
-  same table, `## Log` and `## Handoff` sections, kept by the same rules; the user is told
-  once that the board will move to Needt when the connector is added.
+Marks: `✓` done, `●` current, `○` next, `✕` blocked.
 
-`plan: open <milestone>` answers with that milestone's task (subtasks, evidence so far, what
-blocks it) and offers `Start` or `Done` for it — through needt's rules, not a new board.
+- `widgets: yes` → one SVG metro map, clickable stations, re-rendered with the same `title`
+  after every change; spec in [references/board.md](references/board.md) — read when drawing the board.
+- `widgets: no` → one line per milestone, same marks:
+  `✓ Auth flow · ● Billing · ○ Onboarding (after Billing) · ✕ Launch (blocked by Billing, Onboarding)`.
+- No Needt connector → `PLAN.md` in the open folder (or one block in the chat) with the same
+  table, `## Log` and `## Handoff`, same rules; tell the user once that the board moves to
+  Needt when the connector is added.
 
 ## 7. Handoff — end of a session
 

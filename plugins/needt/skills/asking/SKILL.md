@@ -1,6 +1,6 @@
 ---
 name: asking
-description: Relentless interview that stress-tests a plan, decision or idea in rounds of clickable multiple-choice questions, recommended answer first, until nothing is left silently assumed. Other Needt skills call it in a short mode for one round of clarifying questions. Use for "спроси меня", "задай вопросы", "прожарь", "опроси меня", "grill me", "/grill-me", "/needt:asking", "stress-test this", or when a plan has several open decisions only the user can make.
+description: Interviews you in rounds of clickable multiple-choice questions, recommended answer first, to stress-test a plan or decision until nothing is silently assumed; other Needt skills call it in short mode. Use for "grill me", "stress-test this", "/grill-me", "/needt:asking", "спроси меня", "задай вопросы", "прожарь", "опроси меня", "запитай мене", "допитай", "befrage mich", "löcher mich", "pregúntame", "interrógame", "interroge-moi", "pose-moi des questions". Not for reviewing a finished plan (critic).
 ---
 
 <!-- Adapted from mattpocock/skills (grill-me + grilling), MIT License, Copyright (c) 2026 Matt Pocock -->

@@ -9,7 +9,7 @@
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.12.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.13.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -87,7 +87,7 @@ Every other skill reads it instead of checking again; the first time it appears 
 
 **Parallel and cheap.** Independent research runs in parallel sub-agents on a faster model; synthesis, judgement and verdicts stay with the main model.
 
-**Checks what it installs — and itself.** The plugin passes its own SkillSpector scan (risk 25/100, no high findings). Before recommending a new skill, plugin or MCP server, the plugin scans it with [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector) when it is installed (risk 51+ means it is not installed), or reads its files for known red flags.
+**Checks what it installs — and itself.** Every release passes a 30-scenario eval (`eval/`), its own SkillSpector scan (risk 25/100, no high findings) and size caps (each skill under 8 KB, each description under 600 characters). Before recommending a new skill, plugin or MCP server, the plugin scans it with [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector) when it is installed (risk 51+ means it is not installed), or reads its files for known red flags.
 
 **Asks only when it matters.** Reversible actions run and get reported in one line. Sending, posting, paying and deleting always wait for your yes.
 
@@ -95,6 +95,8 @@ Every other skill reads it instead of checking again; the first time it appears 
 
 ```
 plugins/needt/                 the plugin (skills, manifests, MCP connection)
+eval/                          release gate: scenarios and results per version
+release.sh, build-standalone.py  gate + build
   skills/<name>/SKILL.md       one folder per skill
   .mcp.json                    https://mcp.needt.app/mcp
 .claude-plugin/marketplace.json   Claude Code marketplace

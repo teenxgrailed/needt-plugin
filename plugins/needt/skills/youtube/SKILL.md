@@ -1,6 +1,6 @@
 ---
 name: youtube
-description: Reads a YouTube video so Claude knows what it actually says — pulls the title, channel, date, chapters, description and the full timestamped transcript, then answers from it. Fires on its own whenever any message contains a youtube.com, youtu.be or YouTube Shorts link, whatever else the message asks (make tasks from it, critique the plan in it, compare it with X) — the link is read first, then the skill that owns the request continues with the transcript. Also for "о чем видео", "перескажи видео", "что в этом видео", "посмотри видео", "транскрипт", "расшифровка", "выжимка из видео", "summarize this video", "what does this video say", "transcript", "watch this", or when another Needt skill needs what a video says. Not for finding videos on a topic — that is search, which calls this skill for each video it picks.
+description: Reads a YouTube video (title, channel, date, chapters, full timestamped transcript), then answers from it. Fires on any youtube.com, youtu.be or Shorts link, whatever else the message asks; the link is read first. Use for "summarize this video", "what does this video say", "transcript", "/needt:youtube", "перескажи видео", "что в этом видео", "транскрипт", "про що відео", "транскрипція", "was steht im Video", "Transkript", "resume el vídeo", "transcripción", "résume la vidéo", "transcription". Not for finding videos (search).
 ---
 
 # Needt · YouTube
@@ -8,6 +8,12 @@ description: Reads a YouTube video so Claude knows what it actually says — pul
 The job: understand what the video says, as if you had watched it, and answer the user's real
 question about it, with timestamps. A summary of the title and description is not that. A
 transcript dumped into the chat is not that either.
+
+## Setup check
+
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md),
+print its line first and continue in the same reply; the `YouTube ·` header below is the
+first line of this skill's own report, after it. Present → reuse it.
 
 ## A link anywhere means: read it first
 
@@ -25,7 +31,7 @@ Who calls this skill and what comes back: [skills map](../setup/references/skill
 Any Needt skill that meets a video calls this one in place (no hand-off, no user prompt):
 
 1. Run section 1 (first route that works) → a file `<out>/<id>.md` and the header line
-   `YouTube · <title> · <channel> · <duration> · captions: <lang> <manual|auto>`.
+   `YouTube · <title> · <channel> · <duration> · captions: <lang> <manual|auto>|none`.
 2. Print the header line once in the reply, then read the file and continue with the
    caller's own rules. Do not produce the section-3 summary unless that is what the user
    asked for.
@@ -94,7 +100,7 @@ and checked against the description or a quick search before anything depends on
 ## 3. Answer
 
 First line, fixed shape:
-`YouTube · <title> · <channel> · <duration> · captions: <lang> <manual|auto>`
+`YouTube · <title> · <channel> · <duration> · captions: <lang> <manual|auto>|none`
 
 Then, in the user's language:
 

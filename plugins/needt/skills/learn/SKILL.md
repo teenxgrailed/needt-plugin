@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Explains one thing so the user actually gets it — at their level, with the mechanism and one example from their own world, one diagram or a clickable map of the subject with what is already passed when the host renders widgets, and one check question at the end instead of a lecture. Use for "explain", "help me understand", "how does X work", "what is X", "why does X"; RU "объясни", "хочу понять", "как работает", "почему"; UK "поясни"; DE "erkläre mir", "wie funktioniert"; ES "explícame"; FR "explique-moi"; and "/needt:learn". Not for looking up facts or current numbers (search), questioning a plan (asking), reviewing one (critic), or a drill — there is no quiz mode.
+description: Explains one thing so it sticks, with the mechanism, one example from your world, a diagram if widgets render, one check question. Use for "explain", "help me understand", "how does X work", "what is X", "/needt:learn", "объясни", "хочу понять", "как работает", "почему", "поясни", "як це працює", "що таке", "чому", "erkläre mir", "wie funktioniert", "was ist", "warum", "explícame", "cómo funciona", "qué es", "por qué", "explique-moi", "comment ça marche", "c'est quoi", "pourquoi". Not for facts (search), plans (asking).
 ---
 
 # Needt · Learn

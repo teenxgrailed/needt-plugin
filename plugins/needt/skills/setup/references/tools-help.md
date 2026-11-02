@@ -8,7 +8,8 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 ## Needt connector — required
 
 - Gives: the user's own tasks, projects, calendars, pages, habits, mail and memory.
-- Free: included with the user's Needt account; nothing else to buy.
+- Comes with Needt Pro (the planner skills and memory need it; the price is on
+  https://needt.app/pricing/). Every other Needt skill works without it.
 - claude.ai / Desktop: Settings → Connectors → add the Needt connector with the URL shown in
   the Needt app. Claude Code: `claude mcp add --transport http needt <URL from the Needt app>`.
 - Memory: turn on "Let Needt learn about me" in the Needt app settings; with it off, nothing

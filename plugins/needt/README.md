@@ -89,6 +89,21 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.13.0 (2026-11-03)
+
+- Lighter: every SKILL.md is under 8 000 bytes and every description under 600 characters;
+  detail moved into each skill's `references/`, read only when that branch is hit (needt:
+  intents, breakdown, reporting; partner: work, money, tools-and-style; search: sources,
+  verify, subagents, report; prompt: build, deliver; plan: create, board, commands; critic:
+  checks). A call now carries roughly half the text it did.
+- Without the Needt connector, setup says in two lines that the planner skills and memory
+  come with Pro and that every other skill works now; a planner request still gets a text
+  answer, never a dead end.
+- Memory near-duplicates are read as one (newest wins) and setup offers to merge them once
+  there are several; contradictions are named once.
+- Release gate: `eval/scenarios.md` (three per skill) must show all PASS in
+  `eval/results-<version>.md` before `release.sh` builds.
+
 0.12.0 (2026-11-02)
 
 - Every Needt skill can use the skills the user already has installed: setup counts them

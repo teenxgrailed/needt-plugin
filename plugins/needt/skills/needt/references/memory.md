@@ -28,6 +28,12 @@ Setup reads memory once per conversation (one call), puts `memory: 12` in the `N
 line, and every skill treats the lines as standing instructions: a `preference` or `pattern`
 outranks a skill's own default. Re-read only when the user says memory changed.
 
+Near-duplicates (two lines that say the same rule in other words) are read as one — the
+newest wins — and counted once. More than three such pairs → one line after the readiness
+line offering to merge them; on yes, `needt_update_memory` keeps the newest wording and
+`needt_forget_memory` drops the rest, reported in one line. Two lines that contradict each
+other → the newest holds, and the contradiction is named once.
+
 ## Write — the plugin saves on its own
 
 Save on your own, then report in one line (`Saved: never schedule before 10:00`):

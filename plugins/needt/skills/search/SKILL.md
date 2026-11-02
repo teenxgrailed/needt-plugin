@@ -1,6 +1,6 @@
 ---
 name: search
-description: Smart researcher that finds the good option, not just the first one — the library, approach, tool, supplier, fact or example that actually fits the user's project, verified and sourced. Starts from the user's context, fans out many short queries across different kinds of sources (web, YouTube guides and their transcripts, X threads, GitHub), follows the leads that matter, and comes back with a recommendation. Three depths, picked from the question. Use for "найди", "поищи", "загугли", "что есть для", "как лучше сделать", "как делают", "что сейчас популярно", "собери всю инфу", "ресёрч", "исследуй", "find", "look up", "research", "what's the best way to", "how do people do X", "compare X vs Y", or when another Needt skill needs facts from the web. Not for questions already answered in the conversation, and not for buy/no-buy money calls — that is partner.
+description: Finds the option that actually fits the user's project, verified and sourced, across web, YouTube, X and GitHub, at three depths. Triggers EN find, look up, research, what's the best way to, compare X vs Y; RU найди, поищи, загугли, ресёрч, исследуй; UK знайди, пошукай, дослідж, порівняй; DE suche, recherchiere, finde heraus, vergleiche; ES busca, investiga, encuentra, compara; FR cherche, recherche, trouve, compare; /needt:search. Not for answered questions or buy/no-buy calls (partner).
 ---
 
 # Needt · Search
@@ -24,6 +24,8 @@ Who owns what and what travels between skills: [skills map](../setup/references/
   page as the find, one line, and the milestone is named in the report's next step.
 - [partner](../partner/SKILL.md) — a buy/no-buy or business call on what was found.
 - [needt](../needt/SKILL.md) — finished work lands in Needt as tasks.
+- Question is "is there a skill, plugin or tool for X": check the installed catalog first
+  ([user-skills](../setup/references/user-skills.md)) before searching directories.
 
 ## 1. Frame before searching
 
@@ -31,18 +33,13 @@ Write down for yourself, not as a questionnaire:
 
 - **A YouTube link in the question** is read first through [youtube](../youtube/SKILL.md)
   (its contract section) — it is a source, and the search then verifies or extends it.
-- **What the user is actually building or deciding** — from the chat, the open project, its
-  files and notes (one or two targeted looks, never a full crawl). Research for "my app"
-  starts by knowing what the app already uses: stack, versions, constraints, what was tried.
+- **What the user is building or deciding** — from the chat, the open project, its files and
+  notes (one or two targeted looks, never a full crawl): stack, versions, constraints.
 - **What a great answer looks like** — the success criterion. "A library that works with
   Next 15 + React 19, maintained in 2026, MIT" beats "a good library".
-- **The 3–7 sub-questions** that answer it. Concrete ones: "which libraries do X for React 19,
-  and which are maintained" — not "what about X".
-- **Who would know** — the perspectives that see different truths: the maintainer, the person
-  who migrated off it, the competitor's changelog, the frustrated user on a forum, the docs,
-  the benchmark, the regulator. Each perspective is a query direction.
-- **Which source kinds the question type requires** — see §3. A question about how people
-  do something or what is popular is not answered by articles alone.
+- **The 3–7 concrete sub-questions** that answer it, and **who would know** — maintainer,
+  person who migrated off it, competitor's changelog, forum, docs, benchmark, regulator.
+- **Which source kinds the question type requires** — see below.
 
 Ask the user only if a missing fact would send the whole search the wrong way. Then one round
 through [asking](../asking/SKILL.md) in short mode. Otherwise label the assumption and go.
@@ -55,86 +52,30 @@ through [asking](../asking/SKILL.md) in short mode. Otherwise label the assumpti
 | **Normal** | "how best to do X", a comparison, "what's out there for Y" | 2–3 rounds, ~8–20 calls | answer + find + options in chat |
 | **Deep** | a decision that matters, a market, "собери всё" | several rounds, 3–5 parallel sub-agents when available, 30+ calls | cited file |
 
-The first line of the report is the search line:
+The first line of the report — after the `Needt ·` line when that one is printed in the same
+reply — is the search line (Quick prints none):
 `Search · normal · 14 calls · sources: web, youtube, github`. The report itself is in the
-user's language; the line stays in this shape. Warn before Deep that it
-takes several minutes. Scale up only for a reason; the commonest failure is heavy machinery
-on a light question.
+user's language; the line stays in this shape. Warn before Deep that it takes several
+minutes. Scale up only for a reason; the commonest failure is heavy machinery on a light question.
 
-## 3. Source kinds by question type
+Read before a Normal or Deep search: [sources.md](references/sources.md) (required source
+kinds by question type), [verify.md](references/verify.md) (verify rules),
+[subagents.md](references/subagents.md) (when and how to delegate; read before any
+delegation). Recipes for YouTube, X and GitHub: [tools.md](references/tools.md).
 
-Different questions live in different places. These are minimums, not a menu; a report that
-skipped a required kind says so in `Still unclear`.
+## 3. Wide, then narrow
 
-| Question type | Required source kinds | Why |
-|---|---|---|
-| How people actually do X; what is popular or trending; formats, workflows, playbooks | **YouTube guides and transcripts** + **X threads** + web | practitioners show the steps and numbers on video and argue about them on X long before articles catch up |
-| Which library, tool, API, repo | **GitHub** (issues, releases, stars trend) + current docs (Context7) + web | the README sells; issues and merged PRs tell what breaks |
-| What's out there, what's new, what's popular in tools or code | **GitHub discovery** — trending boards (daily/weekly), topic pages by stars, young repos gaining fast — then the health check | the best new tools show up on trending boards weeks before articles |
-| A price, a plan, a limit, a date | the **official page**, opened, with the date | never recalled, never from a blog |
-| A rule, a policy, a law | the **primary article, read in full**, and the exact clause quoted | an excerpt turns "X over 60 s with a claim is blocked" into "all X is blocked", and the dropped conditions decide the plan |
-| A market, competitors, suppliers | competitors' own pages + forums in the market's language + X + web | what exists, what it costs, what people complain about |
-| Anything scientific or medical | papers (research tools) + web | — |
-| Is there a skill, plugin, MCP server or tool for X; "can my AI do X" | **the installed catalog first** (the user may already have it — [user-skills](../setup/references/user-skills.md)), then **skill and tool directories** — the `find-skills` skill when present (`npx skills@1.7.4 find <query>`, skills.sh leaderboard), the MCP Registry, the host's own plugin/connector directory — + GitHub | a ready skill or connector beats a hand-built workflow; installs and stars show what is battle-tested |
+- Round one is wide and parallel: short queries (2–6 words), one or more per sub-question
+  and perspective, mixing source kinds; read excerpts first, open full pages only when thin
+  or authoritative.
+- Round two follows leads (a name, a repo, a term) with narrow queries.
+- Keep 2–3 competing candidate answers and look for what rules each out.
+- Stop when new searches stop changing the answer; another round needs a named gap.
 
-Recipes for YouTube, X and GitHub are in [references/tools.md](references/tools.md): how to
-build the queries, which tool to call, what to extract, how to cite.
+## 4. Report
 
-## 4. Search: wide, then narrow
-
-- **Round one is wide and parallel.** Short, broad queries — 2–6 words — one or more per
-  sub-question and per perspective, batched into as few calls as the tools allow. Long, overly
-  specific queries return nothing; start broad and see what the landscape is.
-- **Mix source kinds** — this is where the good finds come from. Docs and changelogs for
-  what is true now; GitHub issues and merged PRs for what actually breaks; forums, Reddit,
-  HN and X for lived experience; YouTube transcripts for numbers practitioners say but never
-  write; competitors' pages for what already exists; papers for anything scientific.
-- **Read excerpts first.** Open a full page only when the excerpt is thin, contradictory, or
-  the source is the authoritative one — and always for a rule or a price that decides something.
-- **Follow leads.** A name, a repo, a term you did not know — that is round two. Narrow
-  queries now, aimed at the leads.
-- **Hypotheses, not just notes.** Keep 2–3 competing candidate answers and look for what
-  would rule each one out, including evidence against the one you like.
-- **Stop** when new searches stop changing the answer. Another round needs a named gap.
-
-## 5. Delegating to sub-agents
-
-Rules for all skills: [setup/references/delegation.md](../setup/references/delegation.md).
-For search specifically, when the setup line says `agents: yes`: a Normal search with two or
-more independent sub-questions runs them as parallel Sonnet sub-agents (one per sub-question
-or per source kind); Deep always does. Quick never does. With `agents: no`, the same
-sub-questions run inline, one round at a time. Sub-agents do not see this file unless you give it to them:
-
-- Each brief contains: the objective and the sub-question it owns; the user's context and
-  success criterion; the **required source kinds from §3 and the recipes for them** (paste the
-  relevant part of `references/tools.md` or its path); which tools exist here (from the
-  setup line); the output format; what is out of scope.
-- Each sub-agent reports, besides findings: which source kinds it tried, which queries
-  returned nothing, and every claim it could not verify. "No live examples found" without
-  the list of what was tried is not a result — send it back for the missing kinds.
-- Merge yourself: dedupe, resolve contradictions, keep the better-sourced version, and say
-  when two agents disagreed.
-
-## 6. Verify
-
-- Every number, price, date, version and availability claim carries a link and its date.
-  Prices, versions, "who maintains this", rates and laws are searched, never recalled.
-- Anything that decides money, a dependency or a commitment needs two independent sources;
-  one source is a lead — mark it `(1 source)`.
-- A policy that decides a choice: open the primary article, read the whole section, quote
-  the clause with its conditions (duration, account type, region). A second page that says
-  something else means both are quoted and the difference is named.
-- View counts, follower counts and "went viral" come from the platform page or a dated
-  report; say which. Unverified counts are marked `UNVERIFIED`, never rounded into facts.
-- Sources disagree → show the range and say so. Old source → say how old.
-- Code-level claims ("works with React 19") get checked against the repo, issues or changelog,
-  not a blog post.
-- Never invent a URL. Never cite a page you did not open or read an excerpt of.
-
-## 7. Report
-
-Lead with the answer and the **find**, then what supports it. Translate the headings below
-into the user's language when the report is not in English.
+Lead with the answer and the **find**, then what supports it. Translate the headings into
+the user's language when the report is not in English.
 
 **Quick** — the fact, its date, the link.
 
@@ -144,14 +85,10 @@ into the user's language when the report is not in English.
 3. Options compared (a table when there are 3+), each with the one reason for or against.
 4. **Still unclear** — one line; includes any required source kind that was skipped.
 
-**Deep** — a markdown file: `In short` (3–6 points with numbers) → `What was found` (by
-question, not by source) → `Finds` → `Still unclear` (mandatory; say "none" if so) →
-`Sources` (numbered: title, domain, link, what it gave, how much to trust it).
+**Deep** — a file, format in [report.md](references/report.md).
 
-A YouTube find cites video + timestamp; an X find cites the post and its date; a GitHub find
-cites the issue or release. When the research was for a task — a feature, a fix, a purchase —
-end with the concrete next step applied to that task, and do it if it is reversible and the
-user asked for it.
+When the research was for a task — a feature, a fix, a purchase — end with the concrete next
+step applied to that task, and do it if it is reversible and the user asked for it.
 
 ## Widgets
 
@@ -167,8 +104,8 @@ metric cards. The search line stays the first line of text, never inside a widge
 
 A link dump; one search tool for everything; one long query instead of many short ones; a
 price or version from memory; a source not opened; a rule taken from an excerpt; the first
-plausible answer reported without looking for a better one; ignoring the user's stack or
-constraints; articles only for a "how do people do it" question; a sub-agent brief without
-the source-kind requirements; "no examples found" without the list of what was tried; Deep
-without a warning; `Still unclear` missing or invented; fetching pages through shell
-commands; a widget for a Quick answer; the search line inside a widget.
+plausible answer reported without looking for a better one; ignoring the user's stack;
+articles only for a "how do people do it" question; a sub-agent brief without source-kind
+requirements; "no examples found" without the list tried; Deep without a warning;
+`Still unclear` missing or invented; fetching pages through shell commands; a widget for a
+Quick answer; the search line inside a widget.

@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Internal — other Needt skills run it automatically on first use. Checks Needt readiness in the current conversation — the project, the preferred tone, which tools and skills are actually exposed (search tools, clickable questions, sub-agents, chat widgets, the user's own installed skills), and the user's Needt memory. On the first run it also tells the user, in a few lines, which tools the plugin uses and how to get the missing ones for free. Every other Needt skill runs this check first when the conversation has no Needt readiness line yet. Use directly for "set up Needt", "настрой Needt", "проверь что подключено", "what can Needt use here". Does not install plugins, connect accounts, or change settings.
+description: Internal. Other Needt skills run it on first use. Checks what this chat can use — project, tone, search tools, clickable questions, sub-agents, widgets, the user's own skills, Needt memory — and prints the `Needt ·` readiness line. First run adds a few lines on missing tools and free ways to get them. Use for "set up Needt", "what can Needt use here", "/needt:setup"; RU "настрой Needt", "проверь что подключено"; UK "налаштуй Needt"; DE "Needt einrichten"; ES "configura Needt"; FR "configure Needt". Installs nothing, connects nothing, changes no settings.
 ---
 
 # Set up Needt
@@ -94,9 +94,15 @@ user does not have to repeat. Setup only reads here; saving follows the same rul
      command from [tools-help](references/tools-help.md);
    - a kind that is a bigger setup gets one line saying so, without details;
    - one closing line naming the one tool to add first, with its link or command; the rest
-     can wait.
+     can wait. Nothing is missing → no onboarding lines at all, only the save in step 6.
    Nothing else — no list of what is already present beyond the readiness line, no tour.
-5. Without the Needt connector, its line comes first: it is the one tool the plugin needs.
+5. Without the Needt connector, its lines come right after the readiness line, two at most
+   and inside the six: that the
+   planner skills (needt, plan) and memory need the Needt connector, which comes with Needt
+   Pro (the price and link in one line from [tools-help](references/tools-help.md)); and that
+   everything else — partner, search, prompt, asking, critic, learn, youtube — works now
+   without it. Then continue the task: a planner request is answered as text (needt's
+   connector check), never with a dead end.
 6. Save `[fact] needt plugin set up <date>; tools: <kinds present>; declined: <kinds the
    user turned down, or none>` through the memory rules, and report it in one line. Without
    a connector the line holds for this chat only; say so once.

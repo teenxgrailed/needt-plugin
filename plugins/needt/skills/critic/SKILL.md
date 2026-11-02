@@ -1,6 +1,6 @@
 ---
 name: critic
-description: Reviews a plan or decision before it goes live — a launch plan, a marketing test, a feature plan, a pricing change, a hiring plan — by looking at the problem from scratch and comparing the fresh route with the plan. Every finding arrives as problem → solution, with the fix already worked out, its cost and how sure it is; the reply ends with the revised plan in full. Use for "critique this plan", "poke holes", "what am I missing", "review my plan", "before I launch", "/needt:critic", "покритикуй", "что я упускаю", "проверь план", "найди дыры", "разнеси". Not for stress-testing by questions (that is asking), not for buy/no-buy numbers (partner), not for code review or copy editing.
+description: Reviews a plan before it goes live (launch, marketing test, pricing, hiring) by building the fresh route from zero and comparing; each finding is problem → solution with cost and confidence, ending in the full revised plan. Use for "critique this plan", "poke holes", "what am I missing", "review my plan", "before I launch", "/needt:critic", "покритикуй", "что я упускаю", "проверь план", "найди дыры". Not for questions (asking), buy/no-buy numbers (partner), code review or copy editing.
 ---
 
 # Needt · Critic
@@ -16,7 +16,8 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
-- [plan](../plan/SKILL.md) — the plan under review has a board → read the board first and
+- [plan](../plan/SKILL.md) — a board is looked for first (plan §1: the pointer, then
+  `needt_search` for `Plan · <project>`); the plan under review has one → read the board first and
   critique against its real state; findings go back to it as `add` / `defer` /
   `reprioritize` log lines with the finding as reason. A reviewed plan that spans sessions
   and has no board yet → offer the board once.
@@ -48,19 +49,7 @@ is looked up, never asked. More than a couple of calls → a Sonnet sub-agent (�
 
 ## 2. What to look for
 
-| Problem | One-line test |
-|---|---|
-| The goal is not measurable | Could two people disagree on whether it was reached? |
-| The first step is not doable this week | Can it start tomorrow with what exists today? |
-| A dependency nobody owns | Every input from someone else has a name and a date? |
-| An assumption with no evidence | What fact says this is true, and where is it from? |
-| It only works in the best case | Write the ordinary case: half the response, twice the time. Does it still pay? |
-| Something irreversible before the cheap check | Is money spent, a public promise made or a thing deleted before a test that costs little? |
-| By hand what a tool or an agent could do | Is a repeated step done manually that a tool, an automation or an agent does? |
-| A rule or policy it may break | Platform terms, law, contracts, the user's own stated rules — checked against the source? |
-| The week-two quit | What will make the user stop in week two, and what removes it now? |
-
-Look for outcomes, not taste. A wording the user likes is not a finding unless it changes a result.
+Read [checks](references/checks.md) before the findings: nine problem classes, each with a one-line test. Look for outcomes, not taste; a wording the user likes is not a finding unless it changes a result.
 
 ## 3. Finding format
 
@@ -98,7 +87,7 @@ the reply reads as work done, not as a judgment.
    [asking](../asking/SKILL.md) in short mode on exactly those.
 5. One line offering to land the revised plan: as a board through [plan](../plan/SKILL.md)
    when it spans sessions, else as tasks through [needt](../needt/SKILL.md); a plan that already
-   has a board gets its log lines written at once.
+   has a board gets its findings offered as log lines, written on `Accept`.
 
 ## 6. Sub-agents
 

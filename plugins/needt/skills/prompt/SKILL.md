@@ -1,6 +1,6 @@
 ---
 name: prompt
-description: Turns a rough wish ("хочу сделать это, это и это, и поищи") into one well-built prompt sized to what the task really needs — a few lines for a small job, a structured brief for an agent run. Thinks of ideas and the better approach first, asks only what would change the prompt, and wires in the other Needt skills (search, asking, partner) where the task needs them. Use for "/needt:prompt", "промт", "промпт", "сделай промт", "улучши промт", "напиши промт для", "improve this prompt", "write a prompt for", "make a brief for an agent". Not for doing the task itself unless the user says to run the prompt.
+description: Turns a rough wish into one well-built prompt sized to the task, with the better approach already in it. Use for /needt:prompt, write a prompt, improve this prompt, make a brief, prompt for an agent; RU промпт, промт, улучши промпт, напиши промпт для; UK промпт, покращ промпт, напиши промпт, бриф для агента; DE Prompt schreiben, Prompt verbessern, Prompt erstellen, Briefing für Agent; ES escribe un prompt, mejora este prompt, crea un prompt, brief para agente; FR écris un prompt, améliore ce prompt, rédige un prompt, brief pour agent. Not for doing the task itself.
 ---
 
 # Needt · Prompt
@@ -72,43 +72,13 @@ must change what the executor does.
 
 ## 5. Build it
 
-Use the sections the size needs, in this order. Structure and examples:
-[references/structure.md](references/structure.md).
-
-1. **Context and why** — the situation, the project, who it is for, and the reason behind the
-   task. Executors generalize from the reason far better than from bare rules.
-2. **Goal and done-criteria** — the outcome, and how anyone can tell it is done.
-3. **Inputs** — data, files, links, previous findings, each in its own XML tag, long material
-   at the top and the request after it.
-4. **The approach** — the chosen direction and the ideas from step 2. Steps only where order
-   matters; otherwise describe the goal and let the executor plan.
-5. **Stages using Needt skills**, when the executor is Claude with this plugin: name them —
-   `use needt:search (normal depth) to find …`, `use needt:asking in short mode if …`,
-   `use needt:partner to check the economics of …`. A stage that names a skill means the
-   executor runs that skill's rules, not an inline shortcut: a search stage delegated to
-   sub-agents hands them the skill's source-kind requirements and recipes
-   ([search/references/tools.md](../search/references/tools.md)); a partner stage produces
-   executed numbers, not a funnel guessed in a table. For a "how do people do it / what is
-   popular" question, the search stage names YouTube guides with transcripts and X threads as
-   required sources, plus GitHub for anything about tools or code. For other products,
-   replace each skill with plain instructions that do the same job
-   ([references/structure.md](references/structure.md), portable version).
-5b. **Stages using the user's own skills**, when the executor is this host and the catalog
-   has a skill for a stage (their deploy runbook, their pptx skill, their code-review
-   checklist): name it the way the catalog lists it, per [user-skills](../setup/references/user-skills.md); for another product, plain
-   instructions that do the same job.
-6. **Parallel work** — say which stages are independent and may run as parallel sub-agents
-   on a cheaper model, and which need the main model (synthesis, taste, the final call).
-   Rules: [setup/references/delegation.md](../setup/references/delegation.md).
-7. **Constraints** — what to keep, what is out of scope, what needs permission (sending,
-   paying, publishing, deleting). Say what to do instead of only what not to do. Permission
-   lists are short and exact; everything reversible the executor does on its own,
-   including waking an agent or bot that the user has already authorized.
-8. **Output** — format, length, language, where it goes. Deliverables the user will want
-   later (a video, a report, a dataset) go to a durable place the user can open — a project
-   folder, Drive, a doc; a temp or scratch directory holds only intermediates.
-9. **Check** — how the executor verifies its own result before handing it over. For media:
-   what was actually checked (frames, audio) and what was not.
+Sections in order, as many as the size needs: context and why · goal and done-criteria ·
+inputs (own XML tag each, long material first) · the approach · stages using Needt skills
+(`use needt:search …`; the executor runs the skill's rules, not a shortcut; other products
+get plain instructions) · stages using the user's own skills (per
+[user-skills](../setup/references/user-skills.md)) · parallel work · constraints · output ·
+check. Full rules for each: [references/build.md](references/build.md) — read it when
+writing an M or L prompt. Structure and examples: [references/structure.md](references/structure.md).
 
 Write the prompt in the language the executor should work in — the user's language by
 default; English for code agents only if the user's other prompts to them are in English.
@@ -126,33 +96,14 @@ default; English for code agents only if the user's other prompts to them are in
 1. The prompt in one fenced code block, ready to paste.
 2. Under it, at most three lines: size picked and why, the assumptions made, the one thing
    worth changing if the user disagrees.
-3. If the user said to run it (`и запусти`, `go`, `выполни`), execute it in this chat right
-   after delivering — no button.
-4. Otherwise end with a **one-click choice**, in the same reply, right after the three lines:
-   - Clickable questions here (`questions: click` in the setup line, `AskUserQuestion` or the
-     host's equivalent): one question, `header` "Prompt", in the user's language — e.g.
-     "Use this prompt now?" / "Запустить этот промт?". Options, recommended first:
-     **Use prompt (Recommended)** — "Runs it here, in this chat"; **Change something** —
-     "Tell me what to adjust, I rewrite it"; **Copy only** — "I'll paste it elsewhere".
-     Translate labels to the user's language. When the prompt is for another product
-     (ChatGPT, Gemini, a coding agent elsewhere), make **Copy only** the recommended first
-     option and keep **Use prompt** second.
-   - `questions: text` and `widgets: yes`: the same three choices as one small widget with
-     three buttons — **Use prompt**, **Change something**, **Copy only**, recommended first by
-     the same rule — that `sendPrompt` the words `go` / `change: …` (opens a field) / `copy`.
-   - No clickable questions and no widgets: the same three choices in one line —
-     `Use it? — "go" runs it here · "change: …" rewrites it · "copy" and I stop.` (user's language).
-   - On **Use prompt** (click or "go"): execute the prompt in this chat at once, as if the user
-     had pasted it, starting with its first stage. On **Change something**: ask what, in one
-     line, then deliver the changed blocks and the same choice again. On **Copy only**: stop.
+3. The user said to run it (`и запусти`, `go`, `выполни`) → execute it here right after, no button.
+4. Otherwise end with a one-click choice (Use prompt · Change something · Copy only; for
+   another product Copy only comes first), form by setup line: details in
+   [references/deliver.md](references/deliver.md) — read it before ending the reply.
 
-When the user sends their own prompt to improve, keep their intent and voice, show the
-improved version, list the 2–4 changes that matter — not every edit — and end with the same
-one-click choice.
-
-When the user asks for a change to a prompt already delivered in this conversation, give the
-replacement blocks only, then one full copy once they say they will paste it. Do not reprint
-a long prompt for a two-line edit.
+A user's own prompt to improve: keep their intent and voice, show the improved version, list
+the 2–4 changes that matter, end with the same choice. A change to a prompt already delivered:
+give the replacement blocks only, one full copy once they say they will paste it.
 
 ## Grounding
 
