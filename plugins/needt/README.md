@@ -73,6 +73,9 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.4 (2026-11-02)
+- Prompt ends with a one-click choice right after the prompt: **Use prompt** (runs it in this chat), **Change something**, **Copy only**. Copy only is recommended when the prompt is for another product. Without clickable questions it offers `go` in one line.
+
 0.6.3 (2026-11-02)
 - The plugin passes its own SkillSpector scan: risk 91 → 25 (CAUTION, no HIGH findings). Every `npx`/`uvx` install line is pinned to a version, no text names credential files, and reversible actions are described as "runs, then reports". The remaining findings are the documented API URLs, the onboarding skill path and the YouTube script's argument-list `subprocess` call.
 

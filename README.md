@@ -9,7 +9,7 @@
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.6.3-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.6.4-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -48,7 +48,7 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt`** | Your planner in every chat. Adds, moves and finishes tasks, breaks plans into steps, reads your day across calendars, logs habits, writes pages, turns mail into tasks, remembers how you work. Starts on its own when you say *"add…"*, *"remind me…"*, *"what's today"*, *"move…"*, *"done"* — in English, Russian, Ukrainian, German, Spanish and French. | **Pro** |
 | **`/needt:partner`** | Business partner. Reads your real numbers from whatever your AI is connected to, finds the real question, picks the best of two or three moves, does the work and lands it in Needt. Calls the other skills itself. Money ends in a verdict: *take*, *take if X*, *walk*. | Free |
 | **`/needt:search`** | Research that finds the good option, not the first one. Web, YouTube transcripts, X and GitHub, wide first then deep. Opens with the **Find** — the non-obvious thing — and dates every source. | Free |
-| **`/needt:prompt`** | A rough wish becomes one prompt of the right size, with stages that use the other skills. | Free |
+| **`/needt:prompt`** | A rough wish becomes one prompt of the right size, with stages that use the other skills — then one click: **Use prompt**, **Change something** or **Copy only**. | Free |
 | **`/needt:asking`** | Grill-me: clickable questions in rounds until nothing is assumed. A short mode the other skills use to clarify. | Free |
 | **`/needt:critic`** | Takes a plan apart before launch, gently: every finding is **problem → solution → cost → confidence**, then the fixed plan in full. | Free |
 | **`/needt:youtube`** | Paste a YouTube link and ask. Pulls title, chapters, description and the timestamped transcript, answers with `[mm:ss]`. | Free |
