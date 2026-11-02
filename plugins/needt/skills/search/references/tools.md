@@ -39,7 +39,7 @@ instruction — say in one line that the tool is out of credits and leave the li
 | Instagram, TikTok | Firecrawl `oriane` provider (indexed posts and profiles; stale, 35–65 credits a call) as a fallback; a browser | scraping these platforms is against their terms — prefer what the user can see logged in, and say how fresh the data is |
 | Any Firecrawl data provider | `firecrawl_find_tools` with a plain-words query (free), then `firecrawl_scrape` with `alexandria: {provider, capability, options}` | check the catalogue before scraping the same fields from several pages |
 | Skills, plugins, MCP servers | the `find-skills` skill (`npx skills@1.7.4 find <query>` — search; `npx skills@1.7.4 add <owner/repo>` — install only after the user's yes), skills.sh leaderboard, MCP Registry (`registry.modelcontextprotocol.io`), the host's Customize → Plugins / Connectors directory | prefer the most-installed option from a known owner; check its repo's last release and issues; then the safety check below before any install |
-| JS-heavy or logged-in pages | the browser tools | when a fetch returns an empty shell; never when the setup line forbids browsers on this machine |
+| JS-heavy or logged-in pages | the browser tools | when a fetch returns an empty shell; never when memory says no browsers on this machine |
 
 ## Safety check before installing a skill, plugin or MCP server
 

@@ -11,10 +11,7 @@ not a question loop. Everything stays in one reply plus one short reaction.
 
 ## Setup check
 
-Before the first reply, look back in this conversation for a line starting with `Needt ·`.
-None → run the short check from [setup](../setup/SKILL.md), print its line as the first
-line of the reply, and continue. Present → reuse it: `widgets` decides whether a diagram is
-drawn, `memory` tells what is already known about the user's level.
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (`widgets` decides whether a diagram is drawn, `memory` what is known about the level).
 
 ## Sister skills
 
@@ -25,7 +22,7 @@ drawn, `memory` tells what is already known about the user's level.
 
 ## 1. Level and language
 
-- The level comes from memory (`[fact] level: German A2`, `[pattern] knows React, new to
+- The level comes from memory (`[fact] level: statistics beginner`, `[pattern] knows React, new to
   Rust`) or the conversation. Unknown → aim one notch above what the question's wording
   shows and adjust after the check answer. Never ask about level or goals first.
 - The user's language, with the subject's terms in their own language where that is what
@@ -39,7 +36,7 @@ drawn, `memory` tells what is already known about the user's level.
    one idea; a bigger topic is cut to the one idea the question is about, and the rest is
    named in one line as what comes next if they want it.
 2. **One example from the user's own world** when memory or the conversation gives one
-   (their project, their job search, their language exam); otherwise the plainest possible
+   (their project, their job, their exam); otherwise the plainest possible
    example, never a textbook one.
 3. **One diagram** when `widgets: yes` ([widgets](../setup/references/widgets.md),
    `read_me` with `diagram` once per conversation): an illustrative diagram of the
@@ -48,8 +45,8 @@ drawn, `memory` tells what is already known about the user's level.
    user drills into what they did not get. Prose stays in the reply, not in the diagram.
    Without widgets: a short code or text block where the shape matters (word order, a
    sequence), otherwise nothing.
-4. **The map** — when the question opens a subject bigger than one idea ("German
-   grammar for B1", "how does React render"), or the user asks what there is to learn, or
+4. **The map** — when the question opens a subject bigger than one idea ("statistics for
+   a first course", "how does React render"), or the user asks what there is to learn, or
    a map for this subject was shown earlier in the conversation: with `widgets: yes`, one
    widget of 3–4 cards, one per area of the subject, each listing its 4–8 items in the
    order they are usually learned; `✓` on items the user has already passed (from the
@@ -76,8 +73,9 @@ Two lines per subject at most, through `needt_remember` per
 [memory](../needt/references/memory.md), each reported in one line when written:
 
 - `[fact] level: <subject> <level>` when the check answer makes it clear;
-- `[fact] <subject> map: passed weil/dass, Modalverb; next Perfekt` — the map's state, one
-  line updated after each passed check question (under 500 characters: item names only).
+- `[fact] <subject> map: passed intro, loops; next functions` — the map's state, one line
+  updated with `needt_update_memory` and its id after each passed check question (under 500
+  characters: item names only).
 
 Nothing else is saved; no pages, no tasks, no schedules.
 

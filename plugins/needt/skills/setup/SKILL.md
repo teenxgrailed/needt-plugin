@@ -1,5 +1,5 @@
 ---
-name: +setup
+name: setup
 description: Internal — other Needt skills run it automatically on first use. Checks Needt readiness in the current conversation — the project, the preferred tone, which tools and skills are actually exposed (search tools, clickable questions, sub-agents, chat widgets, Marketing and Small Business skills), and the user's Needt memory. On the first run it also tells the user, in a few lines, which tools the plugin uses and how to get the missing ones for free. Every other Needt skill runs this check first when the conversation has no Needt readiness line yet. Use directly for "set up Needt", "настрой Needt", "проверь что подключено", "what can Needt use here". Does not install plugins, connect accounts, or change settings.
 ---
 
@@ -15,7 +15,7 @@ English; values may be in the user's language. For example:
 
 `Needt · ready · project: <name> · tone: casual · search: web, youtube, github · questions: click · agents: yes · widgets: yes · memory: 12`
 
-The line is the first line of the reply. It costs no tool calls except the one memory read
+The line is the first line of the reply. It costs only the one memory read
 (see Memory), made before any text — plus loading that tool if the host defers it; every
 other field comes from the tool and skill catalog already in context — run nothing to prove
 it. `project` is the project the conversation is about, `none` when the open folder is
@@ -23,7 +23,9 @@ unrelated to the task. A skill that reads this file and does not
 print the line has failed the check.
 
 That line is the marker other Needt skills look for in the conversation. One per
-conversation; run again only when the user asks or the project changes.
+conversation; run again only when the user asks or the project changes. The first time it is
+printed in a conversation, one short line in the user's language follows it, once: that it is
+Needt's readiness check showing what this chat can use.
 
 ## Establish the context
 
@@ -81,20 +83,23 @@ user does not have to repeat. Setup only reads here; saving follows the same rul
 
 ## First run
 
-1. After the memory read, look for a line `[fact] needt plugin set up <date>; …`.
+1. After the memory read, look for a memory of kind `fact` whose content starts with
+   `needt plugin set up`.
 2. Found: this is not a first run. Print the readiness line only and go on.
 3. Not found: print the readiness line, then the onboarding, then continue with the task.
 4. Onboarding is at most six lines in chat, in the user's language:
    - one line per missing tool kind: what it adds, that a free option exists, and the link or
      command from [tools-help](references/tools-help.md);
    - a kind that is a bigger setup gets one line saying so, without details;
-   - one closing line: "Say which you want and I'll walk you through it."
+   - one closing line naming the one tool to add first, with its link or command; the rest
+     can wait.
    Nothing else — no list of what is already present beyond the readiness line, no tour.
 5. Without the Needt connector, its line comes first: it is the one tool the plugin needs.
 6. Save `[fact] needt plugin set up <date>; tools: <kinds present>; declined: <kinds the
    user turned down, or none>` through the memory rules, and report it in one line. Without
    a connector the line holds for this chat only; say so once.
-7. When the user later adds or declines a tool, update that line instead of adding another.
+7. When the user later adds or declines a tool, update that memory with `needt_update_memory`
+   and its id instead of adding another; on the fallback page append a new line.
 
 ## Bring back a useful start
 

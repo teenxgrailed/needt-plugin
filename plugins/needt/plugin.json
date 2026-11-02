@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "needt",
-  "version": "0.9.0",
-  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, an explainer, and memory that follows you.",
+  "version": "0.10.0",
+  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, an explainer, a project roadmap, and memory that follows you.",
   "author": {
     "name": "Needt"
   },
@@ -14,7 +14,8 @@
     "search",
     "interview",
     "strategy",
-    "learn"
+    "learn",
+    "roadmap"
   ],
   "extensions": {
     "com.openai": {
@@ -22,10 +23,11 @@
       "interface": {
         "displayName": "Needt",
         "shortDescription": "Think together, write the right prompt, find the good stuff.",
-        "longDescription": "Partner thinks with you and prepares business work. Prompt turns a rough wish into one well-built prompt sized to the task. Search finds the non-obvious good option, verified and sourced. Asking stress-tests a plan through rounds of clickable questions.",
+        "longDescription": "Needt works your planner from any chat: tasks, today, plans, habits, pages, memory that follows you. Partner thinks with you and prepares business work. Prompt turns a rough wish into one well-built prompt. Search finds the non-obvious good option, verified and sourced. Asking stress-tests a plan through clickable questions; Critic reviews it; Learn explains one thing so it sticks.",
         "developerName": "Needt",
         "category": "Productivity",
         "defaultPrompt": [
+          "What should I do today?",
           "Help me get started: recommend a first move and prepare it.",
           "Turn this rough idea into one strong prompt.",
           "Find the best way to do this, with sources."

@@ -12,10 +12,7 @@ generic rules, or a polished rewording of the same vague wish.
 
 ## Setup check
 
-Before the first reply, look back in this conversation for a line starting with `Needt ·`.
-None → run the short check from [setup](../setup/SKILL.md), print its line as the first
-line of the reply, and continue. Present → reuse it (it says which tools and question mode
-exist). Reading the setup file and not printing the line is the failure this guards against.
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (which tools and question mode exist).
 
 ## Sister skills
 
@@ -149,8 +146,8 @@ a long prompt for a two-line edit.
 ## Grounding
 
 The recommendation inside the prompt comes from the conversation and the open project, not a
-generic default: if the project is Needt and the wish is about promotion, the prompt assumes
-Needt promotion unless the user said otherwise. Scratch paths, session ids and other
+generic default: if the open project is a shop app and the wish is about promotion, the prompt
+assumes that shop's promotion unless the user said otherwise. Scratch paths, session ids and other
 ephemeral details go into the prompt only when the executor is this same session.
 
 ## Widgets

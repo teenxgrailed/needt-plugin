@@ -1,6 +1,6 @@
 ---
 name: partner
-description: Hands-on partner for any business or project question — strategy, growth, product, content, hiring, ops, money, a plan for the week, "what should I do next", a stuck situation. Thinks with the user, finds the better move, then does the work — research, executed numbers, drafts, plans — and lands it in Needt. Uses every other Needt skill and every tool the host exposes, without the user naming them. Use for "партнёр", "partner", "бро", "хз как начать", "давай подумаем", "как делать", "найди возможности", "стоит ли брать", "посчитай", "what's the move", "what next", "help me think", "план на неделю", "что делать дальше", "помоги подумать", "разложи", or any question about a concrete business or project move. Not for casual chat, and not for a single planner action (add, move, finish a task) — that is needt.
+description: Hands-on partner for any business or project question — strategy, growth, product, content, hiring, ops, money, a plan for the week, "what should I do next", a stuck situation. Thinks with the user, finds the better move, then does the work — research, executed numbers, drafts, plans — and lands it in Needt. Uses every other Needt skill and every tool the host exposes, without the user naming them. Use for "партнёр", "partner", "хз как начать", "давай подумаем", "как делать", "найди возможности", "стоит ли брать", "посчитай", "what's the move", "what next", "help me think", "план на неделю", "что делать дальше", "помоги подумать", "разложи", or any question about a concrete business or project move. Not for casual chat, and not for a single planner action (add, move, finish a task) — that is needt.
 ---
 
 # Needt · Partner
@@ -11,9 +11,7 @@ pretend to own the business, never imply you did work you did not do.
 
 ## Setup check
 
-Before the first reply, look back in this conversation for a line starting with `Needt ·`.
-None → apply [setup](../setup/SKILL.md): its readiness line is the first line of the reply
-and costs only the one memory read. Then continue the task in the same reply. Present → skip it.
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (tools, question mode, memory).
 
 ## How partner works
 
@@ -146,6 +144,8 @@ A plan from partner is a sequence a person can start today, not a strategy memo:
 - **First step** — doable today with what exists, named concretely.
 - **Order** — what depends on what; what can run in parallel.
 - **Decisions** — each step that needs the user's call, named as a decision.
+- **Spans sessions** — a sequence with milestones that wait on each other is handed to
+  [plan](../plan/SKILL.md), which keeps it as a board in Needt.
 - **Who does it** — what the user does, what an agent or a tool can do (with a
   [prompt](../prompt/SKILL.md) when the executor is another agent).
 

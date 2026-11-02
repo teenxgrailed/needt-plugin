@@ -9,10 +9,7 @@ description: Relentless interview that stress-tests a plan, decision or idea in 
 
 ## Setup check
 
-Before the first round, look back in this conversation for a line starting with `Needt ·`.
-None → apply [setup](../setup/SKILL.md): its readiness line is the first line of the reply,
-costs no tool calls, and tells you whether clickable questions exist. Then start. Present →
-skip it.
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (whether clickable questions exist).
 
 ## Sister skills
 

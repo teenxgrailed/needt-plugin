@@ -12,10 +12,7 @@ links is not a result. A reworded search snippet is not research.
 
 ## Setup check
 
-Before the first search, look back in this conversation for a line starting with `Needt ·`.
-None → run the short check from [setup](../setup/SKILL.md) (it lists the search tools that
-really exist here), print its line as the first line of the reply, and continue. Present →
-reuse its tool list.
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (its list of search tools).
 
 ## Sister skills
 
@@ -69,7 +66,7 @@ skipped a required kind says so in `Still unclear`.
 | Which library, tool, API, repo | **GitHub** (issues, releases, stars trend) + current docs (Context7) + web | the README sells; issues and merged PRs tell what breaks |
 | What's out there, what's new, what's popular in tools or code | **GitHub discovery** — trending boards (daily/weekly), topic pages by stars, young repos gaining fast — then the health check | the best new tools show up on trending boards weeks before articles |
 | A price, a plan, a limit, a date | the **official page**, opened, with the date | never recalled, never from a blog |
-| A rule, a policy, a law | the **primary article, read in full**, and the exact clause quoted | an excerpt once turned "shorts over 60 s with a claim are blocked" into "all shorts are blocked" and that decided a whole plan wrongly |
+| A rule, a policy, a law | the **primary article, read in full**, and the exact clause quoted | an excerpt turns "X over 60 s with a claim is blocked" into "all X is blocked", and the dropped conditions decide the plan |
 | A market, competitors, suppliers | competitors' own pages + forums in the market's language + X + web | what exists, what it costs, what people complain about |
 | Anything scientific or medical | papers (research tools) + web | — |
 | Is there a skill, plugin, MCP server or tool for X; "can my AI do X" | **skill and tool directories** — the `find-skills` skill when present (`npx skills@1.7.4 find <query>`, skills.sh leaderboard), the MCP Registry, the host's own plugin/connector directory — + GitHub | a ready skill or connector beats a hand-built workflow; installs and stars show what is battle-tested |

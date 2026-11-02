@@ -1,6 +1,6 @@
 ---
 name: needt
-description: Works the user's Needt planner through the Needt connector — tasks and subtasks, projects, calendar and auto-scheduling, personal time, habits, pages, read-only mail, memory. Fires on its own in any conversation whenever the user mentions something that belongs in a planner, without being asked to use Needt: a thing to do, a deadline, a meeting, a reminder, a habit, a note to keep, "what's on today", moving or finishing something, mail to turn into tasks. Triggers in any language, e.g. EN "add a task", "remind me", "what's today", "move it", "done", "plan my day"; RU "добавь задачу", "напомни", "что сегодня", "перенеси", "сделал", "запланируй"; UK "додай задачу", "нагадай"; DE "Aufgabe hinzufügen", "erinnere mich"; ES "añade una tarea", "recuérdame"; FR "ajoute une tâche", "rappelle-moi"; and "/needt". Not for research (search), prompts (prompt), business moves (partner), interviews (asking) or plan review (critic) — those hand finished work to this skill to land it in Needt.
+description: Works the user's Needt planner through the Needt connector — tasks and subtasks, projects, calendar and auto-scheduling, personal time, habits, pages, read-only mail, memory. Fires on its own in any conversation whenever the user mentions something that belongs in a planner, without being asked to use Needt — a thing to do, a deadline, a meeting, a reminder, a habit, a note to keep, "what's on today", moving or finishing something, mail to turn into tasks. Triggers in any language, e.g. EN "add a task", "remind me", "what's today", "move it", "done", "plan my day"; RU "добавь задачу", "напомни", "что сегодня", "перенеси", "сделал", "запланируй"; UK "додай задачу", "нагадай"; DE "Aufgabe hinzufügen", "erinnere mich"; ES "añade una tarea", "recuérdame"; FR "ajoute une tâche", "rappelle-moi"; and "/needt". Not for research (search), prompts (prompt), business moves (partner), interviews (asking) or plan review (critic) — those hand finished work to this skill to land it in Needt.
 ---
 
 # Needt · Main
@@ -15,9 +15,7 @@ this to your planner" when the connector is right here has failed.
 
 ## Setup check
 
-Before anything else, look back in this conversation for a line starting with `Needt ·`.
-None → run the short check from [setup](../setup/SKILL.md), print its line as the first line
-of the reply, and continue. Present → reuse it (account, workspaces, memory count).
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (account, workspaces, memory count).
 
 ## Connector check
 
@@ -34,7 +32,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 | User says | Calls |
 |---|---|
 | A thing to do ("I need to…", "add…", "remind me to…") | `needt_search` for the same outcome → `needt_create_task`, or `needt_update_task` / `needt_add_subtasks` on the match |
-| A plan, a pasted checklist, work handed over by another skill | breakdown rules below → one `needt_create_task` per outcome, `needt_create_page` for the long text |
+| A plan, a pasted checklist, work handed over by another skill — for one sitting or one week; a roadmap that spans sessions, with milestones that wait on each other, goes to [plan](../plan/SKILL.md) | breakdown rules below → one `needt_create_task` per outcome, `needt_create_page` for the long text |
 | "What's today / next / this week" | `needt_list` for events in the range; `needt_schedule` (`run: false`) for the placed blocks — it returns the whole workspace, so read only the blocks inside the range and never paste it; overdue tasks go in one line (`overdue: N — the three oldest`) after today's list |
 | "Move it", "push to tomorrow", "at 10" | `needt_reschedule`, or `needt_update_task` with `start` (a `start` pins the task on its own — there is no separate pinned flag on create); `pinned: false` on update hands it back to the scheduler |
 | "Done", "finished", "сделал" | `needt_search` / `needt_list` to find it → `needt_complete_task` or `needt_complete_subtask` |
@@ -59,7 +57,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 - **`subtasks`** in the order they are done. The task itself is the closing step, so the last
   subtask is never "finish" or "done".
 - **A step that needs the user's decision** is its own subtask naming the decision:
-  "Decide: Stripe or Creem for checkout".
+  "Decide: Stripe or Paddle for checkout".
 - **Estimates** in minutes only with a basis in the conversation. **Priority** only with a
   reason (deadline, blocker, "this first"). **Due date** only when the user named one — never
   from "soon".
@@ -157,7 +155,8 @@ Rules: [setup/references/delegation.md](../setup/references/delegation.md).
 - [critic](../critic/SKILL.md) — reviewing a plan before it is acted on.
 
 Those skills finish their work in chat and hand the result to this skill to land in Needt; they
-never create tasks on their own.
+never create tasks on their own — except [plan](../plan/SKILL.md), which owns the milestone tasks of
+its own project under the rules of this file.
 
 ## Widgets
 
@@ -166,7 +165,8 @@ With `widgets: yes` (per [widgets](../setup/references/widgets.md)):
 - "What's today / this week" is a list widget: the events and placed blocks in order, one
   button per task row that sends `Done: <task title>` through `sendPrompt`.
 - A plan or checklist just created is shown as the same list.
-- A project's or habit's progress is a progress widget.
+- A project's or habit's progress is a progress widget; a project with a plan board shows
+  [plan](../plan/SKILL.md)'s board instead.
 - After any completion the list is re-rendered with the same title.
 - The report line or table stays as text under it, in one or two lines.
 

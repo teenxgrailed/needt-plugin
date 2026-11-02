@@ -4,12 +4,12 @@
 
 # Needt Plugin
 
-**Nine skills that make your AI sharper — and one that runs your day inside Needt.**
+**Ten skills that make your AI sharper — and one that runs your day inside Needt.**
 
-A business partner, a researcher, a prompt builder, a grill-me, a plan critic and a YouTube reader, free.
+A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.9.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.10.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -31,15 +31,23 @@ Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, 
 
 ## Install
 
+**Claude Code** — one line:
+
+```sh
+claude plugin marketplace add teenxgrailed/needt-plugin && claude plugin install needt@needt
+```
+
+(or inside Claude Code: `/plugin install needt --marketplace teenxgrailed/needt-plugin`; update later with `claude plugin update needt@needt`)
+
+**Claude** (web, Desktop) — [download `needt.plugin`](https://github.com/teenxgrailed/needt-plugin/releases/latest/download/needt.plugin), then **Customize → Plugins → Add → Upload plugin**.
+
 | Where | How |
 |---|---|
-| **Claude** (web, Desktop) | Download [`needt.plugin`](https://github.com/teenxgrailed/needt-plugin/releases/latest) → **Customize → Plugins → Add → Upload plugin** |
-| **Claude Code** | `claude plugin marketplace add teenxgrailed/needt-plugin` then `claude plugin install needt@needt` |
 | **Codex** | `codex plugin marketplace add teenxgrailed/needt-plugin` |
-| **Single skills** | Download a skill zip from the [latest release](https://github.com/teenxgrailed/needt-plugin/releases/latest) → **Customize → Skills → Upload** |
+| **Single skills** (Claude, Cursor, any agent that reads `SKILL.md`) | `npx skills add teenxgrailed/needt-plugin` and pick the ones you want, or download a skill zip from the [latest release](https://github.com/teenxgrailed/needt-plugin/releases/latest) → **Customize → Skills → Upload** |
 | **Any MCP client** | Remote server `https://mcp.needt.app/mcp` (streamable HTTP, OAuth) |
 
-Then start a new chat and just talk — *"what's on today?"*, *"help me think about pricing"*, *"find the best way to…"*. You never have to name a skill.
+Then start a new chat and just talk — *"what's on today?"*, *"help me think about pricing"*, *"find the best way to…"*, *"roadmap for my app"*. You never have to name a skill.
 
 ## The skills
 
@@ -51,22 +59,23 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:prompt`** | A rough wish becomes one prompt of the right size, with stages that use the other skills — then one click: **Use prompt**, **Change something** or **Copy only**. | Free |
 | **`/needt:asking`** | Grill-me: clickable questions in rounds until nothing is assumed. A short mode the other skills use to clarify. | Free |
 | **`/needt:critic`** | Takes a plan apart before launch, gently: every finding is **problem → solution → cost → confidence**, then the fixed plan in full. | Free |
+| **`/needt:plan`** | A project roadmap that survives sessions: milestones as tasks in Needt with blockers, *next* computed, *done* only on evidence (a merged PR, a file, your word), an append-only log and a handoff for the next session. In Claude Desktop it is a clickable metro map. | **Pro** |
 | **`/needt:learn`** | Explains one thing so it sticks: the mechanism at your level, an example from your own world, a clickable diagram or a map of the subject with what you have already passed, and one check question. No quiz loop. | Free |
 | **`/needt:youtube`** | Any YouTube link in any message is read first — title, chapters, description, timestamped transcript — and the skill that owns the request works from it. Ask about it, make tasks from it, critique the plan in it. | Free |
-| `+setup` | Internal. Prints the `Needt ·` readiness line, onboards tools once, reads your memory. | Free |
+| `setup` | Internal. Prints the `Needt ·` readiness line, onboards tools once, reads your memory. | Free |
 
-`/needt` needs a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.
+`/needt` and `/needt:plan` need a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.
 
 ## How it works
 
 **Widgets.** In Claude Desktop, where the chat can render widgets, the skills show what has a
 shape as one — today's list with Done buttons, option cards, money metrics, finding cards with
-*Accept fix*, learning steps with answer buttons. Everywhere else the same answer arrives as
+*Accept fix*, a subject map, a project roadmap as a metro map. Everywhere else the same answer arrives as
 text. Rules: `plugins/needt/skills/setup/references/widgets.md`.
 
 **One readiness line.** The first skill you use in a chat prints a line like
 `Needt · ready · project: Acme · tone: casual · search: web, youtube, github · questions: click · agents: yes · memory: 12`.
-Every other skill reads it instead of checking again. It costs no tool calls.
+Every other skill reads it instead of checking again; the first time it appears it says in one line what it is.
 
 **Memory that follows you.** When you say *"remember…"*, *"never do X again"*, or correct how something was done, the plugin saves one line to your Needt memory (`Saved: …`) and every skill treats it as a standing instruction — in any chat, on any device. Secrets, health details and one-off facts are never saved. Turn it off any time in the Needt app.
 

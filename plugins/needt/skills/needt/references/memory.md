@@ -39,7 +39,9 @@ Save on your own, then report in one line (`Saved: never schedule before 10:00`)
 - A `goal` the user states as theirs, a `fact` about their project that later work depends on.
 
 Wording: one line, present tense, the user's own terms, no reasoning. One item per call.
-Update an existing line instead of adding a near-duplicate.
+Update an existing line with `needt_update_memory` and its id (from the setup read) instead of
+adding a near-duplicate; the fallback page cannot be edited — append the new line, the newest
+wins.
 
 ## Never save
 

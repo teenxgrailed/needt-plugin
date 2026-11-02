@@ -12,9 +12,10 @@
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
 | YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
 | Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
+| Plan | `/needt:plan` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist |
 | Learn | `/needt:learn` | Explains one thing at the user's level: the mechanism, one example from their world, one clickable diagram or subject map where widgets exist, one check question. No quiz mode |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
-| +Setup | `/needt:+setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
+| Setup | `/needt:setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
 
 Every skill looks for the `Needt ·` readiness line in the conversation first. If it is
 missing, the skill runs the short setup check, prints the line and continues the task in the
@@ -54,15 +55,14 @@ first run with free options and a link or one command for each.
 
 ## Install in Claude
 
-Customize > Plugins > upload `needt.plugin`. Remove the older `needt-partner` plugin so its
-skills do not appear twice. Local test without installing:
+Customize > Plugins > upload `needt.plugin`. Local test without installing:
 
 ```sh
 claude --plugin-dir /absolute/path/to/needt
 ```
 
 First run: connect the Needt connector (Customize > Connectors), then say anything planner-like
-or run `/needt:+setup`. Setup onboards once and records "set up" in memory so it does not repeat.
+or run `/needt:setup`. Setup onboards once and records "set up" in memory so it does not repeat.
 
 ## ChatGPT and Codex
 
@@ -78,6 +78,16 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.10.0 (2026-11-02)
+
+- New skill `plan`: a project roadmap kept as a Needt project with one task per milestone,
+  `dependsOnId` blockers, a "Plan · <name>" page with an append-only log and session
+  handoffs; next is computed, done needs evidence; a clickable SVG metro map with widgets.
+- Hygiene: skill `+setup` is `setup`; one wording of the Setup check in every skill; the
+  `Needt ·` line is explained once per conversation; memory lines are updated through
+  `needt_update_memory`, the fallback page is append-only; owner-specific examples and
+  triggers removed; onboarding ends with the one tool to add, not a question.
 
 0.9.0 (2026-11-02)
 

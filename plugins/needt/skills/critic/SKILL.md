@@ -10,10 +10,7 @@ already fixed and a clear head, not a list of worries to work through alone.
 
 ## Setup check
 
-Before the first finding, look back in this conversation for a line starting with `Needt ·`.
-None → run the short check from [setup](../setup/SKILL.md), print its line as the first line
-of the reply, and continue. Present → reuse it, including the memory it loaded: a settled
-point in memory is not raised again.
+No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (the memory it loaded — a settled point in memory is not raised again).
 
 ## 1. Start from zero
 
