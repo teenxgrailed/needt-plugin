@@ -26,6 +26,8 @@ reuse its tool list.
 
 Write down for yourself, not as a questionnaire:
 
+- **A YouTube link in the question** is read first through [youtube](../youtube/SKILL.md)
+  (its contract section) — it is a source, and the search then verifies or extends it.
 - **What the user is actually building or deciding** — from the chat, the open project, its
   files and notes (one or two targeted looks, never a full crawl). Research for "my app"
   starts by knowing what the app already uses: stack, versions, constraints, what was tried.

@@ -45,6 +45,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 | "Anything in my mail I need to do?" | read mail via `needt_list` / `needt_search` / `needt_get` → tasks from what needs action |
 | Focus, blocking distractions | `needt_blocking_profile` to see profiles, `needt_blocking` to start or stop |
 | Look something up in Needt | `needt_search` → `needt_get` |
+| A YouTube link ("do this", "make tasks from it", "save the steps") | read it first with [youtube](../youtube/SKILL.md) (its contract section), then the steps from the transcript → tasks per the breakdown rules, `[mm:ss]` and the link in the description |
 | "Remember…", "what do you know about me", "forget that" | see Memory below |
 
 `needt_control` drives the app itself (open a view, switch workspace) when the user asks for it.

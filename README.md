@@ -9,7 +9,7 @@
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.6.5-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.6.6-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -51,7 +51,7 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:prompt`** | A rough wish becomes one prompt of the right size, with stages that use the other skills — then one click: **Use prompt**, **Change something** or **Copy only**. | Free |
 | **`/needt:asking`** | Grill-me: clickable questions in rounds until nothing is assumed. A short mode the other skills use to clarify. | Free |
 | **`/needt:critic`** | Takes a plan apart before launch, gently: every finding is **problem → solution → cost → confidence**, then the fixed plan in full. | Free |
-| **`/needt:youtube`** | Paste a YouTube link and ask. Pulls title, chapters, description and the timestamped transcript, answers with `[mm:ss]`. | Free |
+| **`/needt:youtube`** | Any YouTube link in any message is read first — title, chapters, description, timestamped transcript — and the skill that owns the request works from it. Ask about it, make tasks from it, critique the plan in it. | Free |
 | `+setup` | Internal. Prints the `Needt ·` readiness line, onboards tools once, reads your memory. | Free |
 
 `/needt` needs a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.

@@ -74,6 +74,10 @@ If the user answers with free text (the "Other" field), treat it as the decision
 
 ## Facts vs decisions
 
+A YouTube link in the user's message is a fact source: read it through
+[youtube](../youtube/SKILL.md) (its contract section) before the first round, so no question
+asks what the video already answers.
+
 Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (files, notes, connected tools, the web), look it up; when that needs more than a couple of calls, run it in a Sonnet sub-agent per [delegation](../setup/references/delegation.md). Never turn a lookup into a question. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
 
 Decisions the user has already recorded as settled are not reopened unless a new fact breaks them; say so once if it does.

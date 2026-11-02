@@ -31,6 +31,9 @@ Pull out, from the wish, the chat and the open project (one or two targeted look
   Gemini, Mistral). Unknown → this chat.
 - **Context the executor will not have** — the project, stack, constraints, what was tried,
   the user's taste. This is usually the most valuable part of the prompt.
+- **A YouTube link in the wish** — read it now through [youtube](../youtube/SKILL.md) (its
+  contract section); the key points go into `<inputs>` with timestamps, so the executor does
+  not have to watch it again.
 - **Parts that need other skills** — "и поищи" → a search stage; money or business calls →
   partner; open decisions → asking.
 

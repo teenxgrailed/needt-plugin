@@ -1,6 +1,6 @@
 ---
 name: youtube
-description: Reads a YouTube video so Claude knows what it actually says — pulls the title, channel, date, chapters, description and the full timestamped transcript, then answers from it. Use whenever the user's message has a youtube.com or youtu.be link, or says "о чем видео", "перескажи видео", "что в этом видео", "посмотри видео", "транскрипт", "расшифровка", "выжимка из видео", "summarize this video", "what does this video say", "transcript", "watch this", or when another Needt skill needs what a video says. Not for finding videos on a topic — that is search, which calls this skill for each video it picks.
+description: Reads a YouTube video so Claude knows what it actually says — pulls the title, channel, date, chapters, description and the full timestamped transcript, then answers from it. Fires on its own whenever any message contains a youtube.com, youtu.be or YouTube Shorts link, whatever else the message asks (make tasks from it, critique the plan in it, compare it with X) — the link is read first, then the skill that owns the request continues with the transcript. Also for "о чем видео", "перескажи видео", "что в этом видео", "посмотри видео", "транскрипт", "расшифровка", "выжимка из видео", "summarize this video", "what does this video say", "transcript", "watch this", or when another Needt skill needs what a video says. Not for finding videos on a topic — that is search, which calls this skill for each video it picks.
 ---
 
 # Needt · YouTube
@@ -9,11 +9,40 @@ The job: understand what the video says, as if you had watched it, and answer th
 question about it, with timestamps. A summary of the title and description is not that. A
 transcript dumped into the chat is not that either.
 
-## Sister skills
+## A link anywhere means: read it first
 
-- [search](../search/SKILL.md) — finds which videos to read; uses this skill to read them.
-- [needt](../needt/SKILL.md) — steps, tools or ideas from the video land in Needt as tasks.
-- [setup](../setup/SKILL.md) — lists which transcript tools exist here.
+A YouTube link in a message is input, not a request. Whatever the message asks — «сделай
+задачи из этого видео», "is the plan in this talk any good?", "compare this with Notion",
+"what do people say about this?" — the video is read with section 1 before anything else, and
+the skill that owns the request (needt, critic, partner, search, prompt, asking) works from
+the transcript file. The user never has to say "watch it" or name this skill. Without a link,
+the skill fires only on the phrases in its description.
+
+## Used by other skills — the contract
+
+Any Needt skill that meets a video calls this one in place (no hand-off, no user prompt):
+
+1. Run section 1 (first route that works) → a file `<out>/<id>.md` and the header line
+   `YouTube · <title> · <channel> · <duration> · captions: <lang> <manual|auto>`.
+2. Print the header line once in the reply, then read the file and continue with the
+   caller's own rules. Do not produce the section-3 summary unless that is what the user
+   asked for.
+3. Several links → one run per link, in parallel; the files stay for the whole conversation,
+   so a later question about the same video is answered from the file, never refetched.
+4. Nothing worked → the caller says in one line which routes failed and goes on with what it
+   has (title, description) labelled as unread.
+
+Who calls it for what:
+
+| Caller | The video is… | What it takes from the transcript |
+|---|---|---|
+| [needt](../needt/SKILL.md) | a how-to, a checklist, a plan to follow | the steps in order → tasks, each with the `[mm:ss]` in the description |
+| [search](../search/SKILL.md) | one of the sources it picked | tools, numbers, claims with timestamps, cross-checked against other sources |
+| [critic](../critic/SKILL.md) | a plan, a strategy, a pitch | the plan as stated, then the normal critique |
+| [partner](../partner/SKILL.md) | a competitor, a method, an idea the user brings | what is actually claimed vs what the user's data says |
+| [prompt](../prompt/SKILL.md) | material for the prompt | the key points into `<inputs>`, cited with timestamps |
+| [asking](../asking/SKILL.md) | a fact a question depends on | the fact, looked up, never asked |
+| [setup](../setup/SKILL.md) | — | lists which transcript routes exist here |
 
 ## 1. Get the transcript — first route that works
 

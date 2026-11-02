@@ -73,6 +73,9 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.6 (2026-11-02)
+- youtube is now a service skill: any YouTube link in any message is read first, whatever the message asks, and the owning skill (needt, search, critic, partner, prompt, asking) continues from the transcript file. A contract section defines the one-call interface; every other skill names when it calls youtube and what it takes from the video.
+
 0.6.5 (2026-11-02) — fixes from a live test of every skill
 - search: OSS Insight marked dead (empty since 2026-03-01), Trendshift numbers unlabeled → names only, keyless GitHub API fallback when the GitHub MCP fails, no pasting of a tool's billing link, HN limit unverified, Jina wording.
 - setup: the readiness line's one allowed call is the memory read (was contradictory with partner); `project: none` for an unrelated folder; sub-agents always report `questions: text`.

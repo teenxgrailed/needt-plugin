@@ -58,7 +58,10 @@ user is not re-interviewed; unavailable → the reference's fallback, never a cl
 The setup line says what the host exposes. Read from any of it to ground the answer: a payments
 or store connector for real revenue, analytics for real traffic, mail for the real
 thread, a CRM for the real pipeline, GitHub for the real state of the code, social tools for
-real reach. Quote the two or three figures or lines that matter, never the dump.
+real reach. Quote the two or three figures or lines that matter, never the dump. A YouTube
+link the user brings (a competitor's launch, a method, "look what this guy does") is read
+first through [youtube](../youtube/SKILL.md) — its contract section — and the claims in it
+are checked against the user's own numbers, not taken on faith.
 
 Write through a tool only for a reversible action the user asked for (a draft, a label, a post
 staged for review). Sending, posting, publishing, paying, ordering, deleting, inviting

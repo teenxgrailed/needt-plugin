@@ -28,6 +28,8 @@ Then read the plan and compare. The gap between the fresh route and the plan is 
 findings come from: a step the fresh route did not need, a step it needed that the plan lacks,
 an order that differs.
 
+A plan that arrives as a YouTube link is read first through [youtube](../youtube/SKILL.md)
+(its contract section); the critique then treats the transcript as the plan.
 Context comes from the conversation and the open project — one or two targeted looks, never a
 crawl. A fact that would change a finding (a platform rule, a competitor's price, a lead time)
 is looked up, never asked. More than a couple of calls → a Sonnet sub-agent (§6).
