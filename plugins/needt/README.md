@@ -79,6 +79,12 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.7.1 (2026-11-02)
+
+- learn Drill: one round = one widget (or one message) with all questions, scored inside;
+  one summary line back to the chat. No per-question round trips, no timer.
+- widgets.md: many small answers go into one widget that sends one summary line.
+
 0.7.0 (2026-11-02)
 
 - New skill `learn`: Explain / Study / Drill, one step per reply, the user answers before the

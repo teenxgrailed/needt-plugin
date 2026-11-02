@@ -105,15 +105,23 @@ come from memory, the conversation and the first answer, not from an interview.
 
 ## 5. Drill
 
-1. Rounds of 5–10 questions, one per reply, short: a word to translate, a formula to apply,
-   a term to define, a case to classify. Mixed order, not grouped by type (interleaving).
-2. `widgets: yes` → a card with the question, a timer, the running score and answer
-   buttons or a field; otherwise the question as text with `Q 4/10 · 3 right`.
-3. Every miss is asked again later in the same round in a different form. A round ends
-   with the score, the misses listed with the right answer, and a one-line offer: another
-   round on the misses, or stop.
-4. Nothing new is taught in Drill; a gap that is a missing concept gets one line and an
-   offer to switch to Study.
+1. A round is 5–10 short questions — a word to translate, a form to fill in, a formula to
+   apply, a case to classify — mixed, not grouped by type (interleaving). **One round is
+   one reply, never one question per reply**: the user answers the whole round, then gets
+   one reply with the score, the misses with the right answer and one line of why for
+   each, and a one-line offer — another round on the misses, or stop.
+2. `widgets: yes` → the whole round in one widget: every question with its options or
+   field, checked in the widget's own JS against the answers you put in it, a running
+   score, and one button at the end that sends a single line through `sendPrompt`:
+   `Round 1: 7/10 · missed: 3 (habe → bin), 6 (meine → meinem), 9 (…)`. No timer, no
+   per-question round trip, no explanation inside the widget — the "why" comes in the
+   reply after the round. Keep the markup small: plain inputs and buttons, no library.
+3. `widgets: no` → all questions of the round in one message, numbered; the user answers
+   them in one message (`1 bin, 2 meinem, …`); then the same single reply with score and
+   misses. `AskUserQuestion` is not used for Drill (one question per call would be the
+   same slow loop).
+4. Every miss returns in the next round in a different form. Nothing new is taught in
+   Drill; a gap that is a missing concept gets one line and an offer to switch to Study.
 
 ## 6. Progress lives in Needt
 
@@ -154,8 +162,10 @@ With `widgets: yes`, follow [widgets](../setup/references/widgets.md). For this 
 - One widget per reply. In Explain the diagram is the widget and the check question is
   text. In Study the step card is the widget and carries the step dots; the plan line stays
   text.
-- A step card holds: the question, the answer controls, the step position (`3 of 6`) and
-  nothing else — the piece of teaching stays in the reply above it.
+- A Study step card holds: the question, the answer controls, the step position (`3 of 6`)
+  and nothing else — the piece of teaching stays in the reply above it. A Drill round is
+  one widget for the whole round (§5), the cheapest shape: the chat sees one message in
+  and one out per round.
 - Buttons send the user's answer as they would say it (`sendPrompt('Answer: B — the loop
   never ends')`), plus at most one action button (`Next step`, `Repeat this step`, `Another
   round`). A free-text answer uses a field with a submit button that validates it is not empty.
@@ -176,5 +186,5 @@ reply; "correct!" with no substance; the same question shape three times in a ro
 wording repeated after a miss; an interview about level and goals before step 1; teaching a
 fact that was not checked; a review task pinned with `start` or with a prefix in its title; a page that duplicates an
 existing one; progress claimed saved without the call; widgets mentioned in a host without
-them; moving on after a miss without a second angle; Drill that teaches; Explain that never
-ends.
+them; moving on after a miss without a second angle; Drill that teaches; Drill one question per
+reply; a timer; Explain that never ends.

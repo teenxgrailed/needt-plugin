@@ -54,6 +54,11 @@ another tool), tables of more than five columns.
    `read_widget_context` before acting, never asked again.
 8. Scripts only from the CDN allowlist in `read_me`; no `localStorage`, no network calls
    from the widget, no fullscreen.
+9. Many small answers — a quiz round, a form, a batch of yes/no decisions — go into one
+   widget that collects or scores them in its own JS and sends one summary line through
+   `sendPrompt`, never one widget per answer: every round trip costs the user a click and
+   the chat a reply. Keep markup lean — plain inputs and buttons, no library unless the
+   shape is a chart.
 
 ## Fallback
 
@@ -66,7 +71,7 @@ a widget", never apologizes for text.
 
 ## Failing behaviors
 
-A widget for a two-line answer; two widgets in one reply; prose inside the widget; a button
+A widget for a two-line answer; two widgets in one reply; one widget per small answer; prose inside the widget; a button
 that says "OK"; describing a change instead of re-rendering; claiming a widget saved
 something; a widget mentioned in a host without `show_widget`; a sub-agent rendering widgets;
 a different answer with and without widgets.
