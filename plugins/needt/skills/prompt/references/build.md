@@ -28,7 +28,7 @@ Use the sections the size needs, in this order. Structure and examples:
    checklist): name it the way the catalog lists it, per [user-skills](../../setup/references/user-skills.md); for another product, plain
    instructions that do the same job.
 6. **Parallel work** — say which stages are independent and may run as parallel sub-agents
-   on a cheaper model, and which need the main model (synthesis, taste, the final call).
+   on a cheaper model if the budget profile allows (none on pro), and which need the main model (synthesis, taste, the final call).
    Rules: [setup/references/delegation.md](../../setup/references/delegation.md).
 7. **Constraints** — what to keep, what is out of scope, what needs permission (sending,
    paying, publishing, deleting). Say what to do instead of only what not to do. Permission

@@ -29,7 +29,7 @@ With `widgets: yes` (per [widgets](../../setup/references/widgets.md)):
 
 ## Sub-agents
 
-Rarely needed: the work is a few connector calls that need the conversation. Exceptions: a long
+Rarely needed, and only as the budget profile allows: the work is a few connector calls that need the conversation. Exceptions: a long
 pasted document to break down (one Sonnet sub-agent extracts the action items verbatim; the
 breakdown happens here) and a big mailbox sweep (a sub-agent reads and lists what needs action).
 Rules: [setup/references/delegation.md](../../setup/references/delegation.md).

@@ -1,8 +1,10 @@
-# Scenarios — three per skill
+# Scenarios — three per skill, six for setup, four for budget profiles
 
 Host state unless stated: Needt connector present, `questions: click`, `agents: yes`,
 `widgets: yes`, memory has 3 lines (`[preference] tasks in English`, `[fact] project: Acme
 shop`, `[preference] answer short`), no `Needt ·` line in the conversation yet.
+Memory has no `needt plugin set up` line, so setup's first run applies; the readiness line
+format includes `budget: …`.
 
 ## needt
 - **N1** "add: call the printer about the banner, by Friday" → `Needt ·` line first; one
@@ -72,11 +74,31 @@ shop`, `[preference] answer short`), no `Needt ·` line in the conversation yet.
 - **Y3** no transcript available → says so once, falls back per its contract, never invents.
 
 ## setup
-- **T1** first run with everything present → the readiness line + the one explanatory line
-  + the `set up` memory save; nothing else.
-- **T2** first run without a connector → the Pro line first (two lines at most), then the
-  free skills work; the task continues.
-- **T3** a second skill in the same conversation → no new readiness line.
+- **T1** first run, everything present, `questions: click` → `Needt ·` line + one explanatory
+  line, then ONE AskUserQuestion round of ≤ 3 questions (plan of the host, language/tone,
+  memory; no tools question since nothing is missing), recommended first; after the answers
+  one `[fact] needt plugin set up …; budget: …` save, reported in one line; the user's task
+  continues in the same reply.
+- **T2** first run, no connector, `questions: text` → the same interview as a numbered list
+  ("1 = recommended"), the connector offered with its Pro line, the profile "holds for this
+  chat only" said once, the planner request answered as text.
+- **T3** a second skill in the same conversation → no readiness line, no interview.
+- **T4** "у меня Max" later in a conversation whose memory says `budget: pro` →
+  `needt_update_memory` on the `set up` line, the new readiness line printed, no interview.
+- **T5** first run on a host with no AskUserQuestion and `widgets: yes` → the questions as a
+  text list (never a widget for the interview), the rest as T1.
+- **T6** repeated `/needt:setup` after set-up → no second memory line; the readiness line +
+  the "what can you do" answer in ≤ 6 lines.
+
+## budget profiles
+- **B1** search Normal, `budget: pro` → run inline, ≤ 8 calls, one round, no sub-agents; the
+  search line says `inline`.
+- **B2** search Normal, `budget: ultra` → 2–3+ parallel Sonnet sub-agents; synthesis by the
+  main model.
+- **B3** critic, `budget: pro` → facts looked up inline (≤ 3 calls), no agents; a finding
+  that would need more says "deserves a Deep check — go?".
+- **B4** critic, `budget: ultra`, the plan has a board → the board read first; evidence
+  checks (merged PR, tests) run through agents without asking.
 
 ## plan + needt + partner together
 - **X1** "продолжаем магазин, что дальше?" → plan answers (board), in Russian, fixed markers

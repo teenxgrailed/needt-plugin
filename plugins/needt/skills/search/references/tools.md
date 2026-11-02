@@ -94,7 +94,7 @@ numbers they say on camera (prices, conversion, time per unit), and formats to c
 6. **Cite** as `video title · channel · date · ~mm:ss` with the link. Note view count as the
    page shows it, dated.
 
-Delegate the transcript reading to a Sonnet sub-agent when there are more than three videos;
+When there are more than three videos, delegate the transcript reading to a Sonnet sub-agent if the budget profile allows ([delegation](../../setup/references/delegation.md)), else read inline;
 give it the extraction list above.
 
 ## X recipe — practitioners arguing in public
@@ -168,7 +168,7 @@ project before it peaks. Popular ≠ rising: check both, they find different thi
    maintainer). A trending spike with no releases and a pile of open issues is hype, say so.
 5. **Cite** as `owner/repo · +N stars in 7 days (source, date) · total stars`.
 
-Delegate the sweep to a Sonnet sub-agent when more than two boards are needed; give it this
+When more than two boards are needed, delegate the sweep to a Sonnet sub-agent if the budget profile allows ([delegation](../../setup/references/delegation.md)), else sweep inline; give it this
 list and the user's criteria (language, license, stack).
 
 ## Where good finds usually hide

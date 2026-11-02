@@ -4,7 +4,32 @@ Shared by all Needt skills. The point is speed and token cost: a self-contained 
 runs in a sub-agent on a cheaper model while the main conversation keeps thinking; several
 independent pieces run at once.
 
+## Budget profiles
+
+Every skill reads its sub-agent allowance from this table instead of hard-coding numbers. The
+profile is the `budget:` value in the readiness line (`pro|max|ultra|team|other|unknown`, saved
+by setup from the first-run interview); `unknown` behaves as `pro`.
+
+| Profile | Sub-agents | search Normal | search Deep | critic / partner / plan checks | prompt stages |
+|---|---|---|---|---|---|
+| pro / unknown / other host | none by default; at most 2 (Sonnet or Haiku) and only for Deep on an explicit ask | inline, ≤ 8 calls, one round | only on ask; 2 agents, 1 round, warn about cost | inline, ≤ 3 calls | no parallel stages |
+| team | as max, but say when a run will be long | as max | as max | as max | as max |
+| max | 2-3 Sonnet in Normal when sub-questions are independent; 3-5 in Deep | ≤ 20 calls | 3-5 agents, 30+ calls | up to 3 Sonnet fact checks | parallel stages on Sonnet |
+| ultra | up to 8 parallel; synthesis on the main model; Deep is the default for "a decision that matters" | ≤ 30 calls | 5-8 agents | evidence checks (PR merged, tests, prices) through agents without asking | parallel + an Opus pass for synthesis when the task is cross-cutting |
+
+Overrides and changes:
+
+- `agents: no` in the readiness line overrides everything: no sub-agents at all, whatever the
+  profile.
+- The user can change the profile by saying it ("у меня Max", "I'm on Ultra"); setup updates
+  the memory.
+- A skill that wants more than the profile allows says so in one line and asks ("this deserves
+  a Deep run - go?") instead of running it.
+
 ## When to delegate
+
+The profile above wins: with `pro`, `unknown`, `other` or `agents: no`, the cases below are
+done inline unless the user asked for a Deep run.
 
 Delegate when at least one is true:
 

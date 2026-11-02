@@ -45,7 +45,7 @@ A plan that arrives as a YouTube link is read first through [youtube](../youtube
 (its contract section); the critique then treats the transcript as the plan.
 Context comes from the conversation and the open project — one or two targeted looks, never a
 crawl. A fact that would change a finding (a platform rule, a competitor's price, a lead time)
-is looked up, never asked. More than a couple of calls → a Sonnet sub-agent (§6).
+is looked up, never asked. More than a couple of calls → run per the budget profile (§6).
 
 ## 2. What to look for
 
@@ -91,8 +91,11 @@ the reply reads as work done, not as a judgment.
 
 ## 6. Sub-agents
 
-Fact checks, competitor lookups and policy reads run in Sonnet sub-agents per
-[delegation](../setup/references/delegation.md); independent checks run in parallel. A policy
+A finding whose check needs more than the profile allows is raised at `guess` confidence
+with one line: "deserves a Deep check — go?".
+
+Fact checks, competitor lookups and policy reads run per the budget profile in
+[delegation](../setup/references/delegation.md): inline or in Sonnet sub-agents, independent checks in parallel where it allows. A policy
 check gets the instruction to quote the clause with its conditions. The judgment — which gaps
 matter, what the fix is, the order — stays here. Spot-check the claim a finding rests on
 before raising its confidence to `high`.

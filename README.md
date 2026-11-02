@@ -9,7 +9,7 @@
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.13.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.14.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -62,7 +62,7 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:plan`** | A project roadmap that survives sessions: milestones as tasks in Needt with blockers, *next* computed, *done* only on evidence (a merged PR, a file, your word), an append-only log and a handoff for the next session. In Claude Desktop it is a clickable metro map; *"where are we"*, *"what's left"*, *"handoff"* all land here. | **Pro** |
 | **`/needt:learn`** | Explains one thing so it sticks: the mechanism at your level, an example from your own world, a clickable diagram or a map of the subject with what you have already passed, and one check question. No quiz loop. | Free |
 | **`/needt:youtube`** | Any YouTube link in any message is read first — title, chapters, description, timestamped transcript — and the skill that owns the request works from it. Ask about it, make tasks from it, critique the plan in it. | Free |
-| `setup` | Internal. Prints the `Needt ·` readiness line, onboards tools once, reads your memory. | Free |
+| **`/needt:setup`** | First-run interview (plan, connectors, language, memory) and the `Needt ·` readiness line every skill reuses. | Free |
 
 `/needt` and `/needt:plan` need a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.
 
@@ -72,6 +72,10 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 shape as one — today's list with Done buttons, option cards, money metrics, finding cards with
 *Accept fix*, a subject map, a project roadmap as a metro map. Everywhere else the same answer arrives as
 text. Rules: `plugins/needt/skills/setup/references/widgets.md`.
+
+**A first run that asks.** The first time a skill fires, setup asks up to four clickable questions — which plan this AI app is on, what to connect, language and tone, memory — and saves the answers as one memory line. Say *"у меня Max"* or *"switch memory off"* later and it updates. `/needt:setup` runs it on demand.
+
+**Fits your plan.** The readiness line carries `budget: pro | max | ultra | …`, and every skill scales to it: on Pro, research runs inline and no sub-agents start unless you ask; on Max, independent sweeps run in parallel on Sonnet; on Ultra, up to eight agents with the main model synthesising. Table: `plugins/needt/skills/setup/references/delegation.md`.
 
 **One readiness line.** The first skill you use in a chat prints a line like
 `Needt · ready · project: Acme · tone: casual · search: web, youtube, github · questions: click · agents: yes · memory: 12`.

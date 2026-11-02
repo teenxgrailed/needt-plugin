@@ -17,6 +17,7 @@ SHARED = {  # link target → source file
     "../setup/references/widgets.md": SRC / "setup/references/widgets.md",
     "../setup/references/skills-map.md": SRC / "setup/references/skills-map.md",
     "../setup/references/user-skills.md": SRC / "setup/references/user-skills.md",
+    "../setup/references/onboarding.md": SRC / "setup/references/onboarding.md",
     "../needt/references/memory.md": SRC / "needt/references/memory.md",
     "../search/references/tools.md": SRC / "search/references/tools.md",
 }

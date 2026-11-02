@@ -17,7 +17,7 @@
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
 | Setup | `/needt:setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
 
-Every skill looks for the `Needt ·` readiness line in the conversation first. If it is
+Every skill looks for the `Needt ·` readiness line in the conversation first (it is reprinted only after the plan or memory changes). If it is
 missing, the skill runs the short setup check, prints the line and continues the task in the
 same reply — setup never blocks work.
 
@@ -65,6 +65,12 @@ first run with free options and a link or one command for each.
 
 ## Install in Claude
 
+Claude Code, one step:
+
+```
+/plugin install needt --marketplace teenxgrailed/needt-plugin
+```
+
 Customize > Plugins > upload `needt.plugin`. Local test without installing:
 
 ```sh
@@ -88,6 +94,16 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.14.0 (2026-11-03)
+
+- Setup is a real first run: one round of up to four clickable questions (the host's plan,
+  what to connect, language and tone, memory), saved as one memory line; `/needt:setup`,
+  "set up Needt", "what can you do", "у меня Max" are triggers. Never a widget.
+- Budget profiles: the readiness line carries `budget: pro|max|ultra|team|other|unknown`
+  and every skill scales sub-agents, calls and depth by the table in
+  `setup/references/delegation.md` — Pro runs inline, Max as before, Ultra up to eight
+  agents with the main model synthesising. `agents: no` overrides all of it.
 
 0.13.0 (2026-11-03)
 

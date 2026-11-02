@@ -44,8 +44,8 @@ line.
 ## Sub-agents
 
 Sweeps, comparisons and reading many sources (pages, threads, a long mailbox, several data
-exports) run in Sonnet sub-agents per [delegation](../../setup/references/delegation.md);
-in parallel. The judgment, the pick and the verdict stay in the main conversation.
+exports) run per the budget profile in [delegation](../../setup/references/delegation.md),
+in parallel where it allows. The judgment, the pick and the verdict stay in the main conversation.
 
 ## Register
 

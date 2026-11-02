@@ -49,11 +49,11 @@ through [asking](../asking/SKILL.md) in short mode. Otherwise label the assumpti
 | Depth | When | Budget | Output |
 |---|---|---|---|
 | **Quick** | one fact: a price, a version, a date, a name | 1–3 calls | 1–3 lines in chat |
-| **Normal** | "how best to do X", a comparison, "what's out there for Y" | 2–3 rounds, ~8–20 calls | answer + find + options in chat |
-| **Deep** | a decision that matters, a market, "собери всё" | several rounds, 3–5 parallel sub-agents when available, 30+ calls | cited file |
+| **Normal** | "how best to do X", a comparison, "what's out there for Y" | 2–3 rounds, calls per the budget profile | answer + find + options in chat |
+| **Deep** | a decision that matters, a market, "собери всё" | several rounds, parallel sub-agents per the budget profile ([delegation](../setup/references/delegation.md)) | cited file |
 
 The first line of the report — after the `Needt ·` line when that one is printed in the same
-reply — is the search line (Quick prints none):
+reply — is the search line (Quick prints none; a run with no sub-agents ends it with `· inline`):
 `Search · normal · 14 calls · sources: web, youtube, github`. The report itself is in the
 user's language; the line stays in this shape. Warn before Deep that it takes several
 minutes. Scale up only for a reason; the commonest failure is heavy machinery on a light question.

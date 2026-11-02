@@ -88,7 +88,7 @@ someone else (a review, a payment, an approval, a merge) needs the artefact or o
 question ("the approval email arrived?") even when the user says done. The agent's own "I
 finished it" is not evidence — the milestone
 stays `current` and the log says `needs check: <what would prove it>`. The evidence goes into
-the log line.
+the log line. Evidence checks (is the PR merged, did the tests pass) run per the budget profile in [delegation](../setup/references/delegation.md).
 
 ## 5. Log — append only
 

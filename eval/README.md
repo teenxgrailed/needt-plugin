@@ -32,7 +32,8 @@ A FAIL blocks the release; fix the skill text, re-run that skill only, update th
 ## Expected in every first reply
 
 The host state has no `needt plugin set up` memory, so setup's first run adds its onboarding
-lines (none when nothing is missing) and the `set up` save. That is expected, not a FAIL.
+lines (none when nothing is missing) and the `set up` save. That is expected, not a FAIL. A scenario that states `budget: …` in its host state means the
+set-up memory line exists with that value: no plan question, no first-run interview.
 
 ## What every scenario checks
 

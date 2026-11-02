@@ -1,6 +1,7 @@
 # Tools the Needt plugin uses, and how to add them
 
-For the first-run onboarding in setup. Each entry: what it gives, the free option, how to add
+For question (b) "Connect now" of the first-run interview in setup (references/onboarding.md).
+Each entry: what it gives, the free option, how to add
 it. On claude.ai and Claude Desktop tools come from **Settings → Connectors** (a directory
 connector, or "Add custom connector" with a URL). On Claude Code they come from
 `claude mcp add`. Say the path; never guess a URL that is not written here.
@@ -119,3 +120,13 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 - Setting up a browser elsewhere is a bigger setup — say so in one line and skip the details.
 
 Tools the host does not expose are skipped by the skills, not faked.
+
+## What counts as which source kind (for the readiness line)
+
+`web` a web search tool · `exa` · `firecrawl` · `youtube` transcript tools or a shell with
+`yt-dlp` · `x` an X tool or a browser · `github` GitHub MCP, developer search or `gh` ·
+`deepwiki` · `context7` · `papers` a paper index or arXiv MCP · `tavily` · `fetch` · `skills`
+the `find-skills` skill · `skillspector` the scanner on PATH · `browser`. Hacker News, Stack
+Exchange and OpenAlex need no tool and are not listed. One tool can cover several kinds:
+Firecrawl with `firecrawl_developer_search` also gives `github`, with `firecrawl_research_*`
+`papers`, with its `youtube-com` provider `youtube`; Exa gives `x` when it searches tweets.

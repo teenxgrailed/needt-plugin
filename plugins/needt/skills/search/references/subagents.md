@@ -3,10 +3,11 @@
 Read before delegating a Normal or Deep search. General rules for all skills:
 [setup/references/delegation.md](../../setup/references/delegation.md).
 
-When the setup line says `agents: yes`: a Normal search with two or more independent
-sub-questions runs them as parallel Sonnet sub-agents (one per sub-question or per source
-kind); Deep always does. Quick never does. With `agents: no`, the same sub-questions run
-inline, one round at a time. Sub-agents do not see SKILL.md unless you give it to them:
+Sub-agent counts follow the budget profile in
+[delegation.md](../../setup/references/delegation.md): where it allows agents, independent
+sub-questions of a Normal or Deep search run as parallel Sonnet sub-agents (one per
+sub-question or per source kind); Quick never does. With `agents: no` or a profile that allows
+none, the same sub-questions run inline, one round at a time. Sub-agents do not see SKILL.md unless you give it to them:
 
 - Each brief contains: the objective and the sub-question it owns; the user's context and
   success criterion; the **required source kinds from [sources.md](sources.md) and the
