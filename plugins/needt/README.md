@@ -79,6 +79,14 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.8.0 (2026-11-02)
+
+- learn: three item types in a run (`pick`, `type`, `reorder`); a miss shows the rule and a
+  `Why?` button (the only mid-run message); FSRS scheduling (ts-fsrs 6) inside the widget,
+  card states on the topic page, the review task dated by the earliest due; a Reference
+  page per topic; the mission (why the user learns) steers examples; Anki connector in
+  tools-help for users who keep Anki.
+
 0.7.3 (2026-11-02)
 
 - learn: with widgets, a Study lesson is one widget ("the lesson run": pieces, questions

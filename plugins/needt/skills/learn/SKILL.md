@@ -122,16 +122,19 @@ come from memory, the conversation and the first answer, not from an interview.
 
 ## 5. Drill
 
-1. A round is 5–10 short questions — a word to translate, a form to fill in, a formula to
-   apply, a case to classify — mixed, not grouped by type (interleaving). **One round is
+1. A round is 5–10 short items of three types — `pick` (recognise), `type` (recall),
+   `reorder` (build the sentence or sequence) — mixed, not grouped (interleaving); every
+   item carries its one-line `rule` for the miss. **One round is
    one reply, never one question per reply**: the user answers the whole round, then gets
    one reply with the score, the misses with the right answer and one line of why for
    each, and a one-line offer — another round on the misses, or stop.
 2. `widgets: yes` → the whole round in one widget built as "the run"
    ([references/blueprints.md](references/blueprints.md)): one question at a time inside the
    widget, keys 1–4 or Enter to answer, instant right/wrong tint, a rail of dots, a streak,
-   then a result screen — all in the widget's own JS, and one button at the end that
-   sends a single line through `sendPrompt`:
+   then a result screen — all in the widget's own JS; a miss shows the rule and a `Why?`
+   button, the only message allowed mid-run (three lines back, no widget); one button at
+   the end sends a single line through `sendPrompt` with the score, the misses and each
+   card's next `due` computed by FSRS inside the widget:
    `Round 1: 7/10 · missed: 3 (habe → bin), 6 (meine → meinem), 9 (…)`. No timer, no
    per-question round trip, no explanation inside the widget — the "why" comes in the
    reply after the round. Keep the markup small: plain inputs and buttons, no library.
@@ -151,23 +154,39 @@ All of it reversible in the Needt app; each write is reported in one line, follo
   for it first; create with `needt_create_page` when the first step ends (so an abandoned
   lesson still leaves its page), `needt_append_page` at the end of the session and of every
   later one. One block per session: date, mode, steps passed, the misses with the right
-  answer, the next step. A new "learn <topic>" starts by reading this page and continues
-  from the next step; the misses come back first.
+  answer, the next step, and — after a widget run — one line per card with its FSRS state
+  (`- card <id> · <prompt> · due 2026-11-05 · s=… d=… reps=… lapses=…`), the latest line per card
+  wins when the page is read back. A new
+  "learn <topic>" starts by reading this page: cards whose `due` is today or past go into
+  the run first, the misses next, new material after.
+- **A reference page**: `Needt · Learn · <topic> · Reference` — the compressed essence of
+  what was taught so far (the rules, the forms, the one example each), rewritten as the
+  lessons add to it, never the lesson text itself. The topic page links to it. This is
+  what the user reopens later; the lessons are not.
+- **The mission**: why the user is learning this, from memory (`[goal]`) or the
+  conversation; it steers the examples (a job seeker gets sentences about work, not
+  holidays). Unknown → the first session's recap ends with one optional line asking it;
+  the answer goes to memory as a `goal`.
 - **A review task** after Study, and after a Drill round with misses: one task titled in
   the user's language as a verb plus the topic ("Review German articles", "Повторить
-  немецкие артикли") — `needt_create_task` with `deadline` 3 days out (7 when the session
-  had no misses), no `start`, so the scheduler places it; the misses in the description,
+  немецкие артикли") — `needt_create_task` with `deadline` on the earliest `due` the run
+  returned (without FSRS data: 3 days out, 7 when the session had no misses), no `start`,
+  so the scheduler places it; the misses in the description,
   ending with `Open with /needt:learn <topic>`; no subtasks; `deadline` as an ISO date in
   the user's time zone. A session that starts on a topic with an open review task
   (`needt_search` for it alongside the page) is the review: it runs the misses first, then
-  completes that task with `needt_complete_task` and creates the next one (deadline 7 days
-  out, 14 after a review with no misses). The task follows the needt skill's task rules: short,
+  completes that task with `needt_complete_task` and creates the next one, dated by the
+  next earliest `due` (without FSRS data: 7 days out, 14 after a review with no misses). The task follows the needt skill's task rules: short,
   nothing in the title but the action.
-- **Memory**: the user's level in a topic (`[fact]`) and a preferred mode seen twice
-  (`[preference]`) through `needt_remember`; one line each. Never the content of the lesson.
+- **Memory**: the user's level in a topic (`[fact]`), the mission (`[goal]`) and a
+  preferred mode seen twice (`[preference]`) through `needt_remember`; one line each. Never
+  the content of the lesson.
+- **Anki users**: when memory or the conversation says the user keeps Anki, offer once to
+  push the misses as cards through an Anki connector if the host exposes one
+  ([tools-help](../setup/references/tools-help.md)); the Needt page stays the record.
 - **No connector** → progress holds for this chat only; say so once (not again if setup
   already did), keep teaching. At the end, instead of the task: the misses as a short block
-  to paste, and the review date 3 days out, in one line.
+  to paste, and the review dates from the run (or 3 days out), in one line.
 
 Never write "saved" or "task created" without a successful call.
 

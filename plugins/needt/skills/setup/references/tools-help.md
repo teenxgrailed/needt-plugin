@@ -93,6 +93,17 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 - X: Firecrawl covers search and profiles without an X account. The official X API has no free
   tier — only worth it if you already pay for an X developer app.
 
+## Anki — for users who already keep flashcards there
+
+- Gives: the learn skill can push misses as cards into the user's Anki deck and read what
+  is due, through Anki's own scheduler.
+- Free: Anki is free; the MCP add-on is open source (`ankimcp/anki-mcp-server`, MIT, 0.27.0
+  as of 2026-10-04). Anki desktop must be running while it is used.
+- Setup: install the AnkiMCP add-on from its README, then on claude.ai / Desktop → Settings
+  → Connectors → Add custom connector with the local URL the add-on shows; on Claude Code
+  `claude mcp add anki -- npx -y @ankimcp/anki-mcp-server@0.27.0`.
+- Without it, the learn skill keeps its own review schedule in Needt — nothing is lost.
+
 ## Context7
 
 - Gives: current documentation for libraries, frameworks and APIs.
