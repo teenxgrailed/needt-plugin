@@ -54,7 +54,7 @@ When the `AskUserQuestion` tool is available (load it via tool search if it is d
 - Use `preview` only when comparing concrete artifacts (copy variants, mockups, code).
 - Before the call, write at most 2-3 short lines of context in chat if the facts behind the questions are not already visible. Do not repeat the questions as text.
 
-If `AskUserQuestion` is not available, fall back to text and number each question:
+If `AskUserQuestion` is not available (and `widgets: yes` does not apply, see Widgets), fall back to text and number each question:
 
 ```
 ❓ **Q1** - **<question title>**: <question body, including the choices>
@@ -81,6 +81,21 @@ asks what the video already answers.
 Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (files, notes, connected tools, the web), look it up; when that needs more than a couple of calls, run it in a Sonnet sub-agent per [delegation](../setup/references/delegation.md). Never turn a lookup into a question. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
 
 Decisions the user has already recorded as settled are not reopened unless a new fact breaks them; say so once if it does.
+
+## Widgets
+
+The round goes through `AskUserQuestion` whenever `questions: click` — that stays the first
+choice. Only when `questions: text` and `widgets: yes` (per
+[widgets](../setup/references/widgets.md)) does a round render as one elicitation widget
+(`read_me` with `elicitation`, once): one form, up to 4 questions, each with 2-4 options as
+pills or cards, the recommended option first and marked, an "Other" escape where a free
+answer is plausible; the shell returns the answers as one line. Never both a widget and
+`AskUserQuestion` in one round. The text fallback stays for `questions: text · widgets: no`.
+Inside a sub-agent neither exists.
+
+## Failing behaviors
+
+A widget round when `AskUserQuestion` exists; two question systems in one round.
 
 ## Done
 

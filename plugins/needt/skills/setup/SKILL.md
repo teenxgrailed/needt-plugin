@@ -1,6 +1,6 @@
 ---
 name: +setup
-description: Internal — other Needt skills run it automatically on first use. Checks Needt readiness in the current conversation — the project, the preferred tone, which tools and skills are actually exposed (search tools, clickable questions, sub-agents, Marketing and Small Business skills), and the user's Needt memory. On the first run it also tells the user, in a few lines, which tools the plugin uses and how to get the missing ones for free. Every other Needt skill runs this check first when the conversation has no Needt readiness line yet. Use directly for "set up Needt", "настрой Needt", "проверь что подключено", "what can Needt use here". Does not install plugins, connect accounts, or change settings.
+description: Internal — other Needt skills run it automatically on first use. Checks Needt readiness in the current conversation — the project, the preferred tone, which tools and skills are actually exposed (search tools, clickable questions, sub-agents, chat widgets, Marketing and Small Business skills), and the user's Needt memory. On the first run it also tells the user, in a few lines, which tools the plugin uses and how to get the missing ones for free. Every other Needt skill runs this check first when the conversation has no Needt readiness line yet. Use directly for "set up Needt", "настрой Needt", "проверь что подключено", "what can Needt use here". Does not install plugins, connect accounts, or change settings.
 ---
 
 # Set up Needt
@@ -13,7 +13,7 @@ run adds at most six more.
 Setup always produces one line that starts exactly with `Needt ·`. Field names are in
 English; values may be in the user's language. For example:
 
-`Needt · ready · project: <name> · tone: casual · search: web, youtube, github · questions: click · agents: yes · memory: 12`
+`Needt · ready · project: <name> · tone: casual · search: web, youtube, github · questions: click · agents: yes · widgets: yes · memory: 12`
 
 The line is the first line of the reply. It costs no tool calls except the one memory read
 (see Memory), made before any text — plus loading that tool if the host defers it; every
@@ -57,6 +57,9 @@ and do not call tools to test them.
 - **agents** — `yes` when sub-agents can be launched here (an Agent or Task tool); otherwise
   `no`. With `yes`, every Needt skill follows [delegation](references/delegation.md) for
   parallel work on cheaper models.
+- **widgets** — `yes` when a `show_widget` tool (the host's `visualize` server) is listed;
+  otherwise `no`. Inside a sub-agent always `no`. With `yes`, every Needt skill follows
+  [widgets](references/widgets.md) for what is shown as a widget in the chat.
 - **specialists** — Marketing / Small Business skills, matched by description, only if present.
 - **memory** — the number of memory lines read; `none` when the store is empty; `off` when
   there is no Needt connector or the user switched memory off.

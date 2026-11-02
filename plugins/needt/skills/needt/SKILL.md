@@ -62,7 +62,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
   "Decide: Stripe or Creem for checkout".
 - **Estimates** in minutes only with a basis in the conversation. **Priority** only with a
   reason (deadline, blocker, "this first"). **Due date** only when the user named one — never
-  from "soon".
+  from "soon" — or when another Needt skill's rule sets it (learn's review task).
 - **`start` + pinned** only when the user said when ("tomorrow at 10"). Everything else goes to
   the scheduler unpinned.
 - **No duplicates**: `needt_search` per outcome first, batched. Same open outcome → update it.
@@ -95,6 +95,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 | A [partner](../partner/SKILL.md) session | each "actual work" item one task; advice stays in chat |
 | A pasted checklist | grouped into outcomes; items become subtasks; nothing dropped silently |
 | A decision just made | one task to carry it out; the decision and its reason in one line |
+| A [learn](../learn/SKILL.md) session | the page `Needt · Learn · <topic>` and one review task ("Review <topic>" in the user's language), deadline set by that skill |
 
 ### Mail is read-only
 
@@ -155,9 +156,21 @@ Rules: [setup/references/delegation.md](../setup/references/delegation.md).
 - [prompt](../prompt/SKILL.md) — writing prompts and staged prompt plans.
 - [asking](../asking/SKILL.md) — clarifying questions and stress-testing a plan.
 - [critic](../critic/SKILL.md) — reviewing a plan before it is acted on.
+- [learn](../learn/SKILL.md) — teaching a topic; its progress pages and review tasks land here.
 
 Those skills finish their work in chat and hand the result to this skill to land in Needt; they
 never create tasks on their own.
+
+## Widgets
+
+With `widgets: yes` (per [widgets](../setup/references/widgets.md)):
+
+- "What's today / this week" is a list widget: the events and placed blocks in order, one
+  button per task row that sends `Done: <task title>` through `sendPrompt`.
+- A plan or checklist just created is shown as the same list.
+- A project's or habit's progress is a progress widget.
+- After any completion the list is re-rendered with the same title.
+- The report line or table stays as text under it, in one or two lines.
 
 ## Failing behaviors
 
@@ -168,5 +181,6 @@ everything"; an entry step that is itself a project; duplicating a task that alr
 inventing ids, due dates or priorities; pinning without a time from the user; a description
 holding a whole report; asking which workspace when only one fits; deleting or touching other
 people's tasks without the user's yes; saving memory for one-off details; a report longer than the work;
+a widget in a host without show_widget; a change described instead of re-rendered;
 task titles in another language than the user's, with a time, emoji, symbols or prefixes in
 them, or written like AI copy instead of a short human note.

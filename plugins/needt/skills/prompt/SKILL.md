@@ -129,7 +129,10 @@ default; English for code agents only if the user's other prompts to them are in
      Translate labels to the user's language. When the prompt is for another product
      (ChatGPT, Gemini, a coding agent elsewhere), make **Copy only** the recommended first
      option and keep **Use prompt** second.
-   - No clickable questions: the same three choices in one line —
+   - `questions: text` and `widgets: yes`: the same three choices as one small widget with
+     three buttons — **Use prompt**, **Change something**, **Copy only**, recommended first by
+     the same rule — that `sendPrompt` the words `go` / `change: …` (opens a field) / `copy`.
+   - No clickable questions and no widgets: the same three choices in one line —
      `Use it? — "go" runs it here · "change: …" rewrites it · "copy" and I stop.` (user's language).
    - On **Use prompt** (click or "go"): execute the prompt in this chat at once, as if the user
      had pasted it, starting with its first stage. On **Change something**: ask what, in one
@@ -150,9 +153,17 @@ generic default: if the project is Needt and the wish is about promotion, the pr
 Needt promotion unless the user said otherwise. Scratch paths, session ids and other
 ephemeral details go into the prompt only when the executor is this same session.
 
+## Widgets
+
+With `widgets: yes` in the setup line (per [widgets](../setup/references/widgets.md)), the only
+widget here is the three-button choice in §7 step 4, and only when `questions: text`;
+`AskUserQuestion` stays first when it exists, and the reply never carries both. The prompt
+itself is always a fenced code block, never inside a widget — the user pastes it. With
+`widgets: no`, §7 applies unchanged.
+
 ## Failing behaviors
 
 A questionnaire instead of a prompt; a template with empty placeholders; a giant prompt for a
 small task; generic best-practice filler; losing the user's actual goal while polishing
 wording; referencing Needt skills in a prompt meant for another product; inventing facts
-about the project; running the prompt when the user only asked for it.
+about the project; running the prompt when the user only asked for it; the prompt inside a widget; two choice systems in one reply.

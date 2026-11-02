@@ -97,9 +97,10 @@ build the queries, which tool to call, what to extract, how to cite.
 ## 5. Delegating to sub-agents
 
 Rules for all skills: [setup/references/delegation.md](../setup/references/delegation.md).
-For search specifically: a Normal search with two or more independent sub-questions runs them
-as parallel Sonnet sub-agents (one per sub-question or per source kind); Deep always does.
-Quick never does. Sub-agents do not see this file unless you give it to them:
+For search specifically, when the setup line says `agents: yes`: a Normal search with two or
+more independent sub-questions runs them as parallel Sonnet sub-agents (one per sub-question
+or per source kind); Deep always does. Quick never does. With `agents: no`, the same
+sub-questions run inline, one round at a time. Sub-agents do not see this file unless you give it to them:
 
 - Each brief contains: the objective and the sub-question it owns; the user's context and
   success criterion; the **required source kinds from §3 and the recipes for them** (paste the
@@ -149,6 +150,16 @@ cites the issue or release. When the research was for a task — a feature, a fi
 end with the concrete next step applied to that task, and do it if it is reversible and the
 user asked for it.
 
+## Widgets
+
+With `widgets: yes` (per [widgets](../setup/references/widgets.md)), a Normal report's options
+(3+) are shown as one card per option: the recommended one marked, the one reason for or
+against as its subtitle. The answer, the Find and Still unclear stay text. Buttons, at most
+four: `Go deeper on <option>`, `Make it a task in Needt`, `Open the source` (a link). Quick
+never renders a widget. Deep's file stays a file; in chat, its `In short` numbers may be
+metric cards. The search line stays the first line of text, never inside a widget. With
+`widgets: no`, the report is exactly as above.
+
 ## Failing behaviors
 
 A link dump; one search tool for everything; one long query instead of many short ones; a
@@ -157,4 +168,4 @@ plausible answer reported without looking for a better one; ignoring the user's 
 constraints; articles only for a "how do people do it" question; a sub-agent brief without
 the source-kind requirements; "no examples found" without the list of what was tried; Deep
 without a warning; `Still unclear` missing or invented; fetching pages through shell
-commands.
+commands; a widget for a Quick answer; the search line inside a widget.

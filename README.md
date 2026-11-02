@@ -4,12 +4,12 @@
 
 # Needt Plugin
 
-**Eight skills that make your AI sharper — and one that runs your day inside Needt.**
+**Nine skills that make your AI sharper — and one that runs your day inside Needt.**
 
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.6.6-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.7.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -51,12 +51,18 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:prompt`** | A rough wish becomes one prompt of the right size, with stages that use the other skills — then one click: **Use prompt**, **Change something** or **Copy only**. | Free |
 | **`/needt:asking`** | Grill-me: clickable questions in rounds until nothing is assumed. A short mode the other skills use to clarify. | Free |
 | **`/needt:critic`** | Takes a plan apart before launch, gently: every finding is **problem → solution → cost → confidence**, then the fixed plan in full. | Free |
+| **`/needt:learn`** | Teaches so it sticks. **Explain** (one clear explanation, one check question), **Study** (steps you answer before the next one) or **Drill** (rapid questions with a score). Progress lives in a Needt page and a review task a few days later, so the next session picks up where you stopped. | Free |
 | **`/needt:youtube`** | Any YouTube link in any message is read first — title, chapters, description, timestamped transcript — and the skill that owns the request works from it. Ask about it, make tasks from it, critique the plan in it. | Free |
 | `+setup` | Internal. Prints the `Needt ·` readiness line, onboards tools once, reads your memory. | Free |
 
 `/needt` needs a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.
 
 ## How it works
+
+**Widgets.** In Claude Desktop, where the chat can render widgets, the skills show what has a
+shape as one — today's list with Done buttons, option cards, money metrics, finding cards with
+*Accept fix*, learning steps with answer buttons. Everywhere else the same answer arrives as
+text. Rules: `plugins/needt/skills/setup/references/widgets.md`.
 
 **One readiness line.** The first skill you use in a chat prints a line like
 `Needt · ready · project: Acme · tone: casual · search: web, youtube, github · questions: click · agents: yes · memory: 12`.

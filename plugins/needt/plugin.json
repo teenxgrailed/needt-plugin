@@ -1,10 +1,21 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "needt",
-  "version": "0.6.6",
-  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, and memory that follows you.",
-  "author": { "name": "Needt" },
-  "keywords": ["business", "partner", "prompt", "research", "search", "interview", "strategy"],
+  "version": "0.7.0",
+  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, a tutor that makes it stick, and memory that follows you.",
+  "author": {
+    "name": "Needt"
+  },
+  "keywords": [
+    "business",
+    "partner",
+    "prompt",
+    "research",
+    "search",
+    "interview",
+    "strategy",
+    "learn"
+  ],
   "extensions": {
     "com.openai": {
       "onboardingSkill": "./skills/setup/SKILL.md",

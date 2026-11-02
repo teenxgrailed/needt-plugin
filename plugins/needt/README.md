@@ -12,6 +12,7 @@
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
 | YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
 | Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
+| Learn | `/needt:learn` | Teaches so it sticks: Explain, Study or Drill, one step per reply with a question the user must answer; progress in a Needt page and a review task a few days later |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
 | +Setup | `/needt:+setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
 
@@ -31,6 +32,11 @@ own and reports each in one `Saved:` line. It writes through `needt_remember` wh
 offers it, otherwise to a "Needt · Memory" page in Needt, otherwise keeps it in the chat only.
 Setup reads memory once per conversation and shows the count as `memory: n` in the `Needt ·`
 line. Rules: `skills/needt/references/memory.md`.
+
+**Widgets.** Where the host renders chat widgets (Claude Desktop's `visualize` tool), the
+readiness line says `widgets: yes` and skills show what has a shape — today's list with Done
+buttons, option cards, money metrics, finding cards, learning steps — as a widget, with the
+same answer in text everywhere else. Rules: `skills/setup/references/widgets.md`.
 
 **Sub-agents.** Skills run independent sweeps (searches, transcript reading, extraction) in
 parallel sub-agents on a cheaper model, following `skills/setup/references/delegation.md`.
@@ -72,6 +78,16 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.7.0 (2026-11-02)
+
+- New skill `learn`: Explain / Study / Drill, one step per reply, the user answers before the
+  next step; progress page `Needt · Learn · <topic>` and a `Review: <topic>` task in Needt.
+- Chat widgets: readiness line gains `widgets: yes|no`; shared rules in
+  `setup/references/widgets.md`; hooks in needt (today's list with Done buttons), partner
+  (metric cards, move cards), search (option cards), asking (elicitation form when no
+  AskUserQuestion), critic (finding cards with Accept fix), prompt (Use / Change / Copy
+  buttons when no AskUserQuestion). Same answer in text where the host has no widgets.
 
 0.6.6 (2026-11-02)
 - youtube is now a service skill: any YouTube link in any message is read first, whatever the message asks, and the owning skill (needt, search, critic, partner, prompt, asking) continues from the transcript file. A contract section defines the one-call interface; every other skill names when it calls youtube and what it takes from the video.

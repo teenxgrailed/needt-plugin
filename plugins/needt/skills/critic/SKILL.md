@@ -102,6 +102,17 @@ or `fact`, worded as the standing rule, so the next critique does not raise it a
 the save in one line. Settled points from memory are respected unless a new fact breaks them;
 then say so once, with the fact.
 
+## Widgets
+
+With `widgets: yes` in the setup line (per [widgets](../setup/references/widgets.md)), the
+findings are shown as one card per finding, ordered by impact: the title, then Problem,
+Solution, Cost and Confidence as four short rows. Each card has an `Accept fix N` button and
+the widget has one `Accept all` button, both sent through `sendPrompt`. The 2–3 line opening
+summary stays text above the widget. The Revised plan stays text — it is what the user will
+paste or land in Needt — as do `Keeps working as is` and `Open decisions`. On `Accept fix N`,
+re-render the cards with that finding marked accepted and show only the changed lines of the
+revised plan. With `widgets: no`, §5 applies unchanged.
+
 ## Failing behaviors
 
 A list of problems without solutions; a solution that is "consider doing X" rather than the
@@ -109,4 +120,4 @@ change itself; a finding missing any of its four parts; re-litigating decisions 
 marked settled; findings about taste rather than outcomes; more than 7 findings; a revised
 plan that silently drops parts of the original or changes lines without `▲`; praise
 paragraphs; asking the user for facts that could be looked up; reviewing code or editing copy
-instead of the plan.
+instead of the plan; the revised plan inside a widget; findings cards without the summary above them.
