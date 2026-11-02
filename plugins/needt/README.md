@@ -73,6 +73,9 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.5.4 (2026-11-02)
+- Setup counts what a tool covers, not only its name: Firecrawl also gives github (developer search), papers and youtube; X without a dedicated tool is reported as `x: web only`.
+
 0.5.3 (2026-10-28)
 - Needt tasks are written like a person would: the user's language only, short and plain, no time, emoji, symbols, prefixes or AI filler in titles; descriptions only when they add something.
 
