@@ -18,6 +18,7 @@ row, do not retry. The same for any `429`: back off once, then switch.
 | Hard-to-keyword ideas | Exa `web_search_exa` | describe the ideal page ("a postmortem of migrating off X"), not keywords; `category: company / people` |
 | Filtered search | `firecrawl_search` | `categories: ["developer"]` for GitHub issues, PRs, READMEs; `["research"]`, `["pdf"]`; `tbs` for recent; `location` for country prices |
 | Code and libraries | `firecrawl_developer_search`, the official GitHub MCP (`github/github-mcp-server`; the old `@modelcontextprotocol/server-github` is archived — do not recommend it), `gh` CLI | see GitHub recipe |
+| Trending and fast-growing repos | GitHub Trending page, OSS Insight trends API, Trendshift, gitdebt / whatstrending star-velocity boards, GitHub search with `created:` / `pushed:` filters | see GitHub discovery recipe |
 | How a repo works inside | DeepWiki MCP (`ask_question`, `read_wiki_structure`, `read_wiki_contents`) for any public repo; GitMCP (`gitmcp.io/<owner>/<repo>`) as fallback | architecture and "where is X handled" questions that docs and code search do not answer |
 | Packages | `mcp-pypi` (PyPI versions, changelog, OSV vulnerabilities), `package-intel-mcp` (npm, PyPI, crates, downloads, deps.dev health) | version, maintenance and vulnerability facts before recommending a dependency |
 | Current library docs | Context7 (`resolve-library-id` → `query-docs`) | for API and version facts instead of blog posts |
@@ -116,6 +117,33 @@ version, how others integrated it, real-world configs.
 6. **Cite** as `owner/repo · issue #n or release vX.Y · date`.
 
 `gh` CLI, when present, does the same with `gh search repos|issues|code` and `gh release list`.
+
+## GitHub discovery recipe — what is popular and what is rising
+
+Use for: "what's out there for X", "what's new", "best tools/skills/agents for X", spotting a
+project before it peaks. Popular ≠ rising: check both, they find different things.
+
+1. **Rising now** (keyless, fetch the page or API):
+   - GitHub Trending — `https://github.com/trending?since=daily` (`weekly`, `monthly`; add a
+     language: `/trending/python?since=weekly`). No API; read the page.
+   - OSS Insight API — `https://api.ossinsight.io/v1/trends/repos/?period=past_24_hours&language=All`
+     (`past_week`, `past_month`; keyless, 600 req/hour). Also collections ranked by stars,
+     PRs, issues.
+   - Trendshift — `https://trendshift.io/` daily momentum (also `/weekly`, `/monthly`,
+     `/topics/<topic>`), catches repos as they rise; its archive shows how often a repo trended.
+   - Star velocity boards — `https://gitdebt.com/leaderboard` (+1d/+7d/+30d stars, accelerating
+     or cooling) and `https://whatstrending.ai/repos` for AI/ML repos by 7-day gain (CSV/JSON).
+2. **Popular in a topic**: `https://github.com/topics/<topic>` sorted by stars, or GitHub
+   search `topic:<topic> stars:>500 pushed:>YYYY-MM-DD sort:stars` — fresh activity filters
+   out dead giants.
+3. **New and fast**: GitHub search `created:>YYYY-MM-DD stars:>200 sort:stars` (date ~30–90 days
+   back) with the task's keywords — young repos that already pulled stars.
+4. **Then health-check each candidate** with the GitHub recipe above (release cadence, issues,
+   maintainer). A trending spike with no releases and a pile of open issues is hype, say so.
+5. **Cite** as `owner/repo · +N stars in 7 days (source, date) · total stars`.
+
+Delegate the sweep to a Sonnet sub-agent when more than two boards are needed; give it this
+list and the user's criteria (language, license, stack).
 
 ## Where good finds usually hide
 

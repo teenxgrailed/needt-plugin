@@ -65,6 +65,7 @@ skipped a required kind says so in `Still unclear`.
 |---|---|---|
 | How people actually do X; what is popular or trending; formats, workflows, playbooks | **YouTube guides and transcripts** + **X threads** + web | practitioners show the steps and numbers on video and argue about them on X long before articles catch up |
 | Which library, tool, API, repo | **GitHub** (issues, releases, stars trend) + current docs (Context7) + web | the README sells; issues and merged PRs tell what breaks |
+| What's out there, what's new, what's popular in tools or code | **GitHub discovery** — trending boards (daily/weekly), topic pages by stars, young repos gaining fast — then the health check | the best new tools show up on trending boards weeks before articles |
 | A price, a plan, a limit, a date | the **official page**, opened, with the date | never recalled, never from a blog |
 | A rule, a policy, a law | the **primary article, read in full**, and the exact clause quoted | an excerpt once turned "shorts over 60 s with a claim are blocked" into "all shorts are blocked" and that decided a whole plan wrongly |
 | A market, competitors, suppliers | competitors' own pages + forums in the market's language + X + web | what exists, what it costs, what people complain about |

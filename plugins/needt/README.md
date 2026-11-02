@@ -73,6 +73,9 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.1 (2026-11-02)
+- Search has a GitHub discovery recipe: GitHub Trending, OSS Insight trends API, Trendshift, gitdebt and whatstrending star-velocity boards, topic pages and `created:`/`pushed:` searches — popular and rising checked separately, then a health check.
+
 0.6.0 (2026-11-02)
 - Search knows many more sources, all checked 2026-11-02: Tavily (1,000 free credits, OAuth), DuckDuckGo fallback, DeepWiki and GitMCP for repo internals, the official GitHub MCP (old package archived), PyPI/npm package tools, arXiv MCP and the OpenAlex API, Jina Reader and fetch MCP, Hacker News (Algolia) and Stack Exchange APIs, Firecrawl providers for X, Amazon/eBay/Etsy, Google Maps, Bing places, Instagram/TikTok.
 - Reddit is closing to outside tools (RSS ends 2026-11-13) — search reaches it through web search only.
