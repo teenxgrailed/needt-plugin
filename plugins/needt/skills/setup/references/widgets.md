@@ -48,7 +48,7 @@ another tool), tables of more than five columns.
 5. When the data changes (a task completed, a number recomputed), show a new widget with the
    same `title`, not a description of the change.
 6. A widget never stores anything. What must survive — a completed task, a saved
-   preference, a learning step passed — is written to Needt by the skill, then the widget
+   preference — is written to Needt by the skill, then the widget
    reflects it.
 7. State the user changed inside a widget (a slider, a selection) is read with
    `read_widget_context` before acting, never asked again.

@@ -62,7 +62,7 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
   "Decide: Stripe or Creem for checkout".
 - **Estimates** in minutes only with a basis in the conversation. **Priority** only with a
   reason (deadline, blocker, "this first"). **Due date** only when the user named one — never
-  from "soon" — or when another Needt skill's rule sets it (learn's review task).
+  from "soon".
 - **`start` + pinned** only when the user said when ("tomorrow at 10"). Everything else goes to
   the scheduler unpinned.
 - **No duplicates**: `needt_search` per outcome first, batched. Same open outcome → update it.
@@ -95,7 +95,6 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 | A [partner](../partner/SKILL.md) session | each "actual work" item one task; advice stays in chat |
 | A pasted checklist | grouped into outcomes; items become subtasks; nothing dropped silently |
 | A decision just made | one task to carry it out; the decision and its reason in one line |
-| A [learn](../learn/SKILL.md) session | the page `Needt · Learn · <topic>` and one review task ("Review <topic>" in the user's language), deadline set by that skill |
 
 ### Mail is read-only
 
@@ -156,7 +155,6 @@ Rules: [setup/references/delegation.md](../setup/references/delegation.md).
 - [prompt](../prompt/SKILL.md) — writing prompts and staged prompt plans.
 - [asking](../asking/SKILL.md) — clarifying questions and stress-testing a plan.
 - [critic](../critic/SKILL.md) — reviewing a plan before it is acted on.
-- [learn](../learn/SKILL.md) — teaching a topic; its progress pages and review tasks land here.
 
 Those skills finish their work in chat and hand the result to this skill to land in Needt; they
 never create tasks on their own.

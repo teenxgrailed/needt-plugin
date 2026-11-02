@@ -12,7 +12,7 @@
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
 | YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
 | Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
-| Learn | `/needt:learn` | Teaches so it sticks: Explain, Study or Drill, one step per reply with a question the user must answer; progress in a Needt page and a review task a few days later |
+| Learn | `/needt:learn` | Explains one thing at the user's level: the mechanism, one example from their world, one clickable diagram or subject map where widgets exist, one check question. No quiz mode |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
 | +Setup | `/needt:+setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
 
@@ -35,7 +35,7 @@ line. Rules: `skills/needt/references/memory.md`.
 
 **Widgets.** Where the host renders chat widgets (Claude Desktop's `visualize` tool), the
 readiness line says `widgets: yes` and skills show what has a shape — today's list with Done
-buttons, option cards, money metrics, finding cards, learning steps — as a widget, with the
+buttons, option cards, money metrics, finding cards, a mechanism diagram — as a widget, with the
 same answer in text everywhere else. Rules: `skills/setup/references/widgets.md`.
 
 **Sub-agents.** Skills run independent sweeps (searches, transcript reading, extraction) in
@@ -78,6 +78,13 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.9.0 (2026-11-02)
+
+- learn is Explain only: one explanation, one diagram or a clickable subject map with
+  `✓` on what is passed (state in one memory line), one check question, one reaction.
+  Study, Drill, the lesson/drill widgets, FSRS, progress pages, review tasks and the Anki
+  entry are removed — a lesson loop in chat was slow and expensive in live use.
 
 0.8.0 (2026-11-02)
 

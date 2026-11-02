@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "needt",
-  "version": "0.8.0",
-  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, a tutor that makes it stick, and memory that follows you.",
+  "version": "0.9.0",
+  "description": "Needt: your planner in every chat, plus a business partner, a prompt builder, a YouTube reader, a researcher that reads YouTube, X and GitHub, a clickable interview, a plan critic, an explainer, and memory that follows you.",
   "author": {
     "name": "Needt"
   },

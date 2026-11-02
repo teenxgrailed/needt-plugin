@@ -9,7 +9,7 @@
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.8.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.9.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -51,7 +51,7 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:prompt`** | A rough wish becomes one prompt of the right size, with stages that use the other skills — then one click: **Use prompt**, **Change something** or **Copy only**. | Free |
 | **`/needt:asking`** | Grill-me: clickable questions in rounds until nothing is assumed. A short mode the other skills use to clarify. | Free |
 | **`/needt:critic`** | Takes a plan apart before launch, gently: every finding is **problem → solution → cost → confidence**, then the fixed plan in full. | Free |
-| **`/needt:learn`** | Teaches so it sticks. **Explain** (one clear explanation, one check question), **Study** (steps you answer before the next one) or **Drill** (rapid questions with a score). Three item types — pick, type, reorder — checked inside one widget, *Why?* on a miss, FSRS spaced repetition built in; progress and a reference page in Needt, the review task on the day a card is due. | Free |
+| **`/needt:learn`** | Explains one thing so it sticks: the mechanism at your level, an example from your own world, a clickable diagram or a map of the subject with what you have already passed, and one check question. No quiz loop. | Free |
 | **`/needt:youtube`** | Any YouTube link in any message is read first — title, chapters, description, timestamped transcript — and the skill that owns the request works from it. Ask about it, make tasks from it, critique the plan in it. | Free |
 | `+setup` | Internal. Prints the `Needt ·` readiness line, onboards tools once, reads your memory. | Free |
 
