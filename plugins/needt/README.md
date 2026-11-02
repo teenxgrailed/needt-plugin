@@ -81,7 +81,7 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 0.7.2 (2026-11-02)
 
-- learn: blueprints for its three widgets in `learn/references/widgets.md` — the Drill run
+- learn: blueprints for its three widgets in `learn/references/blueprints.md` — the Drill run
   (one question at a time inside the widget, keys 1–4, instant tint, rail, streak, result
   screen with Send result / Replay misses), the Study step card, the Explain mechanism
   diagram with clickable parts.
