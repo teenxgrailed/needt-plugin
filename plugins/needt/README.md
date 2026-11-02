@@ -79,6 +79,13 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.7.2 (2026-11-02)
+
+- learn: blueprints for its three widgets in `learn/references/widgets.md` — the Drill run
+  (one question at a time inside the widget, keys 1–4, instant tint, rail, streak, result
+  screen with Send result / Replay misses), the Study step card, the Explain mechanism
+  diagram with clickable parts.
+
 0.7.1 (2026-11-02)
 
 - learn Drill: one round = one widget (or one message) with all questions, scored inside;

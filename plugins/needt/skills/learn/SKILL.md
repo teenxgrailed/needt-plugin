@@ -110,9 +110,11 @@ come from memory, the conversation and the first answer, not from an interview.
    one reply, never one question per reply**: the user answers the whole round, then gets
    one reply with the score, the misses with the right answer and one line of why for
    each, and a one-line offer — another round on the misses, or stop.
-2. `widgets: yes` → the whole round in one widget: every question with its options or
-   field, checked in the widget's own JS against the answers you put in it, a running
-   score, and one button at the end that sends a single line through `sendPrompt`:
+2. `widgets: yes` → the whole round in one widget built as "the run"
+   ([references/widgets.md](references/widgets.md)): one question at a time inside the
+   widget, keys 1–4 or Enter to answer, instant right/wrong tint, a rail of dots, a streak,
+   then a result screen — all in the widget's own JS, and one button at the end that
+   sends a single line through `sendPrompt`:
    `Round 1: 7/10 · missed: 3 (habe → bin), 6 (meine → meinem), 9 (…)`. No timer, no
    per-question round trip, no explanation inside the widget — the "why" comes in the
    reply after the round. Keep the markup small: plain inputs and buttons, no library.
@@ -154,7 +156,9 @@ Never write "saved" or "task created" without a successful call.
 
 ## 7. Widgets
 
-With `widgets: yes`, follow [widgets](../setup/references/widgets.md). For this skill:
+With `widgets: yes`, follow [widgets](../setup/references/widgets.md) and build the three
+learn widgets from their blueprints in [references/widgets.md](references/widgets.md) — the
+Drill run, the Study step card, the Explain mechanism — not a generic form. For this skill:
 
 - `read_me` once per conversation, before the first widget (the mode picker, if any), with
   `interactive`, `diagram`, `elicitation`, and `chart` when the topic has numbers that
