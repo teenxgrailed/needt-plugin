@@ -100,6 +100,17 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 - claude.ai / Desktop: Settings → Connectors → search for "Context7".
 - Claude Code: `claude mcp add --transport http context7 https://mcp.context7.com/mcp`
 
+## SkillSpector — safety scan for skills (Claude Code / a shell)
+
+- Gives: checks a skill, plugin or MCP server for prompt injection, data theft, dangerous code
+  and vulnerable dependencies before you install it. By NVIDIA, Apache-2.0.
+- Free: open source, no key for the static scan.
+- Install (needs `uv` and Python 3.12+):
+  `uv tool install --python 3.12 "git+https://github.com/NVIDIA/SkillSpector.git@v2.12.0"`.
+  Then `skillspector scan <url or folder> --no-llm`.
+- Without a shell (claude.ai): the skills read the skill's files themselves and flag the
+  same risks.
+
 ## Browser
 
 - Gives: pages that need a login, clicks or JavaScript; sites without an API (X, portals).

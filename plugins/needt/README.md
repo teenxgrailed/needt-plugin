@@ -73,6 +73,9 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.2 (2026-11-02)
+- Safety check before installing any skill, plugin or MCP server: NVIDIA SkillSpector scan when present (`skillspector scan <src> --no-llm`; risk 51+ = do not install), otherwise a manual read of SKILL.md and scripts for the known red flags. Search and partner both run it; setup lists how to install SkillSpector.
+
 0.6.1 (2026-11-02)
 - Search has a GitHub discovery recipe: GitHub Trending, OSS Insight trends API, Trendshift, gitdebt and whatstrending star-velocity boards, topic pages and `created:`/`pushed:` searches — popular and rising checked separately, then a health check.
 

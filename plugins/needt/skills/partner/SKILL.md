@@ -64,7 +64,9 @@ Write through a tool only for a reversible action the user asked for (a draft, a
 staged for review). Sending, posting, publishing, paying, ordering, deleting, inviting
 or contacting people always get an explicit yes for that action first. Never put private data
 into public search queries. A tool listed but failing → say so in one line and work from what
-is known.
+is known. Recommending or installing a new skill, plugin or MCP server goes through the safety
+check in [search/references/tools.md](../search/references/tools.md) first; a HIGH or CRITICAL
+scan means it is not installed.
 
 ## Rule priority
 

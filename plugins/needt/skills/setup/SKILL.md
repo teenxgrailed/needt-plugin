@@ -41,7 +41,8 @@ and do not call tools to test them.
 - **search** — the source kinds that exist here, from this set: `web` (a web search tool),
   `exa`, `firecrawl`, `youtube` (transcript tools, or a shell with `yt-dlp` for the bundled script), `x` (an X tool or a browser),
   `github` (GitHub MCP, developer search or `gh`), `deepwiki`, `context7`, `papers` (a paper
-  index or arXiv MCP), `tavily`, `fetch`, `skills` (the `find-skills` skill), `browser`.
+  index or arXiv MCP), `tavily`, `fetch`, `skills` (the `find-skills` skill), `skillspector`
+  (the safety scanner on PATH), `browser`.
   `none` if none. Hacker News, Stack Exchange and OpenAlex need no tool (free APIs read by web
   fetch) and are not listed. Count what a tool covers, not only its name: Firecrawl with
   `firecrawl_developer_search` also gives `github`, with `firecrawl_research_*` gives
