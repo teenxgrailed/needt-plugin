@@ -2,23 +2,40 @@
 
 Names are hints. Use what the setup line says exists in this session; a tool missing here is
 skipped, not faked — and named in `Still unclear` if its source kind was required. Never
-fetch pages with shell commands, curl or scripts.
+fetch pages with shell commands, curl or scripts; the keyless APIs below are read with the
+host's web fetch tool. Checked 2026-11-02.
+
+**When a tool runs out.** Firecrawl's free plan is ~1,000 credits a month; a `402` /
+"insufficient credits" means it is spent for the month — switch to the next tool in the same
+row, do not retry. The same for any `429`: back off once, then switch.
 
 ## Routing table
 
 | Job | Tool (when present) | How |
 |---|---|---|
-| Breadth, first round | multi-query web search (Parallel `web_search`) | several short queries in one call; excerpts often answer outright |
+| Breadth, first round | multi-query web search (Parallel `web_search`), Tavily MCP (`tavily_search`, 1 credit basic / 2 advanced), the host's built-in web search, DuckDuckGo MCP as the zero-signup fallback | several short queries in one call; excerpts often answer outright. DuckDuckGo returns empty results under bot detection — treat empty as "blocked", not "nothing exists" |
+| News | web search with a recency filter (`tbs`, Tavily `topic: news`) | Firecrawl's news providers cover finance only (Benzinga, Nasdaq) |
 | Hard-to-keyword ideas | Exa `web_search_exa` | describe the ideal page ("a postmortem of migrating off X"), not keywords; `category: company / people` |
 | Filtered search | `firecrawl_search` | `categories: ["developer"]` for GitHub issues, PRs, READMEs; `["research"]`, `["pdf"]`; `tbs` for recent; `location` for country prices |
-| Code and libraries | `firecrawl_developer_search`, GitHub MCP (`search_repositories`, `search_code`, `search_issues`), `gh` CLI | see GitHub recipe |
+| Code and libraries | `firecrawl_developer_search`, the official GitHub MCP (`github/github-mcp-server`; the old `@modelcontextprotocol/server-github` is archived — do not recommend it), `gh` CLI | see GitHub recipe |
+| How a repo works inside | DeepWiki MCP (`ask_question`, `read_wiki_structure`, `read_wiki_contents`) for any public repo; GitMCP (`gitmcp.io/<owner>/<repo>`) as fallback | architecture and "where is X handled" questions that docs and code search do not answer |
+| Packages | `mcp-pypi` (PyPI versions, changelog, OSV vulnerabilities), `package-intel-mcp` (npm, PyPI, crates, downloads, deps.dev health) | version, maintenance and vulnerability facts before recommending a dependency |
 | Current library docs | Context7 (`resolve-library-id` → `query-docs`) | for API and version facts instead of blog posts |
-| One known page | `firecrawl_scrape` / web fetch | `maxAge: 0` for live data; `formats: ["json"]` with a schema for fields |
+| One known page | `firecrawl_scrape` / web fetch / fetch MCP (`mcp-server-fetch`) / Jina Reader (`https://r.jina.ai/<url>`, keyless, 20 req/min, non-commercial terms) | `maxAge: 0` for live data; `formats: ["json"]` with a schema for fields |
 | What pages a site has | `firecrawl_map` | before crawling, or to find a pricing / changelog page |
 | Several pages of one site | `firecrawl_crawl` | small `limit`; five pages usually answer it |
-| Papers | `firecrawl_research_*` | biomedical, scientific, arXiv |
+| Papers | `firecrawl_research_*`, arxiv MCP (`arxiv-mcp-server`: search, full text, BibTeX), OpenAlex API (`https://api.openalex.org/works?search=…`, keyless, 10 req/s) | biomedical, scientific, arXiv; OpenAlex for citations and anything outside arXiv |
 | YouTube guides | reading one video: the [youtube](../../youtube/SKILL.md) skill (bundled `yt-dlp` script first); finding videos: Firecrawl `youtube-com` provider via `firecrawl_scrape` with `alexandria` (`videos/search_videos`, `videos/video_details`, `videos/video_transcript`, `videos/video_comments`, `videos/channel_videos`, `videos/channel_shorts`, `videos/resolve_channel`); a youtube-transcript MCP when it works; web search `site:youtube.com` | see YouTube recipe |
-| X threads | web search / Exa with `site:x.com`, a browser or X tool when one exists | see X recipe |
+| X threads | Firecrawl `x-com` provider (`posts/search`, `posts/lookup`, `users/lookup`, `users/posts`), web search / Exa with `site:x.com`, the official X MCP (`https://api.x.com/mcp`) only when the user has a paid X developer app, a browser | see X recipe |
+| Hacker News | HN Algolia API, keyless, 10,000 req/hour: `https://hn.algolia.com/api/v1/search?query=<q>&tags=story` (also `search_by_date`), full comment tree at `/api/v1/items/<id>` | practitioners and founders argue here; the top comment often outranks the post |
+| Stack Overflow and Stack Exchange | Firecrawl `stackexchange-com` provider, or the API: `https://api.stackexchange.com/2.3/search/advanced?site=stackoverflow&q=<q>` (shared keyless quota) | accepted answer + the most-voted one, with dates |
+| Reddit | web search and Exa hitting `reddit.com` threads; a browser | Reddit is closing outside access: RSS ends 2026-11-13, API needs approval, the public API ends March 2027. Do not recommend keyless Reddit MCP servers — they stop working |
+| Telegram public channels | fetch or scrape `https://t.me/s/<channel>` | public channels only; private chats need a user session — skip |
+| Products and prices | Firecrawl providers `amazon-com` (products and prices by ASIN, up to 5 per call; bestsellers), `ebay-com` (item, shipping, variations), `etsy-com` (listing, similar listings); web search for finding the item first | the provider gives the live price; a search snippet's price is a lead, not a fact |
+| Places and local businesses | Firecrawl providers `firecrawl-maps` (Google Maps search, reviews, rating trend, directions) and `bing-com` businesses (hours, Yelp/Tripadvisor ratings) | two sources agree → trust the hours and rating |
+| Instagram, TikTok | Firecrawl `oriane` provider (indexed posts and profiles; stale, 35–65 credits a call) as a fallback; a browser | scraping these platforms is against their terms — prefer what the user can see logged in, and say how fresh the data is |
+| Any Firecrawl data provider | `firecrawl_find_tools` with a plain-words query (free), then `firecrawl_scrape` with `alexandria: {provider, capability, options}` | check the catalogue before scraping the same fields from several pages |
+| Skills, plugins, MCP servers | the `find-skills` skill (`npx skills find <query>` — search; `npx skills add <owner/repo>` — install only after the user's yes), skills.sh leaderboard, MCP Registry (`registry.modelcontextprotocol.io`), the host's Customize → Plugins / Connectors directory | prefer the most-installed option from a known owner; check its repo's last release and issues before recommending |
 | JS-heavy or logged-in pages | the browser tools | when a fetch returns an empty shell; never when the setup line forbids browsers on this machine |
 
 ## YouTube recipe — guides, teardowns, "how I do it"
@@ -63,9 +80,12 @@ Use for: what is trending right now, opinions of maintainers and operators, laun
 "anyone tried X?" threads, numbers people brag about, early warnings about a tool or policy.
 
 1. **Queries**: short, with the product or term and a signal word — "<tool> switched",
-   "<tool> pricing", "<trend> brands", "<term> thread", "<term> results". Run them through
-   web search or Exa with `site:x.com` (and `site:twitter.com` for older posts); Exa with
-   `category: tweet` where supported.
+   "<tool> pricing", "<trend> brands", "<term> thread", "<term> results". First the Firecrawl
+   `x-com` provider (`posts/search` with the query; `users/posts` for one account) — it needs
+   no X account, but returns at most ~10 posts and Grok-sourced summaries, not a full
+   timeline, so open the posts that matter. Then web search or Exa with `site:x.com` (and
+   `site:twitter.com` for older posts). The official X API is pay-per-use (no free tier) —
+   use it only when the user already has a developer app.
 2. **Who**: prefer accounts that build or operate the thing (maintainers, founders, editors,
    marketers with a public portfolio) over commentators. A reply from the maintainer in a
    thread outranks the thread.

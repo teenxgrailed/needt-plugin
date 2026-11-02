@@ -40,8 +40,10 @@ and do not call tools to test them.
 - **tone** — `casual` or `professional`, matched to how the user writes.
 - **search** — the source kinds that exist here, from this set: `web` (a web search tool),
   `exa`, `firecrawl`, `youtube` (transcript tools, or a shell with `yt-dlp` for the bundled script), `x` (an X tool or a browser),
-  `github` (GitHub MCP, developer search or `gh`), `context7`, `papers` (a paper index),
-  `browser`. `none` if none. Count what a tool covers, not only its name: Firecrawl with
+  `github` (GitHub MCP, developer search or `gh`), `deepwiki`, `context7`, `papers` (a paper
+  index or arXiv MCP), `tavily`, `fetch`, `skills` (the `find-skills` skill), `browser`.
+  `none` if none. Hacker News, Stack Exchange and OpenAlex need no tool (free APIs read by web
+  fetch) and are not listed. Count what a tool covers, not only its name: Firecrawl with
   `firecrawl_developer_search` also gives `github`, with `firecrawl_research_*` gives
   `papers`, with its `youtube-com` provider gives `youtube`; Exa gives `x` when it can search
   tweets. `x` without an X tool, browser or Exa is `x: web only` — say so, do not list it as a

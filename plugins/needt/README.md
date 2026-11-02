@@ -73,6 +73,13 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.0 (2026-11-02)
+- Search knows many more sources, all checked 2026-11-02: Tavily (1,000 free credits, OAuth), DuckDuckGo fallback, DeepWiki and GitMCP for repo internals, the official GitHub MCP (old package archived), PyPI/npm package tools, arXiv MCP and the OpenAlex API, Jina Reader and fetch MCP, Hacker News (Algolia) and Stack Exchange APIs, Firecrawl providers for X, Amazon/eBay/Etsy, Google Maps, Bing places, Instagram/TikTok.
+- Reddit is closing to outside tools (RSS ends 2026-11-13) — search reaches it through web search only.
+- A spent tool (Firecrawl 402, any 429) switches to the next one instead of retrying.
+- `find-skills` routes "is there a skill or MCP for X" questions.
+- Setup onboarding lists the new free options.
+
 0.5.4 (2026-11-02)
 - Setup counts what a tool covers, not only its name: Firecrawl also gives github (developer search), papers and youtube; X without a dedicated tool is reported as `x: web only`.
 

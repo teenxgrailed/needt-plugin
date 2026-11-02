@@ -34,10 +34,23 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
   Firecrawl. claude.ai / Desktop: Settings → Connectors → search for "YouTube transcript".
   Claude Code: `claude mcp add` with the command from the server's README.
 
+## Tavily — the best free extra web search
+
+- Gives: web and news search, page extract, site map and crawl, tuned for AI agents.
+- Free: 1,000 credits a month, no card (a basic search is 1 credit).
+- claude.ai / Desktop: Settings → Connectors → Add custom connector → `https://mcp.tavily.com/mcp`
+  (sign in with OAuth). Claude Code: `claude mcp add --transport http tavily https://mcp.tavily.com/mcp`,
+  then `/mcp` to sign in.
+- Zero-signup fallback on Claude Code: `claude mcp add ddg -- uvx duckduckgo-mcp-server`
+  (free; DuckDuckGo blocks it at times and then returns nothing).
+
 ## Firecrawl
 
-- Gives: reads full pages, whole sites and search results cleanly, including JS-heavy pages.
-- Free: free tier with an API key from firecrawl.dev.
+- Gives: reads full pages, whole sites and search results cleanly, including JS-heavy pages —
+  plus ready data providers: YouTube, X posts, Amazon/eBay/Etsy products and prices, Google
+  Maps places and reviews, Stack Exchange.
+- Free: ~1,000 credits a month with an API key from firecrawl.dev; when they run out, the
+  skills switch to other tools until next month.
 - claude.ai / Desktop: Settings → Connectors → search for "Firecrawl".
 - Claude Code: `claude mcp add firecrawl -e FIRECRAWL_API_KEY=<key> -- npx -y firecrawl-mcp`
 
@@ -55,11 +68,35 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 - claude.ai / Desktop: Settings → Connectors → search for "GitHub".
 - Claude Code: `claude mcp add --transport http github https://api.githubcopilot.com/mcp/ -H "Authorization: Bearer <token>"`,
   or simply have the `gh` CLI installed and signed in (`gh auth login`).
+- The old `@modelcontextprotocol/server-github` package is archived since May 2025 and gets no
+  security fixes — replace it with the server above.
+
+## DeepWiki — how any public repo works
+
+- Gives: answers about the inside of any public GitHub repo ("where is auth handled?").
+- Free: no key, no sign-up.
+- claude.ai / Desktop: Add custom connector → `https://mcp.deepwiki.com/mcp`.
+  Claude Code: `claude mcp add -s user -t http deepwiki https://mcp.deepwiki.com/mcp`.
+
+## Papers and packages — Claude Code / Desktop with a shell
+
+- arXiv: `claude mcp add --transport stdio --scope user arxiv -- uvx arxiv-mcp-server` (free).
+  OpenAlex needs nothing — the skills read its free API directly.
+- PyPI: `uvx mcp-pypi` (free; versions, changelogs, vulnerabilities).
+- Plain page fetch without any key: `claude mcp add fetch -- uvx mcp-server-fetch`.
+
+## Hacker News, Stack Overflow, Reddit, X
+
+- Hacker News and Stack Overflow: nothing to install — the skills read their free APIs.
+- Reddit: closing to outside tools (RSS ends 2026-11-13, the API needs approval); the skills
+  reach Reddit threads through web search. Do not install Reddit MCP servers.
+- X: Firecrawl covers search and profiles without an X account. The official X API has no free
+  tier — only worth it if you already pay for an X developer app.
 
 ## Context7
 
 - Gives: current documentation for libraries, frameworks and APIs.
-- Free: no key needed for basic use.
+- Free: no key needed for basic use; a free key from context7.com raises the rate limit.
 - claude.ai / Desktop: Settings → Connectors → search for "Context7".
 - Claude Code: `claude mcp add --transport http context7 https://mcp.context7.com/mcp`
 
