@@ -64,9 +64,33 @@ inside — the "why" comes in the reply after the result.
 with the rule in the user's words (and the term in the target language for a language
 drill), then the offer: another round on the misses, or stop. No restating the hits.
 
-## Study — "the step card"
+## Study — "the lesson run"
 
-One per step, per reply. The teaching piece is text above the widget; the card holds only:
+One widget per lesson. Same chassis as the Drill run (rail, one thing visible at a time,
+keys, instant tint, result screen, one `sendPrompt` at the end), with two differences:
+
+- each step starts with its **piece** — the idea in 3–6 lines with one example, inside the
+  widget, above the question (this is the one place teaching text lives in a widget, so
+  the user never leaves the card);
+- each question is one of the step shapes, labelled with its chip (`apply`, `find the
+  error`, `pick`, `predict`, `explain back`, `what breaks`), and is of one of two kinds:
+  - **checked** — `pick`, `apply`, `find the error`, `what breaks` with a known answer:
+    `{a: ["weil ich Arbeit suche", "weil ich arbeit suche"]}` lists the accepted forms
+    (case- and punctuation-insensitive compare, trimmed); a miss shows the right form and
+    one rule line in `var(--text-secondary)` for 2 s, then the step counts as *given*;
+  - **open** — `explain back`, `predict` in prose: no check, the text is collected.
+- the result screen lists the steps: passed · given (with the right form) · open (with
+  the user's text), and the one button sends:
+  `Lesson: 4 steps · passed 1,3 · given 2 (muss → machen muss) · open 4: "<user text>"`.
+
+The reply after the run: a reaction to each open answer (substance first, no verdict
+word), one rule line per given step, the recap, then the page and the review task. A
+lesson run is 3–7 steps and under 6 KB; a 5-minute budget means 3–4 steps.
+
+## Study — "the step card" (judgment-only topics)
+
+One per step, per reply, only when the topic has no checkable answers at all. The teaching
+piece is text above the widget; the card holds only:
 
 - a chip with the question's shape (`predict`, `find the error`, `explain back`, `apply`,
   `pick`, `what breaks`), translated — it tells the user how to think before reading;
@@ -75,7 +99,8 @@ One per step, per reply. The teaching piece is text above the widget; the card h
   else, Enter sends;
 - the step dots `● ● ○ ○ ○` with the current one accented;
 - on send: `sendPrompt('Answer: <text>')` and the controls lock (opacity through a class,
-  not a disabled attribute).
+  not a disabled attribute); the button and Enter call the same function; ids carry the
+  step suffix (`ans_s2`, `send_s2`).
 
 Nothing else: no timer, no score, no hints inside.
 
@@ -88,7 +113,8 @@ not get instead of asking you to repeat. The check question stays text under the
 
 ## Failing shapes
 
-A form with a submit button; one question per widget in Drill; a "Next" button between
+A form with a submit button; one question per widget in Drill; a step card per reply for
+a lesson that could run in one widget; a "Next" button between
 questions; a timer; "Correct!" inside the widget; a library for a quiz; a result screen
 without the misses listed; a Study card carrying the teaching text; an Explain diagram
 whose nodes do nothing.

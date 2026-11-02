@@ -79,6 +79,12 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.7.3 (2026-11-02)
+
+- learn: with widgets, a Study lesson is one widget ("the lesson run": pieces, questions
+  and checks inside, one summary line back), like the Drill round; a time in the request is
+  a budget for one run; fewer setup calls; unique ids per widget.
+
 0.7.2 (2026-11-02)
 
 - learn: blueprints for its three widgets in `learn/references/blueprints.md` — the Drill run

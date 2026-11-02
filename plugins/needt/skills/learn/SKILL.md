@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Teaches the user something so it sticks — not a lecture. Three modes the user picks at the start: Explain (one clear explanation at their level, ending in one check question), Study (the topic cut into steps, each with a question the user must answer before the next), Drill (rapid questions on what they already know, with a score). Each step is an interactive card when the host can render widgets, a clickable question otherwise. Progress lives in Needt — a page per topic and a review task a few days later — so the next session starts where the last one ended. Use for "explain", "teach me", "help me understand", "how does X work", "learn", "quiz me", "test me"; RU "объясни", "научи", "хочу понять", "как работает", "выучить", "проверь меня"; UK "поясни", "навчи"; DE "erkläre mir", "bring mir bei", "abfragen"; ES "explícame", "enséñame"; FR "explique-moi", "apprends-moi"; and "/needt:learn". Not for looking up facts (search), questioning a plan (asking) or reviewing one (critic).
+description: Teaches the user something so it sticks — not a lecture. Three modes the user picks at the start: Explain (one clear explanation at their level, ending in one check question), Study (the topic cut into steps, each with a question the user must answer before the next), Drill (rapid questions on what they already know, with a score). Where the host renders widgets, a whole lesson or round is one widget, checked inside it; one reply back. Progress lives in Needt — a page per topic and a review task a few days later — so the next session starts where the last one ended. Use for "explain", "teach me", "help me understand", "how does X work", "learn", "quiz me", "test me"; RU "объясни", "научи", "хочу понять", "как работает", "выучить", "проверь меня"; UK "поясни", "навчи"; DE "erkläre mir", "bring mir bei", "abfragen"; ES "explícame", "enséñame"; FR "explique-moi", "apprends-moi"; and "/needt:learn". Not for looking up facts (search), questioning a plan (asking) or reviewing one (critic).
 ---
 
 # Needt · Learn
@@ -45,7 +45,13 @@ to §3; a teach/learn verb in the same sentence ("teach me how X works", "нау
 | "quiz me", "test me", "drill", a language, formulas, vocabulary | **Drill** | questions only, on what they already know; timed rounds of 5–10, a score, the misses repeated |
 
 Skip the question also when memory says which mode the user prefers for this kind of
-topic. Never ask a second question before the first step — level, goal and prior knowledge
+topic. A time in the request ("5 minutes", "5 мин", "quick") is a budget: one run that
+fits it — a Drill round, or a Study lesson of 3–4 steps in one widget — never a lesson
+that takes several replies.
+
+**Every reply costs the user a round trip and the host a full context.** Design for the
+fewest replies: whatever can be checked inside a widget is checked there, and the chat
+hears from the user once per lesson or round, not once per question. Never ask a second question before the first step — level, goal and prior knowledge
 come from memory, the conversation and the first answer, not from an interview.
 
 ## 2. Level and language
@@ -81,7 +87,18 @@ come from memory, the conversation and the first answer, not from an interview.
 1. Cut the topic into **3–7 steps**, each one idea that can be checked with one question.
    Show the plan once as one text line in the user's language (`Steps: 1 ● 2 ○ 3 ○ …` is
    the shape), then start step 1 in the same reply.
-2. Each step is one reply:
+2. **With `widgets: yes` the whole lesson is one widget — "the lesson run"
+   ([references/blueprints.md](references/blueprints.md))**: every step inside it (piece →
+   question → check), the user works through all of them, and one button at the end sends
+   one summary line. A step whose answer is deterministic (`pick`, `apply`, `find the
+   error` with a known correct form and its accepted variants) is checked in the widget's
+   own JS, with the rule shown on a miss; a step whose answer needs judgment (`explain
+   back`, `predict` in prose) is collected and sent in the summary. The reply after the
+   run reacts to the open answers and the misses, then saves (§6). Topics that are mostly
+   judgment (a concept with no single right form) are the exception: 2–3 steps at most,
+   one per reply, each a step card.
+
+   Without widgets, each step is one reply:
    - the piece: 3–8 lines, one idea, one example;
    - the question, in one of these shapes — rotate, never the same shape twice in a row:
      `predict` ("what happens when…"), `find the error` (a wrong example to spot), `explain
@@ -89,8 +106,7 @@ come from memory, the conversation and the first answer, not from an interview.
      sentence"), `pick` (options in random order, one right, the distractors are real mistakes, none
      marked recommended), `what
      breaks` ("what fails if we drop X");
-   - shown as a card with answer buttons or a text field (`widgets: yes`); without widgets,
-     a `pick` question goes through `AskUserQuestion` when `questions: click`, everything
+   - a `pick` question goes through `AskUserQuestion` when `questions: click`, everything
      else as text.
 3. React to the answer, not to the step: the substance first — the part that holds, in
    their words, then the exact place it goes wrong and why — three lines at most. No verdict
@@ -101,7 +117,8 @@ come from memory, the conversation and the first answer, not from an interview.
    misses, answer shown). Only passed steps count on the page; given steps go to the misses
    and come back first next session. After the last step: a 3-line recap of what they can
    now do, and the review task (§6).
-5. Pace: one step per reply. Never two steps at once, never the whole lesson in one message.
+5. Pace without widgets: one step per reply, never two steps in one message. With
+   widgets: one lesson per widget, one reply after it.
 
 ## 5. Drill
 
@@ -164,16 +181,15 @@ Drill run, the Study step card, the Explain mechanism — not a generic form. Fo
   `interactive`, `diagram`, `elicitation`, and `chart` when the topic has numbers that
   grow or compare.
 - One widget per reply. In Explain the diagram is the widget and the check question is
-  text. In Study the step card is the widget and carries the step dots; the plan line stays
-  text.
-- A Study step card holds: the question, the answer controls, the step position (`3 of 6`)
-  and nothing else — the piece of teaching stays in the reply above it. A Drill round is
-  one widget for the whole round (§5), the cheapest shape: the chat sees one message in
-  and one out per round.
-- Buttons send the user's answer as they would say it (`sendPrompt('Answer: B — the loop
-  never ends')`), plus at most one action button (`Next step`, `Repeat this step`, `Another
-  round`). A free-text answer uses a field with a submit button that validates it is not empty.
-- Progress lives in the step card's dots; no separate progress widget in the same reply.
+  text. In Study the lesson run is the widget (all steps inside); in Drill the round run.
+  Both send exactly one line to the chat, at the end. A step card (one step per reply)
+  only for judgment-only topics.
+- Every element id and the `title` carry a unique suffix per widget (`ans_s2`, not
+  `ans`); handlers are attached with `addEventListener` after the markup; Enter and the
+  button do the same thing; a free-text field refuses an empty answer with an inline line.
+- Progress lives in the run's rail or the step card's dots; no separate progress widget.
+- Setup cost: one `needt_search` covers the page and the review task (query the topic,
+  types page and task); `read_me` once; no other reads before the first widget.
 - A sub-agent never renders widgets.
 
 ## 8. Sub-agents
@@ -191,4 +207,5 @@ wording repeated after a miss; an interview about level and goals before step 1;
 fact that was not checked; a review task pinned with `start` or with a prefix in its title; a page that duplicates an
 existing one; progress claimed saved without the call; widgets mentioned in a host without
 them; moving on after a miss without a second angle; Drill that teaches; Drill one question per
-reply; a timer; Explain that never ends.
+reply; a Study step per reply where a lesson run would do; a timer; ignoring a time
+budget in the request; Explain that never ends.
