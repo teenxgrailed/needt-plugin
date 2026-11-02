@@ -16,7 +16,7 @@ done, their goals, facts about their projects. It follows them across chats and 
 2. **Fallback — the page "Needt · Memory"** in the personal workspace, when the connector is
    present but `needt_remember` is not: find it with `needt_search` (create once with
    `needt_create_page` if missing), append one line per item with `needt_append_page`:
-   `- [preference] 2026-10-28 · never post without asking`. Read it at setup like the list.
+   `- [preference] 2026-10-28 · never post before I approve`. Read it at setup like the list.
 3. **No connector** — memory holds for this chat only, inside the `Needt ·` line; say so once.
 
 Never claim something was saved when the call did not succeed. If the connector says memory
@@ -30,7 +30,7 @@ outranks a skill's own default. Re-read only when the user says memory changed.
 
 ## Write — the plugin saves on its own
 
-Save without asking, then report in one line (`Saved: never schedule before 10:00`):
+Save on your own, then report in one line (`Saved: never schedule before 10:00`):
 
 - An explicit ask: "remember", "don't ever", "from now on", "запомни", "больше так не делай".
 - A correction of how something was done ("no, shorter", "use the other workspace") — as a

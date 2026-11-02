@@ -101,7 +101,7 @@ task "Reply to …" with the points to make in its description.
 
 ## Permissions
 
-- **Runs without asking**, then one-line report: create, edit, reschedule, pin/unpin,
+- **Runs at once**, then a one-line report: create, edit, reschedule, pin/unpin,
   complete, log a habit, create or append a page, create events and personal time, attach a
   file. All reversible.
 - **Ask first**, one clear question: deleting anything (personal time, an attachment, a task);
@@ -119,7 +119,7 @@ Memory lives in Needt and follows the user across chats. Rules:
 
 - Setup reads it once (`needt_list_memories`, or the "Needt · Memory" page as fallback); a
   saved `preference` or `pattern` outranks this skill's defaults.
-- Save on your own, without asking: an explicit "remember / from now on / запомни", a
+- Save on your own: an explicit "remember / from now on / запомни", a
   correction of how something was done, a preference seen twice, a stated goal or project fact.
 - Report each save as one line: `Saved: never schedule before 10:00`.
 - `needt_remember` when it exists; otherwise the fallback page via `needt_append_page`.
@@ -164,6 +164,6 @@ a save that failed or ran without the connector; a wall of 30 micro-tasks; one t
 everything"; an entry step that is itself a project; duplicating a task that already exists;
 inventing ids, due dates or priorities; pinning without a time from the user; a description
 holding a whole report; asking which workspace when only one fits; deleting or touching other
-people's tasks without asking; saving memory for one-off details; a report longer than the work;
+people's tasks without the user's yes; saving memory for one-off details; a report longer than the work;
 task titles in another language than the user's, with a time, emoji, symbols or prefixes in
 them, or written like AI copy instead of a short human note.

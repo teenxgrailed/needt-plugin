@@ -91,7 +91,7 @@ Use the sections the size needs, in this order. Structure and examples:
    Rules: [setup/references/delegation.md](../setup/references/delegation.md).
 7. **Constraints** — what to keep, what is out of scope, what needs permission (sending,
    paying, publishing, deleting). Say what to do instead of only what not to do. Permission
-   lists are short and exact; everything reversible the executor does without asking,
+   lists are short and exact; everything reversible the executor does on its own,
    including waking an agent or bot that the user has already authorized.
 8. **Output** — format, length, language, where it goes. Deliverables the user will want
    later (a video, a report, a dataset) go to a durable place the user can open — a project

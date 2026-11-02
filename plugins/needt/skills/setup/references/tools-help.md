@@ -41,7 +41,7 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 - claude.ai / Desktop: Settings → Connectors → Add custom connector → `https://mcp.tavily.com/mcp`
   (sign in with OAuth). Claude Code: `claude mcp add --transport http tavily https://mcp.tavily.com/mcp`,
   then `/mcp` to sign in.
-- Zero-signup fallback on Claude Code: `claude mcp add ddg -- uvx duckduckgo-mcp-server`
+- Zero-signup fallback on Claude Code: `claude mcp add ddg -- uvx duckduckgo-mcp-server@0.7.0`
   (free; DuckDuckGo blocks it at times and then returns nothing).
 
 ## Firecrawl
@@ -52,7 +52,7 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 - Free: ~1,000 credits a month with an API key from firecrawl.dev; when they run out, the
   skills switch to other tools until next month.
 - claude.ai / Desktop: Settings → Connectors → search for "Firecrawl".
-- Claude Code: `claude mcp add firecrawl -e FIRECRAWL_API_KEY=<key> -- npx -y firecrawl-mcp`
+- Claude Code: `claude mcp add firecrawl -e FIRECRAWL_API_KEY=<key> -- npx -y firecrawl-mcp@3.36.0`
 
 ## Exa
 
@@ -64,7 +64,7 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 ## GitHub
 
 - Gives: repositories, code, issues and pull requests as sources.
-- Free: the official GitHub MCP server; needs a GitHub personal access token.
+- Free: the official GitHub MCP server; needs a GitHub token made in GitHub settings.
 - claude.ai / Desktop: Settings → Connectors → search for "GitHub".
 - Claude Code: `claude mcp add --transport http github https://api.githubcopilot.com/mcp/ -H "Authorization: Bearer <token>"`,
   or simply have the `gh` CLI installed and signed in (`gh auth login`).
@@ -80,10 +80,10 @@ connector, or "Add custom connector" with a URL). On Claude Code they come from
 
 ## Papers and packages — Claude Code / Desktop with a shell
 
-- arXiv: `claude mcp add --transport stdio --scope user arxiv -- uvx arxiv-mcp-server` (free).
+- arXiv: `claude mcp add --transport stdio --scope user arxiv -- uvx arxiv-mcp-server@0.8.2` (free).
   OpenAlex needs nothing — the skills read its free API directly.
-- PyPI: `uvx mcp-pypi` (free; versions, changelogs, vulnerabilities).
-- Plain page fetch without any key: `claude mcp add fetch -- uvx mcp-server-fetch`.
+- PyPI: `uvx mcp-pypi@4.0.1` (free; versions, changelogs, vulnerabilities).
+- Plain page fetch without any key: `claude mcp add fetch -- uvx mcp-server-fetch@2026.10.28`.
 
 ## Hacker News, Stack Overflow, Reddit, X
 

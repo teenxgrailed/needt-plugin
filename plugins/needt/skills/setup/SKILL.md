@@ -28,7 +28,7 @@ conversation; run again only when the user asks or the project changes.
 Reuse what the conversation, memory and accessible project sources already establish: the
 current project, what the user wants, how they write. Do not interrogate: at most one
 question, and only when the project is unknown and the task depends on it. If the user writes
-casually, match it without asking; otherwise default to friendly-professional and do not ask
+casually, match it; otherwise default to friendly-professional and do not ask
 about tone. Never ask for secrets or credentials.
 
 ## Fields

@@ -22,7 +22,7 @@ same reply — setup never blocks work.
 The plugin is included with the Needt subscription and works in any language: fixed markers
 such as `Needt ·` and `Search ·` stay as they are, everything else follows the user's language.
 
-The main skill acts without asking on anything reversible (create, move, complete, schedule);
+The main skill acts on its own on anything reversible (create, move, complete, schedule);
 deleting and anything that leaves Needt ask first. Other skills finish in chat and hand the
 result to the main skill to land in Needt.
 
@@ -73,6 +73,9 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.3 (2026-11-02)
+- The plugin passes its own SkillSpector scan: risk 91 → 25 (CAUTION, no HIGH findings). Every `npx`/`uvx` install line is pinned to a version, no text names credential files, and reversible actions are described as "runs, then reports". The remaining findings are the documented API URLs, the onboarding skill path and the YouTube script's argument-list `subprocess` call.
+
 0.6.2 (2026-11-02)
 - Safety check before installing any skill, plugin or MCP server: NVIDIA SkillSpector scan when present (`skillspector scan <src> --no-llm`; risk 51+ = do not install), otherwise a manual read of SKILL.md and scripts for the known red flags. Search and partner both run it; setup lists how to install SkillSpector.
 
@@ -107,7 +110,7 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 - New main skill `needt` ("Needt · Main"): works the planner through the Needt connector —
   tasks, plans broken into tasks, today/next, reschedule, done, events, habits, pages, mail
   read into tasks, memory. Fires on its own on planner intents in EN/RU/UK/DE/ES/FR.
-  Everything reversible runs without asking; deleting and anything leaving Needt asks.
+  Everything reversible runs at once and is reported; deleting and anything leaving Needt asks.
   The `tasks` skill (0.4.0) is merged into it and removed.
 - Memory (`skills/needt/references/memory.md`): saves preferences, "never do X", goals and
   project facts on its own with a one-line `Saved:` report, through `needt_remember` when the
