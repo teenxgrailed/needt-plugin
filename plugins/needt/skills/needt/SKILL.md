@@ -148,15 +148,20 @@ Rules: [setup/references/delegation.md](../setup/references/delegation.md).
 
 ## Sister skills
 
+Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
+
+- [plan](../plan/SKILL.md) — "where are we / what's next / what's left on <project>", a
+  handoff, "done <milestone>", or a task whose `originPageId` is a `Plan ·` page: plan reads
+  the board and answers; it owns the milestone tasks of its project under the rules of this
+  file, the one exception to "other skills never create tasks".
 - [partner](../partner/SKILL.md) — business decisions and the actual work behind them.
 - [search](../search/SKILL.md) — finding things out on the web.
 - [prompt](../prompt/SKILL.md) — writing prompts and staged prompt plans.
 - [asking](../asking/SKILL.md) — clarifying questions and stress-testing a plan.
 - [critic](../critic/SKILL.md) — reviewing a plan before it is acted on.
+- [learn](../learn/SKILL.md) — "explain X" is an explanation, not a task.
 
-Those skills finish their work in chat and hand the result to this skill to land in Needt; they
-never create tasks on their own — except [plan](../plan/SKILL.md), which owns the milestone tasks of
-its own project under the rules of this file.
+Those skills finish their work in chat and hand the result to this skill to land in Needt.
 
 ## Widgets
 

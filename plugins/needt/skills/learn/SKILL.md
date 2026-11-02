@@ -15,10 +15,13 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 
 ## Sister skills
 
+Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
+
 - [search](../search/SKILL.md) — a fact the explanation needs and you are not sure of; a
   question that is really a lookup goes there entirely.
 - [youtube](../youtube/SKILL.md) — a video link in the request is read first (its contract
   section); the explanation is then built from what the video says, with `[mm:ss]`.
+- [plan](../plan/SKILL.md) — a project's roadmap is a board there; a subject's map stays here.
 
 ## 1. Level and language
 

@@ -12,7 +12,7 @@
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
 | YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
 | Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
-| Plan | `/needt:plan` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist |
+| Plan | `/needt:plan` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist. Answers "where are we", "what's left", "plan: …" commands |
 | Learn | `/needt:learn` | Explains one thing at the user's level: the mechanism, one example from their world, one clickable diagram or subject map where widgets exist, one check question. No quiz mode |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
 | Setup | `/needt:setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
@@ -33,6 +33,11 @@ own and reports each in one `Saved:` line. It writes through `needt_remember` wh
 offers it, otherwise to a "Needt · Memory" page in Needt, otherwise keeps it in the chat only.
 Setup reads memory once per conversation and shows the count as `memory: n` in the `Needt ·`
 line. Rules: `skills/needt/references/memory.md`.
+
+**How the skills call each other.** One skill owns each kind of request and the others
+hand over to it in the same reply — a YouTube link goes to youtube, an unsure fact to search
+(Quick), a missing answer to asking (short), a sequence that spans sessions to plan, work
+for one sitting to needt. The table of owners and hand-offs: `skills/setup/references/skills-map.md`.
 
 **Widgets.** Where the host renders chat widgets (Claude Desktop's `visualize` tool), the
 readiness line says `widgets: yes` and skills show what has a shape — today's list with Done
@@ -78,6 +83,15 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.11.0 (2026-11-02)
+
+- `plan` fires on many more phrases ("where are we", "what's left", "project status",
+  "handoff", "pick up where we left off" and their RU/UK/DE/ES/FR forms) and understands
+  `plan:` commands: where are we, open, start, done, add … after …, defer, remove, handoff.
+- New shared reference `setup/references/skills-map.md`: who owns which request and what
+  travels between skills. Every skill links it; needt, partner, critic, asking, search,
+  prompt and learn now hand over to plan (and plan to them) explicitly.
 
 0.10.0 (2026-11-02)
 

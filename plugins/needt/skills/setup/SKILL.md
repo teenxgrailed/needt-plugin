@@ -101,6 +101,12 @@ user does not have to repeat. Setup only reads here; saving follows the same rul
 7. When the user later adds or declines a tool, update that memory with `needt_update_memory`
    and its id instead of adding another; on the fallback page append a new line.
 
+## The other skills
+
+Which skill owns which request and how they hand work to each other is in
+[skills-map](references/skills-map.md); every skill links it. Setup never lists the skills to
+the user — they fire on their own.
+
 ## Bring back a useful start
 
 If a task is already given, print the readiness line first and continue straight into that

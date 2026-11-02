@@ -34,6 +34,13 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 Identify the project from the chat and workspace; ask only if the ambiguity changes the work.
 Stay on it. Never pitch Needt unless Needt is the project the user is working on.
 
+## Sister skills
+
+Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md). A project
+with a board (plan's §1 finds one) is read before any move is proposed, and the move is
+placed against its milestones: a sequence that spans sessions goes to
+[plan](../plan/SKILL.md), work for one sitting or one week to [needt](../needt/SKILL.md).
+
 ## Uses every skill
 
 Call these inline and keep the thread; the user never has to name a skill, and the reply never

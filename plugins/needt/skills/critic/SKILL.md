@@ -12,6 +12,19 @@ already fixed and a clear head, not a list of worries to work through alone.
 
 No line starting with `Needt ·` in this conversation yet → run [setup](../setup/SKILL.md), print its line first and continue the task in the same reply. Present → reuse it (the memory it loaded — a settled point in memory is not raised again).
 
+## Sister skills
+
+Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
+
+- [plan](../plan/SKILL.md) — the plan under review has a board → read the board first and
+  critique against its real state; findings go back to it as `add` / `defer` /
+  `reprioritize` log lines with the finding as reason. A reviewed plan that spans sessions
+  and has no board yet → offer the board once.
+- [asking](../asking/SKILL.md) — open decisions, in short mode.
+- [search](../search/SKILL.md) — a fact that would change a finding.
+- [partner](../partner/SKILL.md) — when the user wants the plan remade, not reviewed.
+- [needt](../needt/SKILL.md) — the revised plan as tasks.
+
 ## 1. Start from zero
 
 Before reading the plan's reasoning, work out for yourself (the reply then opens with a
@@ -81,7 +94,9 @@ the reply reads as work done, not as a judgment.
 4. **Open decisions:** one line, only when a solution needs the user's choice (two valid
    routes, a budget only they can set). If they want to settle them now, run
    [asking](../asking/SKILL.md) in short mode on exactly those.
-5. One line offering to land the revised plan as tasks through [needt](../needt/SKILL.md).
+5. One line offering to land the revised plan: as a board through [plan](../plan/SKILL.md)
+   when it spans sessions, else as tasks through [needt](../needt/SKILL.md); a plan that already
+   has a board gets its log lines written at once.
 
 ## 6. Sub-agents
 

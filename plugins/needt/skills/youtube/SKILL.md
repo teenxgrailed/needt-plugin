@@ -20,6 +20,8 @@ the skill fires only on the phrases in its description.
 
 ## Used by other skills — the contract
 
+Who calls this skill and what comes back: [skills map](../setup/references/skills-map.md).
+
 Any Needt skill that meets a video calls this one in place (no hand-off, no user prompt):
 
 1. Run section 1 (first route that works) → a file `<out>/<id>.md` and the header line

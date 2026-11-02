@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Keeps a project's roadmap alive across sessions as a board in Needt — milestones, what blocks what, what is next, a handoff for the next session — and draws it as a clickable metro map where the host renders widgets. The first call turns a goal or a pasted plan into a Needt project with one task per milestone; every later call reads the board back from Needt, works out what is next, marks a milestone done only on evidence and logs each change on the project's page. Use for "roadmap", "milestones", "plan this project", "what's next on", "where are we", "next session", "/needt:plan"; RU "роадмап", "дорожная карта", "спланируй проект", "что дальше по проекту", "на чём остановились"; UK "сплануй проєкт", "що далі"; DE "Roadmap", "Projektplan", "was steht an"; ES "hoja de ruta", "qué sigue"; FR "feuille de route", "et ensuite". Not for a day or week schedule or single tasks (needt), reviewing a plan (critic) or deciding what to do (partner).
+description: Keeps a project's roadmap alive across sessions as a board in Needt — milestones, blockers, what is next, a handoff — drawn as a clickable metro map where widgets render. First call builds the board from a goal or a pasted plan; later calls read it back from Needt, compute next, mark done only on evidence, log each change. Use for "roadmap", "milestones", "plan this project", "where are we", "what's next on", "what's left", "project status", "pick up where we left off", "handoff", "next session", "plan:" commands, "/needt:plan"; RU "роадмап", "дорожная карта", "вехи", "спланируй проект", "где мы", "что дальше по", "что осталось", "статус проекта", "на чём остановились", "хэндофф"; UK "сплануй проєкт", "де ми", "що далі"; DE "Roadmap", "Meilensteine", "wo stehen wir", "Übergabe"; ES "hoja de ruta", "hitos", "dónde estamos"; FR "feuille de route", "jalons", "où en est-on". Not for a day or week schedule (needt), reviewing a plan (critic), deciding what to do (partner) or learning a subject (learn).
 ---
 
 # Needt · Plan
@@ -19,12 +19,38 @@ decides the board's form, `memory` may name the project).
 
 ## Sister skills
 
+Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
+
 - [needt](../needt/SKILL.md) — writes tasks and pages; its title rules and permissions apply
-  here. A day or week plan, a single task, "what's today" are its job, not this skill's.
-- [critic](../critic/SKILL.md) — a roadmap worth checking before it is built goes through it
-  first when the stakes are high.
-- [partner](../partner/SKILL.md) — decides the move; this skill keeps the sequence once it
-  spans more than one session.
+  here. A day or week plan, a single task, "what's today" are its job. It hands "where are
+  we / what's next on <project>" and "done <milestone>" here.
+- [partner](../partner/SKILL.md) — decides the move; hands over the sequence once it spans
+  more than one session. "Should we do X" on a board's milestone goes back to it.
+- [critic](../critic/SKILL.md) — a board built from an invented plan goes through it first
+  when the stakes are high; its findings come back as `add` / `defer` / `reprioritize` log
+  lines with the finding as reason.
+- [asking](../asking/SKILL.md) — short mode when the milestones cannot be cut without the
+  user (scope, order); a full interview's decisions become milestones or `Decide: …` ones.
+- [search](../search/SKILL.md) — a milestone that needs a fact or an option; the find is
+  logged on the plan page.
+- [prompt](../prompt/SKILL.md) — a milestone that a coding agent or another product will
+  execute gets one prompt carrying the milestone, its evidence rule and the last handoff.
+- [learn](../learn/SKILL.md) — "roadmap for learning X" is a subject map there, not a board.
+
+## Commands
+
+Buttons and short messages the board understands, in any language (the English form is
+what the widget sends):
+
+| Message | Does |
+|---|---|
+| `plan: where are we` / "где мы", "status" | §3 state in four lines, the last handoff, the board |
+| `plan: open <milestone>` | the milestone's task: subtasks, evidence so far, what blocks it; offers Start or Done |
+| `plan: start <milestone>` | sets it `in_progress` (one at a time), log `start` |
+| `plan: done <milestone>` | asks for or finds the evidence (§4), completes, log `complete`, re-renders |
+| `plan: add <milestone> after <other>` | new task with `dependsOnId`, log `add` |
+| `plan: defer <milestone>` / `remove` | log `defer` with reason; `remove` deletes after the user confirms |
+| `plan: handoff` / "I'm stopping" | §7 block appended |
 
 ## 1. Find the board — every call
 
