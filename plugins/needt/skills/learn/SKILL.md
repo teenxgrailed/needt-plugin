@@ -156,7 +156,7 @@ Never write "saved" or "task created" without a successful call.
 
 ## 7. Widgets
 
-With `widgets: yes`, follow [widgets](../setup/references/blueprints.md) and build the three
+With `widgets: yes`, follow [widgets](../setup/references/widgets.md) and build the three
 learn widgets from their blueprints in [references/blueprints.md](references/blueprints.md) — the
 Drill run, the Study step card, the Explain mechanism — not a generic form. For this skill:
 
