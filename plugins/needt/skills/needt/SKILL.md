@@ -35,8 +35,8 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
 |---|---|
 | A thing to do ("I need to…", "add…", "remind me to…") | `needt_search` for the same outcome → `needt_create_task`, or `needt_update_task` / `needt_add_subtasks` on the match |
 | A plan, a pasted checklist, work handed over by another skill | breakdown rules below → one `needt_create_task` per outcome, `needt_create_page` for the long text |
-| "What's today / next / this week" | `needt_list` (tasks due and scheduled, events) for the range → a short ordered view; `needt_schedule` if unscheduled tasks need placing |
-| "Move it", "push to tomorrow", "at 10" | `needt_reschedule`, or `needt_update_task` with `start` (pins it); `pinned: false` hands it back to the scheduler |
+| "What's today / next / this week" | `needt_list` for events in the range; `needt_schedule` (`run: false`) for the placed blocks — it returns the whole workspace, so read only the blocks inside the range and never paste it; overdue tasks go in one line (`overdue: N — the three oldest`) after today's list |
+| "Move it", "push to tomorrow", "at 10" | `needt_reschedule`, or `needt_update_task` with `start` (a `start` pins the task on its own — there is no separate pinned flag on create); `pinned: false` on update hands it back to the scheduler |
 | "Done", "finished", "сделал" | `needt_search` / `needt_list` to find it → `needt_complete_task` or `needt_complete_subtask` |
 | A meeting or appointment with a time | `needt_create_event`; private ones `needt_mark_event_personal` |
 | Time that is not for work ("gym 7–8", "no meetings Friday") | `needt_create_personal_time` / `needt_update_personal_time` |
@@ -70,7 +70,9 @@ Call `needt_whoami` once per conversation: account, scopes, workspaces. Reuse th
   A task description holds a few lines and links, never the whole text.
 - **How a task is written** — like a person jotting it on paper, not like an AI:
   - **The user's language, always.** The language they write to you in, even if the source
-    (mail, research, a prompt) is in another one. Never mix languages in one title.
+    (mail, research, a prompt) is in another one. Never mix languages in one title. One
+    exception: a memory line that names a task language ("write tasks in English") wins —
+    memory outranks this default, as everywhere in the plugin.
   - **Short and plain**: verb first, 2–6 words, the user's own words where possible —
     "Call the print shop", "Позвонить в типографию". Not "Reach out to the print shop to
     discuss and finalize the order details".

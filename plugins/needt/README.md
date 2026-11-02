@@ -73,6 +73,15 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.6.5 (2026-11-02) — fixes from a live test of every skill
+- search: OSS Insight marked dead (empty since 2026-03-01), Trendshift numbers unlabeled → names only, keyless GitHub API fallback when the GitHub MCP fails, no pasting of a tool's billing link, HN limit unverified, Jina wording.
+- setup: the readiness line's one allowed call is the memory read (was contradictory with partner); `project: none` for an unrelated folder; sub-agents always report `questions: text`.
+- needt: a memory line about task language outranks "user's language"; `needt_schedule` is read for the range only; overdue in one line; `start` pins on create.
+- prompt: the text fallback offers all three choices (go / change / copy).
+- asking: two rounds by default, one question per decision instead of one per item.
+- youtube: always `--print head` + `--out`, read the file in pieces.
+- critic: the fresh-route summary opens the reply.
+
 0.6.4 (2026-11-02)
 - Prompt ends with a one-click choice right after the prompt: **Use prompt** (runs it in this chat), **Change something**, **Copy only**. Copy only is recommended when the prompt is for another product. Without clickable questions it offers `go` in one line.
 

@@ -41,6 +41,8 @@ Interview the user relentlessly until you reach a shared understanding. Map this
 
 Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the frontier as one round, then wait for the answers before the next round.
 
+Budget: two rounds, then the decisions list — a third round only when the user says to go on. Several questions that are one question applied to several items ("what does Free get" × memory, search, partner) become one question with the items as options or a short table, not four questions.
+
 ## Ask by click, not by typing
 
 When the `AskUserQuestion` tool is available (load it via tool search if it is deferred), every round goes through it. The user should be able to answer the whole round with clicks.

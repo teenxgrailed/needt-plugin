@@ -17,7 +17,8 @@ point in memory is not raised again.
 
 ## 1. Start from zero
 
-Before reading the plan's reasoning, write for yourself, not in the reply:
+Before reading the plan's reasoning, work out for yourself (the reply then opens with a
+2–3 line summary of it — the goal, the fresh route, where the plan departs from it):
 
 - **The goal** — what must be true when this is done, in one sentence with a number if one fits.
 - **Who it is for** — the person or group whose behaviour has to change.

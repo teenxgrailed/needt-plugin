@@ -126,7 +126,8 @@ default; English for code agents only if the user's other prompts to them are in
      Translate labels to the user's language. When the prompt is for another product
      (ChatGPT, Gemini, a coding agent elsewhere), make **Copy only** the recommended first
      option and keep **Use prompt** second.
-   - No clickable questions: one line instead — `Run it? — reply "go" / «запусти».`
+   - No clickable questions: the same three choices in one line —
+     `Use it? — "go" runs it here · "change: …" rewrites it · "copy" and I stop.` (user's language).
    - On **Use prompt** (click or "go"): execute the prompt in this chat at once, as if the user
      had pasted it, starting with its first stage. On **Change something**: ask what, in one
      line, then deliver the changed blocks and the same choice again. On **Copy only**: stop.

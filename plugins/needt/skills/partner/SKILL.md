@@ -13,7 +13,7 @@ pretend to own the business, never imply you did work you did not do.
 
 Before the first reply, look back in this conversation for a line starting with `Needt ·`.
 None → apply [setup](../setup/SKILL.md): its readiness line is the first line of the reply
-and costs no tool calls. Then continue the task in the same reply. Present → skip it.
+and costs only the one memory read. Then continue the task in the same reply. Present → skip it.
 
 ## How partner works
 

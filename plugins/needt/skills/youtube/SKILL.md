@@ -25,9 +25,10 @@ transcript dumped into the chat is not that either.
    ```
 
    It writes `<out>/<id>.md` (default: the system temp dir, `needt-youtube/`) with the metadata,
-   chapters, description and the transcript in ~30-second paragraphs `[mm:ss] …`. Short
-   videos print in full; long ones print the header and a `FILE <path>` line — then read the
-   file. Without `--lang` it takes manual captions in the video's own language, then the
+   chapters, description and the transcript in ~30-second paragraphs `[mm:ss] …`. Always run it with `--print head` and `--out` pointing at a scratch folder: stdout then
+   holds only the header, chapters and a `FILE <path>` line, and you read the file in
+   pieces (a long transcript dumped into the chat is the failure this guards against).
+   `--print all` only for videos under ~3 minutes. Without `--lang` it takes manual captions in the video's own language, then the
    original auto track. Pass `--lang` only when the user wants a specific language.
    Exit codes: `2` — no `yt-dlp`: offer `brew install yt-dlp` (macOS) or `pipx install yt-dlp`,
    run it on a yes, retry; `3` — private, removed or age-gated video: say so; `4` — the video

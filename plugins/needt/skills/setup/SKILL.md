@@ -15,9 +15,11 @@ English; values may be in the user's language. For example:
 
 `Needt · ready · project: <name> · tone: casual · search: web, youtube, github · questions: click · agents: yes · memory: 12`
 
-The line is the first line of the reply. Its only tool call is the one memory read (see
-Memory), made before any text; every other field comes from the tool and skill catalog
-already in context — load nothing to prove it. A skill that reads this file and does not
+The line is the first line of the reply. It costs no tool calls except the one memory read
+(see Memory), made before any text — plus loading that tool if the host defers it; every
+other field comes from the tool and skill catalog already in context — run nothing to prove
+it. `project` is the project the conversation is about, `none` when the open folder is
+unrelated to the task. A skill that reads this file and does not
 print the line has failed the check.
 
 That line is the marker other Needt skills look for in the conversation. One per
@@ -50,7 +52,8 @@ and do not call tools to test them.
   tweets. `x` without an X tool, browser or Exa is `x: web only` — say so, do not list it as a
   full source.
 - **questions** — `click` when a clickable question tool (`AskUserQuestion`) is listed,
-  including as a deferred tool; otherwise `text`.
+  including as a deferred tool; otherwise `text`. Inside a sub-agent it is never available —
+  a sub-agent writes `text` even when the memory says `click`.
 - **agents** — `yes` when sub-agents can be launched here (an Agent or Task tool); otherwise
   `no`. With `yes`, every Needt skill follows [delegation](references/delegation.md) for
   parallel work on cheaper models.
