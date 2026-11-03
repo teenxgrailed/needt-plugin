@@ -21,7 +21,7 @@ Who owns what and what travels between skills: [skills map](../setup/references/
   question that is really a lookup goes there entirely.
 - [youtube](../youtube/SKILL.md) — a video link in the request is read first (its contract
   section); the explanation is then built from what the video says, with `[mm:ss]`.
-- [plan](../plan/SKILL.md) — a project's roadmap is a board there; a subject's map stays here.
+- [roadmap](../roadmap/SKILL.md) — a project's roadmap is a board there; a subject's map stays here.
 
 ## 1. Level and language
 

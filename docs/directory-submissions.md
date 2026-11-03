@@ -19,7 +19,7 @@ Needt gives Claude your planner and nine working skills. `/needt` adds, moves an
 tasks, reads your day across calendars, logs habits, writes pages and turns mail into tasks
 through the Needt connector. Partner thinks through a business move and does the work. Search
 finds the good option with sources. Prompt writes one well-built prompt. Asking stress-tests
-a plan with clickable questions, Critic reviews it, Plan keeps a project roadmap alive across
+a plan with clickable questions, Critic reviews it, Roadmap keeps a project roadmap alive across
 sessions, Learn explains one thing so it sticks, YouTube reads a video. Memory follows you
 across chats. Works in English, Russian, Ukrainian, German, Spanish and French.
 

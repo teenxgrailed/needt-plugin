@@ -5,7 +5,7 @@ Read when the request is one of these intents and the one-line map in SKILL.md i
 | User says | Calls |
 |---|---|
 | A thing to do ("I need to…", "add…", "remind me to…") | `needt_search` for the same outcome → `needt_create_task`, or `needt_update_task` / `needt_add_subtasks` on the match |
-| A plan, a pasted checklist, work handed over by another skill — for one sitting or one week; a roadmap that spans sessions, with milestones that wait on each other, goes to [plan](../../plan/SKILL.md) | [breakdown rules](breakdown.md) → one `needt_create_task` per outcome, `needt_create_page` for the long text |
+| A plan, a pasted checklist, work handed over by another skill — for one sitting or one week; a roadmap that spans sessions, with milestones that wait on each other, goes to [roadmap](../../roadmap/SKILL.md) | [breakdown rules](breakdown.md) → one `needt_create_task` per outcome, `needt_create_page` for the long text |
 | "What's today / next / this week" | `needt_list` for events in the range; `needt_schedule` (`run: false`) for the placed blocks — it returns the whole workspace, so read only the blocks inside the range and never paste it; overdue tasks go in one line (`overdue: N — the three oldest`) after today's list |
 | "Move it", "push to tomorrow", "at 10" | `needt_reschedule`, or `needt_update_task` with `start` (a `start` pins the task on its own — there is no separate pinned flag on create); `pinned: false` on update hands it back to the scheduler |
 | "Done", "finished", "сделал" | `needt_search` / `needt_list` to find it → `needt_complete_task` or `needt_complete_subtask` |

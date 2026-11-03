@@ -17,7 +17,7 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 
 - [critic](../critic/SKILL.md) — a plan that should be checked before launch; critic sends
   its open decisions here in short mode.
-- [plan](../plan/SKILL.md) — a full interview on a project with a board starts from the
+- [roadmap](../roadmap/SKILL.md) — a full interview on a project with a board starts from the
   board; the decisions taken at the end become milestones or `Decide: …` milestones there.
 - [partner](../partner/SKILL.md) — decisions that need numbers or the actual work.
 - [needt](../needt/SKILL.md) — finished work lands in Needt as tasks.
@@ -102,4 +102,4 @@ A widget round when `AskUserQuestion` exists; two question systems in one round.
 
 ## Done
 
-The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Then give a short list of every decision made, and do not act on irreversible ones until the user confirms you have reached a shared understanding. Decisions about a project that has a board, or that form a sequence spanning sessions, are handed to [plan](../plan/SKILL.md) as milestones (open ones as `Decide: …`); the rest to [needt](../needt/SKILL.md) or [partner](../partner/SKILL.md) per the map.
+The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Then give a short list of every decision made, and do not act on irreversible ones until the user confirms you have reached a shared understanding. Decisions about a project that has a board, or that form a sequence spanning sessions, are handed to [roadmap](../roadmap/SKILL.md) as milestones (open ones as `Decide: …`); the rest to [needt](../needt/SKILL.md) or [partner](../partner/SKILL.md) per the map.

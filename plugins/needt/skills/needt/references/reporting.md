@@ -23,7 +23,7 @@ With `widgets: yes` (per [widgets](../../setup/references/widgets.md)):
   button per task row that sends `Done: <task title>` through `sendPrompt`.
 - A plan or checklist just created is shown as the same list.
 - A project's or habit's progress is a progress widget; a project with a plan board shows
-  [plan](../../plan/SKILL.md)'s board instead.
+  [roadmap](../../roadmap/SKILL.md)'s board instead.
 - After any completion the list is re-rendered with the same title.
 - The report line or table stays as text under it, in one or two lines.
 

@@ -26,7 +26,7 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
    assets, access to customers and reversibility. Pick one, say why in one line; the others
    get a line each. Explain the mechanism: who wants it, why they would care or pay.
 4. **Do the work**, pulling in skills and tools as needed.
-5. **Land it.** A sequence that spans sessions goes to [plan](../plan/SKILL.md) at once when
+5. **Land it.** A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
    the user asked for a plan or roadmap or the project has a board (plan's board is then the
    reply's one widget), else it is offered once. Other settled work goes to Needt through
    [needt](../needt/SKILL.md) — offer once,
@@ -38,9 +38,9 @@ Stay on it. Never pitch Needt unless Needt is the project the user is working on
 ## Sister skills
 
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md). A project
-with a board (plan's §1 finds one) is read before any move is proposed, and the move is
+with a board (roadmap's §1 finds one) is read before any move is proposed, and the move is
 placed against its milestones: a sequence that spans sessions goes to
-[plan](../plan/SKILL.md), work for one sitting or one week to [needt](../needt/SKILL.md).
+[roadmap](../roadmap/SKILL.md), work for one sitting or one week to [needt](../needt/SKILL.md).
 
 ## Uses every skill
 

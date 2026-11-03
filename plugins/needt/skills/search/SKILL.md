@@ -20,7 +20,7 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 
 - [youtube](../youtube/SKILL.md) — one video per call when a source is a video.
 - [critic](../critic/SKILL.md) — a plan that should be checked before launch.
-- [plan](../plan/SKILL.md) — research done for a milestone of a board is logged on the plan
+- [roadmap](../roadmap/SKILL.md) — research done for a milestone of a board is logged on the plan
   page as the find, one line, and the milestone is named in the report's next step.
 - [partner](../partner/SKILL.md) — a buy/no-buy or business call on what was found.
 - [needt](../needt/SKILL.md) — finished work lands in Needt as tasks.

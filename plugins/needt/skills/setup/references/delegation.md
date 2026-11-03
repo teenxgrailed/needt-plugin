@@ -10,7 +10,7 @@ Every skill reads its sub-agent allowance from this table instead of hard-coding
 profile is the `budget:` value in the readiness line (`pro|max|ultra|team|other|unknown`, saved
 by setup from the first-run interview); `unknown` behaves as `pro`.
 
-| Profile | Sub-agents | search Normal | search Deep | critic / partner / plan checks | prompt stages |
+| Profile | Sub-agents | search Normal | search Deep | critic / partner / roadmap checks | prompt stages |
 |---|---|---|---|---|---|
 | pro / unknown / other host | none by default; at most 2 (Sonnet or Haiku) and only for Deep on an explicit ask | inline, ≤ 8 calls, one round | only on ask; 2 agents, 1 round, warn about cost | inline, ≤ 3 calls | no parallel stages |
 | team | as max, but say when a run will be long | as max | as max | as max | as max |

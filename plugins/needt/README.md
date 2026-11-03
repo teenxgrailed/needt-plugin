@@ -12,7 +12,7 @@
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
 | YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
 | Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
-| Plan | `/needt:plan` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist. Answers "where are we", "what's left", "plan: …" commands |
+| Roadmap | `/needt:roadmap` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist. Answers "where are we", "what's left", "roadmap: …" commands |
 | Learn | `/needt:learn` | Explains one thing at the user's level: the mechanism, one example from their world, one clickable diagram or subject map where widgets exist, one check question. No quiz mode |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
 | Setup | `/needt:setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
@@ -95,6 +95,10 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.15.0 (2026-11-03)
+
+- The roadmap skill is now `/needt:roadmap` (folder `skills/roadmap`, chat commands `roadmap: …`). Claude Code 2.1.317 ships a built-in `/plan` command (plan mode) and a plugin skill named `plan` never appears in the slash menu beside it. Everything else about the skill is unchanged; `plan: …` messages still work as an alias.
+
 0.14.0 (2026-11-03)
 
 - Setup is a real first run: one round of up to four clickable questions (the host's plan,
@@ -110,7 +114,7 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 - Lighter: every SKILL.md is under 8 000 bytes and every description under 600 characters;
   detail moved into each skill's `references/`, read only when that branch is hit (needt:
   intents, breakdown, reporting; partner: work, money, tools-and-style; search: sources,
-  verify, subagents, report; prompt: build, deliver; plan: create, board, commands; critic:
+  verify, subagents, report; prompt: build, deliver; roadmap: create, board, commands; critic:
   checks). A call now carries roughly half the text it did.
 - Without the Needt connector, setup says in two lines that the planner skills and memory
   come with Pro and that every other skill works now; a planner request still gets a text
@@ -124,21 +128,21 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 - Every Needt skill can use the skills the user already has installed: setup counts them
   (`skills: n`), the shared `setup/references/user-skills.md` says when to hand over, how
-  to brief, precedence and what stays with Needt; partner, prompt, needt, search, plan and
+  to brief, precedence and what stays with Needt; partner, prompt, needt, search, roadmap and
   critic point at it. The marketing routing file keeps only its specifics.
 
 0.11.0 (2026-11-02)
 
-- `plan` fires on many more phrases ("where are we", "what's left", "project status",
+- `roadmap` fires on many more phrases ("where are we", "what's left", "project status",
   "handoff", "pick up where we left off" and their RU/UK/DE/ES/FR forms) and understands
-  `plan:` commands: where are we, open, start, done, add … after …, defer, remove, handoff.
+  `roadmap:` commands: where are we, open, start, done, add … after …, defer, remove, handoff.
 - New shared reference `setup/references/skills-map.md`: who owns which request and what
   travels between skills. Every skill links it; needt, partner, critic, asking, search,
   prompt and learn now hand over to plan (and plan to them) explicitly.
 
 0.10.0 (2026-11-02)
 
-- New skill `plan`: a project roadmap kept as a Needt project with one task per milestone,
+- New skill `plan` (renamed `roadmap` in 0.15.0): a project roadmap kept as a Needt project with one task per milestone,
   `dependsOnId` blockers, a "Plan · <name>" page with an append-only log and session
   handoffs; next is computed, done needs evidence; a clickable SVG metro map with widgets.
 - Hygiene: skill `+setup` is `setup`; one wording of the Setup check in every skill; the

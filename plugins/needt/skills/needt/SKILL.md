@@ -33,7 +33,7 @@ Full mapping, YouTube links, `needt_control` and the read-only mail rule (never 
 compose or send; offer a task "Reply to …" instead) per [intents](references/intents.md) — read it when the request is one of those.
 
 - Thing to do: `needt_search` first, then `needt_create_task` / `needt_update_task` / `needt_add_subtasks`
-- Plan or checklist: `needt_create_task` per outcome, `needt_create_page` for long text; breakdown per [breakdown](references/breakdown.md) — read when turning a plan, research, prompt stages or a decision into tasks, and for how a task title is written; a multi-session roadmap goes to [plan](../plan/SKILL.md)
+- Plan or checklist: `needt_create_task` per outcome, `needt_create_page` for long text; breakdown per [breakdown](references/breakdown.md) — read when turning a plan, research, prompt stages or a decision into tasks, and for how a task title is written; a multi-session roadmap goes to [roadmap](../roadmap/SKILL.md)
 - Today / next / this week: `needt_list`, `needt_schedule` (`run: false`)
 - Move or pin: `needt_reschedule`, `needt_update_task`
 - Done: `needt_complete_task`, `needt_complete_subtask`
@@ -78,7 +78,7 @@ After acting, one compact line in the user's language (a table for three or more
 
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
-- [plan](../plan/SKILL.md) — "where are we / what's next / what's left on <project>", a
+- [roadmap](../roadmap/SKILL.md) — "where are we / what's next / what's left on <project>", a
   handoff, "done <milestone>", or a task whose `originPageId` is a `Plan ·` page; it owns the
   milestone tasks of its project, the one exception to "other skills never create tasks".
 - [partner](../partner/SKILL.md) — business decisions and the actual work behind them.

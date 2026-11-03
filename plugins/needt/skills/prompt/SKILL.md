@@ -18,9 +18,9 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
-- [plan](../plan/SKILL.md) — a prompt that executes a milestone of a board carries the
+- [roadmap](../roadmap/SKILL.md) — a prompt that executes a milestone of a board carries the
   milestone, its evidence rule and the last handoff in `<inputs>`; an agent run that spans
-  sessions gets a `use needt:plan` stage so the agent reports against the board.
+  sessions gets a `use needt:roadmap` stage so the agent reports against the board.
 - [critic](../critic/SKILL.md) — a plan that should be checked before launch.
 - [asking](../asking/SKILL.md) — the one short round when an answer would change the prompt.
 - [search](../search/SKILL.md) — a Quick pass when a fact decides the approach.

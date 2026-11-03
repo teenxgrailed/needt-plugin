@@ -16,7 +16,7 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
-- [plan](../plan/SKILL.md) — a board is looked for first (plan §1: the pointer, then
+- [roadmap](../roadmap/SKILL.md) — a board is looked for first (roadmap §1: the pointer, then
   `needt_search` for `Plan · <project>`); the plan under review has one → read the board first and
   critique against its real state; findings go back to it as `add` / `defer` /
   `reprioritize` log lines with the finding as reason. A reviewed plan that spans sessions
@@ -85,7 +85,7 @@ the reply reads as work done, not as a judgment.
 4. **Open decisions:** one line, only when a solution needs the user's choice (two valid
    routes, a budget only they can set). If they want to settle them now, run
    [asking](../asking/SKILL.md) in short mode on exactly those.
-5. One line offering to land the revised plan: as a board through [plan](../plan/SKILL.md)
+5. One line offering to land the revised plan: as a board through [roadmap](../roadmap/SKILL.md)
    when it spans sessions, else as tasks through [needt](../needt/SKILL.md); a plan that already
    has a board gets its findings offered as log lines, written on `Accept`.
 

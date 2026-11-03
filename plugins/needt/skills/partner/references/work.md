@@ -44,7 +44,7 @@ A plan from partner is a sequence a person can start today, not a strategy memo:
 - **Order** — what depends on what; what can run in parallel.
 - **Decisions** — each step that needs the user's call, named as a decision.
 - **Spans sessions** — a sequence with milestones that wait on each other is handed to
-  [plan](../../plan/SKILL.md), which keeps it as a board in Needt.
+  [roadmap](../../roadmap/SKILL.md), which keeps it as a board in Needt.
 - **Who does it** — what the user does, what an agent or a tool can do (with a
   [prompt](../../prompt/SKILL.md) when the executor is another agent).
 

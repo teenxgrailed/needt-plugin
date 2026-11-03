@@ -100,7 +100,7 @@ given become labelled defaults; the readiness line is reprinted once with the ne
 - **Memory** — on (recommended) or off for this chat; "Skip for now" for tools and memory.
 
 Without the Needt connector, add after the readiness line, two lines at most: planner skills
-(needt, plan) and memory need the connector, which comes with Needt Pro (price and link:
+(needt, roadmap) and memory need the connector, which comes with Needt Pro (price and link:
 [tools-help](references/tools-help.md)); everything else works now. A planner request is
 answered as text, never with a dead end.
 

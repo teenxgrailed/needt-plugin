@@ -1,9 +1,9 @@
 ---
-name: plan
-description: Keeps a project roadmap alive across sessions as a board in Needt, with next steps computed and done marked only on evidence. Use for /needt:plan, roadmap, milestones, where are we, what's left, what's next on, handoff, plan commands; RU роадмап, вехи, где мы, что осталось, на чём остановились; UK роудмап, віхи, де ми, що залишилось; DE Roadmap, Meilensteine, wo stehen wir, Übergabe; ES hoja de ruta, hitos, dónde estamos, qué falta; FR feuille de route, jalons, où en est-on, passation. Not for day or week schedules, plan review or learning a subject.
+name: roadmap
+description: Keeps a project roadmap alive across sessions as a board in Needt, with next steps computed and done marked only on evidence. Use for /needt:roadmap, roadmap, milestones, where are we, what's left, what's next on, handoff, roadmap commands; RU роадмап, вехи, где мы, что осталось, на чём остановились; UK роудмап, віхи, де ми, що залишилось; DE Roadmap, Meilensteine, wo stehen wir, Übergabe; ES hoja de ruta, hitos, dónde estamos, qué falta; FR feuille de route, jalons, où en est-on, passation. Not for day or week schedules, plan review or learning a subject.
 ---
 
-# Needt · Plan
+# Needt · Roadmap
 
 The job is that **any session, today or in a month, can open the project and know where it
 stands in one call**: which milestones are done, which one is being worked on, what is
@@ -41,9 +41,9 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 
 ## Commands
 
-`plan: where are we` · `open` · `start` · `done` · `add … after …` · `defer` / `remove` ·
+`roadmap: where are we` · `open` · `start` · `done` · `add … after …` · `defer` / `remove` ·
 `handoff`, in any language; the table of what each does:
-[references/commands.md](references/commands.md) — read when a `plan:` message or board button arrives.
+[references/commands.md](references/commands.md) — read when a `roadmap:` message or board button arrives.
 
 ## 1. Find the board — every call
 
