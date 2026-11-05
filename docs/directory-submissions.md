@@ -60,7 +60,7 @@ prompt, asking, critic, plan, learn and YouTube skills; memory that follows you.
 
 ## Status
 
-- [ ] MCP Registry — waiting for the device-code login
+- [x] MCP Registry — listed as `io.github.teenxgrailed/needt` 1.0.0, active since 2026-10-27 (https://registry.modelcontextprotocol.io/v0/servers?search=needt); bump `server.json` version before any re-publish
 - [ ] Anthropic directory — owner
 - [ ] awesome-claude-code — owner (form requires a person)
 - [ ] mcp.so, Plug and Ship — form
