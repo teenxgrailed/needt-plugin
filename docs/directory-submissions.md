@@ -62,5 +62,6 @@ prompt, asking, critic, plan, learn and YouTube skills; memory that follows you.
 
 - [x] MCP Registry — listed as `io.github.teenxgrailed/needt` 1.0.0, active since 2026-10-27 (https://registry.modelcontextprotocol.io/v0/servers?search=needt); bump `server.json` version before any re-publish
 - [ ] Anthropic directory — owner
-- [ ] awesome-claude-code — owner (form requires a person)
-- [ ] mcp.so, Plug and Ship — form
+- [ ] awesome-claude-code — web form only (gh/PR → account restricted); repo created 2026-10-27, bot needs ≥ 14 days → submit from 2026-11-10 (Needt task set)
+- [x] Plug and Ship — submitted 2026-11-05, free queue, launch 2026-11-27: https://plugandship.dev/p/needt (badge: https://plugandship.dev/badge/needt.svg)
+- [ ] mcp.so — paid only, parked
