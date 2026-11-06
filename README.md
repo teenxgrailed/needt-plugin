@@ -6,13 +6,15 @@
 
 **Ten skills that make your AI sharper — and one that runs your day inside Needt.**
 
-A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap and a YouTube reader, free.
+A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap, an explainer and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
 [![Version](https://img.shields.io/badge/version-0.15.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
+[![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.teenxgrailed%2Fneedt-black)](https://registry.modelcontextprotocol.io/v0/servers?search=needt)
+[![Featured on Plug and Ship](https://plugandship.dev/badge/needt.svg)](https://plugandship.dev/p/needt)
 
 [Install](#install) · [Skills](#the-skills) · [How it works](#how-it-works) · [Privacy](#privacy) · [needt.app](https://needt.app/plugin/)
 
