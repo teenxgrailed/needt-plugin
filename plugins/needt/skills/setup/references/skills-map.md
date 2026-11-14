@@ -14,7 +14,7 @@ what it would have done.
 | A business or project decision, "what should I do", money, a plan for the week | **partner** | critic (reviewing one), search (facts only) |
 | Facts, options, "what's out there", "how do people do X", a price, a version | **search** | partner (the verdict), learn (an explanation) |
 | One well-built prompt or brief for an agent or another product | **prompt** | — |
-| Clickable questions until nothing is assumed; one short round for another skill | **asking** | critic (findings, not questions) |
+| Finishes a half-written thought, then clickable questions with an idea option each and the plan's hole last; one short round for another skill | **asking** | critic (findings, not questions) |
 | A plan taken apart before launch: problem → solution → cost → confidence | **critic** | asking (questions), partner (making the plan) |
 | Understanding one thing: mechanism, example, diagram, one check question; "roadmap for learning X" | **learn** | search (a lookup), roadmap (a project is not a subject) |
 | What a YouTube video says | **youtube** | search (finding videos: it calls youtube per video) |
