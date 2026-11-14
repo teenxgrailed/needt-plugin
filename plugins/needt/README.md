@@ -11,7 +11,7 @@
 | Prompt | `/needt:prompt` | Turns a rough wish into one prompt sized to the task, with ideas and Needt skill stages built in |
 | Search | `/needt:search` | Researcher that finds the non-obvious good option for your project — wide then narrow, mixed sources, verified, cited |
 | YouTube | `/needt:youtube` | Reads a video — metadata, chapters, timestamped transcript through a bundled `yt-dlp` script, Firecrawl as fallback — and answers from what it actually says. Fires on any YouTube link |
-| Asking | `/needt:asking` | Stress-tests a plan in rounds of clickable questions; other skills use its short mode to clarify |
+| Asking | `/needt:asking` | Finishes your half-written thought, then clickable questions with one unasked-for idea each and the hole it sees in the plan; fires on ideas and trailing-off messages too |
 | Roadmap | `/needt:roadmap` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist. Answers "where are we", "what's left", "roadmap: …" commands |
 | Learn | `/needt:learn` | Explains one thing at the user's level: the mechanism, one example from their world, one clickable diagram or subject map where widgets exist, one check question. No quiz mode |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
@@ -94,6 +94,10 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+Unreleased
+
+- asking: opens with 1–2 "I understood you as:" lines that finish a half-written thought; every question carries one " (idea)" option the user did not name; every round ends with the hole the model sees in the plan and ways to close it; the skill now offers itself on ideas, plans and trailing-off messages, not only on "grill me". Widget and text fallbacks moved to `skills/asking/references/fallbacks.md`.
 
 0.15.0 (2026-11-03)
 

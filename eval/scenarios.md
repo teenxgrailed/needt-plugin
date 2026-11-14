@@ -48,11 +48,16 @@ format includes `budget: …`.
   rule and the last handoff.
 
 ## asking
-- **A1** "grill me on my plan to open a second shop" → first round of ≤4 clickable questions,
-  recommended first, no prose interview.
-- **A2** short mode called by prompt → at most one round (none when nothing would change the result), control handed back.
+- **A1** "grill me on my plan to open a second shop" → 1–2 `I understood you as:` lines that add
+  what was not said (not a restatement), then one round of ≤4 clickable questions, recommended
+  first, every question with one " (idea)" option that is a real route, the last question the
+  hole the model sees with ways to close it; no prose interview.
+- **A2** short mode called by prompt → at most one round (none when nothing would change the result), no Understood lines, control handed back.
 - **A3** the interview ends with decisions about a project that has a board → decisions go to
-  roadmap as milestones; irreversible ones not acted on.
+  roadmap as milestones, ideas the user took marked; irreversible ones not acted on.
+- **A4** unasked: "думаю открыть второй корнер в Цюрихе, но не знаю, надо как-то…" → asking
+  fires itself with «Я понял тебя так:» and the first round; "add a task: call the landlord"
+  is not intercepted (needt).
 
 ## critic
 - **C1** a pasted launch plan → 2–3 line summary, ≤7 findings each with Problem / Solution /
