@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Release gate + build for the needt plugin.
-# Usage: ./release.sh <version>   (versions in plugin.json files must already be bumped)
+# Usage: ./release.sh <version>   (versions in plugin.json and gemini-extension.json must already be bumped)
 set -euo pipefail
 cd "$(dirname "$0")"
 V="${1:?version, e.g. 0.13.0}"
@@ -12,7 +12,7 @@ grep -q "· FAIL" "$R" && { echo "$R holds a FAIL — fix the skill, re-run"; ex
 grep -q "PASS" "$R" || { echo "$R has no PASS lines"; exit 1; }
 
 # 2. versions agree
-for f in needt/plugin.json needt/.claude-plugin/plugin.json; do
+for f in needt/plugin.json needt/.claude-plugin/plugin.json gemini-extension.json; do
   grep -q "\"version\": \"$V\"" "$f" || { echo "$f is not $V"; exit 1; }
 done
 
