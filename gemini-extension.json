@@ -1,0 +1,12 @@
+{
+  "name": "needt",
+  "version": "0.15.0",
+  "description": "Your Needt planner in Gemini CLI: read and change tasks, calendar, pages, habits, goals and reminders over Needt's remote MCP server, after you sign in with OAuth.",
+  "mcpServers": {
+    "needt": {
+      "type": "http",
+      "url": "https://mcp.needt.app/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
