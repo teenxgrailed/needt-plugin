@@ -15,6 +15,7 @@
 | Roadmap | `/needt:roadmap` | Keeps a project roadmap alive across sessions as a board in Needt: milestones with blockers, next computed, done only on evidence, append-only log and a handoff; a clickable metro map where widgets exist. Answers "where are we", "what's left", "roadmap: …" commands |
 | Learn | `/needt:learn` | Explains one thing at the user's level: the mechanism, one example from their world, one clickable diagram or subject map where widgets exist, one check question. No quiz mode |
 | Critic | `/needt:critic` | Reviews a plan before launch from scratch: Problem → Solution → Cost → Confidence, then the revised plan |
+| Work | `/needt:work` | Walks your open tasks with you one at a time: checks whether each is already done and closes it with evidence, does everything it can itself, asks only for a decision or a physical action, one question with buttons |
 | Setup | `/needt:setup` (internal) | Onboards on first run, checks project, tone, tools and memory; prints the `Needt ·` readiness line |
 
 Every skill looks for the `Needt ·` readiness line in the conversation first (it is reprinted only after the plan or memory changes). If it is
@@ -94,6 +95,11 @@ publication or scheduled sends. No telemetry. Memory lives in your Needt account
 conversation without the connector); the plugin keeps no copy of its own. No business outcome is guaranteed; final decisions stay with the user.
 
 ## Changelog
+
+0.16.0 (2026-11-22)
+
+- New skill `/needt:work`: works through your open tasks with you, one at a time, in day-plan order. It shows the load per day first, checks every task for "already done" before touching it (and closes it with the evidence), does everything it can itself, and asks you only for a login, money, sending, a physical action or a decision, as one question with buttons. Big tasks start with a first step of 15 minutes or less. Keeps going on "keep going", stops on "stop" or a `/goal` target, and sums up every 5 tasks.
+- The main skill offers it in one line, at most once a day, only with 3+ overdue tasks, an overloaded day, or a "what's today" question, and never to a newcomer. Setup counts sessions in its `set up` memory line (`sessions: n`) for that.
 
 0.15.0 (2026-11-03)
 

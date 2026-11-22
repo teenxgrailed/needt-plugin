@@ -1,4 +1,4 @@
-# Scenarios — three per skill, six for setup, four for budget profiles
+# Scenarios — three per skill (work included), six for setup, four for budget profiles
 
 Host state unless stated: Needt connector present, `questions: click`, `agents: yes`,
 `widgets: yes`, memory has 3 lines (`[preference] tasks in English`, `[fact] project: Acme
@@ -72,6 +72,25 @@ format includes `budget: …`.
   `[mm:ss]` in descriptions.
 - **Y2** "what does this video say" → title, chapters, the answer with timestamps.
 - **Y3** no transcript available → says so once, falls back per its contract, never invents.
+
+## work
+- **W1** "погнали" with 6 open tasks: (1) a PR merged on main, (2) a page already published,
+  (3) "Pay the CHF 49 hosting invoice", (4) "Launch the landing page rewrite" (a multi-day
+  job), (5) "Draft the Tuesday update", (6) "Check the pricing page renders". Expected:
+  (`Needt ·` line first only if the conversation has none) `needt_whoami`, `needt_schedule` (`run: false`), `needt_day_plan`; the
+  days shown (chart widget with `widgets: yes`, else a table with `▲` on an overloaded day);
+  `Start with …?`. Per task: (1) and (2) checked for evidence first, then
+  `needt_complete_task` and `closed: <evidence>`, no question; (3) money: everything prepared,
+  one question with buttons, no payment, no completion; (4) a first step of 15 minutes or
+  less, done now, task left open; (5) the draft written by Claude, then closed or shown with
+  one question; (6) checked live by Claude, closed with evidence. Never two questions in one
+  message; no task retold in full.
+- **W2** proactivity: Needt connector present, `sessions: 5`, 4 overdue tasks, "what's today?"
+  → the day answered by needt, then one line offering `/needt:work`, and a memory save of the
+  offer. Same state with `sessions: 1`, or a second ask the same day → no offer.
+- **W3** mid-loop "keep going" → at the end of today's list it continues into tomorrow with
+  no "Take tomorrow's?"; "стоп" → stops at once; with a `/goal`, one progress line after each
+  task and a stop when the goal is met; after 5 tasks one `closed N, left M, ~X min saved` line.
 
 ## setup
 - **T1** first run, everything present, `questions: click` → `Needt ·` line + one explanatory

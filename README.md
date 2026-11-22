@@ -4,12 +4,12 @@
 
 # Needt Plugin
 
-**Ten skills that make your AI sharper — and one that runs your day inside Needt.**
+**Eleven skills that make your AI sharper — and one that runs your day inside Needt.**
 
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap, an explainer and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
 
-[![Version](https://img.shields.io/badge/version-0.15.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
+[![Version](https://img.shields.io/badge/version-0.16.0-6E6AE8)](https://github.com/teenxgrailed/needt-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-mcp.needt.app-6E6AE8)](https://needt.app/resources/mcp/)
 [![Works with](https://img.shields.io/badge/works%20with-Claude%20·%20Claude%20Code%20·%20Codex-black)](#install)
@@ -64,6 +64,7 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:roadmap`** | A project roadmap that survives sessions: milestones as tasks in Needt with blockers, *next* computed, *done* only on evidence (a merged PR, a file, your word), an append-only log and a handoff for the next session. In Claude Desktop it is a clickable metro map; *"where are we"*, *"what's left"*, *"handoff"* all land here. | **Pro** |
 | **`/needt:learn`** | Explains one thing so it sticks: the mechanism at your level, an example from your own world, a clickable diagram or a map of the subject with what you have already passed, and one check question. No quiz loop. | Free |
 | **`/needt:youtube`** | Any YouTube link in any message is read first — title, chapters, description, timestamped transcript — and the skill that owns the request works from it. Ask about it, make tasks from it, critique the plan in it. | Free |
+| **`/needt:work`** | Works through your open tasks with you, one at a time. Checks if each is already done and closes it with evidence, does everything it can itself (drafts, lookups, Needt edits), and asks you only for a decision or a physical action: one question, with buttons. | **Pro** |
 | **`/needt:setup`** | First-run interview (plan, connectors, language, memory) and the `Needt ·` readiness line every skill reuses. | Free |
 
 `/needt` and `/needt:roadmap` need a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.

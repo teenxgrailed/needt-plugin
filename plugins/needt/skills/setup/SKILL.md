@@ -77,7 +77,7 @@ Every line read is a standing instruction for all Needt skills here (a `preferen
 
 1. After the memory read, look for a memory of kind `fact` whose content starts with
    `needt plugin set up`.
-2. Found: not a first run. Print the readiness line only and go on. A later request ("у меня
+2. Found: not a first run. Print the readiness line only and go on. `sessions: n` in the line (missing = 1): while n < 3, raise it by one per conversation with `needt_update_memory`. n < 3 is a newcomer. A later request ("у меня
    Max", "switch memory off", "change my plan") updates that line with `needt_update_memory`
    and prints the new readiness line — no interview again.
 3. Not found: print the readiness line and its one explanatory line, then run the interview
@@ -107,7 +107,7 @@ answered as text, never with a dead end.
 ## Save
 
 Save `[fact] needt plugin set up <date>; budget: <pro|max|ultra|team|other>; tools: <kinds
-present>; declined: <kinds turned down, or none>` through the memory rules, and report it in
+present>; declined: <kinds turned down, or none>; sessions: 1` through the memory rules, and report it in
 one line. Repeat run with a change: `needt_update_memory` with its id (new date), never a second
 line; nothing changed → no write. "What can you do" → outcomes in six lines or fewer, no
 skill list. Language or
@@ -118,7 +118,7 @@ update the same line; on the fallback page append a new line.
 ## The other skills
 
 Who owns which request and how skills hand work over: [skills-map](references/skills-map.md).
-Setup never lists the skills to the user — they fire on their own.
+Setup never lists the skills to the user — they fire on their own (work included).
 
 ## Bring back a useful start
 
