@@ -4,7 +4,7 @@
 
 # Needt Plugin
 
-**Eleven skills that make your AI sharper — and one that runs your day inside Needt.**
+**Eleven skills that make your AI sharper, three of them running your day inside Needt.**
 
 A business partner, a researcher, a prompt builder, a grill-me, a plan critic, a project roadmap, an explainer and a YouTube reader, free.
 Plus `/needt`, which gives your AI your whole planner: tasks, calendar, habits, pages, mail and memory.
@@ -67,7 +67,7 @@ Then start a new chat and just talk — *"what's on today?"*, *"help me think ab
 | **`/needt:work`** | Works through your open tasks with you, one at a time. Checks if each is already done and closes it with evidence, does everything it can itself (drafts, lookups, Needt edits), and asks you only for a decision or a physical action: one question, with buttons. | **Pro** |
 | **`/needt:setup`** | First-run interview (plan, connectors, language, memory) and the `Needt ·` readiness line every skill reuses. | Free |
 
-`/needt` and `/needt:roadmap` need a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.
+`/needt`, `/needt:roadmap` and `/needt:work` need a [Needt Pro](https://needt.app/pricing/) account — it connects to your planner over MCP. Every other skill works without an account.
 
 ## How it works
 
@@ -86,7 +86,7 @@ Every other skill reads it instead of checking again; the first time it appears 
 
 **Memory that follows you.** When you say *"remember…"*, *"never do X again"*, or correct how something was done, the plugin saves one line to your Needt memory (`Saved: …`) and every skill treats it as a standing instruction — in any chat, on any device. Secrets, health details and one-off facts are never saved. Turn it off any time in the Needt app.
 
-**The skills call each other.** One skill owns each kind of request and the others hand over in the same reply: a YouTube link → youtube, an unsure fact → search, a missing answer → asking, a sequence that spans sessions → roadmap, work for today → needt. The map of owners and hand-offs: `plugins/needt/skills/setup/references/skills-map.md`.
+**The skills call each other.** One skill owns each kind of request and the others hand over in the same reply: a YouTube link → youtube, an unsure fact → search, a missing answer → asking, a sequence that spans sessions → roadmap, going through tasks together → work, a single task → needt. The map of owners and hand-offs: `plugins/needt/skills/setup/references/skills-map.md`.
 
 **Uses your own skills too.** The readiness line counts the other skills in your catalog (`skills: n`), and every Needt skill hands the part they own to them — a deck to your pptx skill, a deploy to your runbook, a campaign to your marketing skill — briefed from what is already known and delivered in the Needt skill's voice. Rules: `plugins/needt/skills/setup/references/user-skills.md`.
 

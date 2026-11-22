@@ -79,9 +79,9 @@ After acting, one compact line in the user's language (a table for three or more
 After reading the day (`needt_list` / `needt_schedule`), offer [work](../work/SKILL.md) in one line — "Work through them together? (/needt:work)" — when all hold:
 
 - the connector exists;
-- there is a signal: 3 or more overdue tasks, a day planned past its limit, or the user asked "what's today / what should I do / let's go";
-- not offered yet today (`[fact] needt work offered <date>` in memory; save it when offering);
-- not a newcomer: the `sessions: n` in the `needt plugin set up` memory line is at least 3.
+- there is a signal: 3 or more overdue tasks, a day planned past its limit, or the user asked "what's today" (not "let's go" or an explicit loop request: that already is a yes);
+- not offered yet today: one line `[fact] needt work offered <date>` in memory, created once, then updated by id (`needt_list_memories`) with the new date (never a new line per day), saved silently with no `Saved:` report;
+- not a newcomer: `sessions: n` in the `needt plugin set up` memory line is at least 3 (a missing field means 3).
 
 One line, never repeated, never inside a reply that already does the work.
 
@@ -90,7 +90,6 @@ One line, never repeated, never inside a reply that already does the work.
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
 - [work](../work/SKILL.md) — "let's work", "work through my tasks", "погнали": walks the open tasks one at a time, closes the ones already done, does the rest itself.
-
 - [roadmap](../roadmap/SKILL.md) — "where are we / what's next / what's left on <project>", a
   handoff, "done <milestone>", or a task whose `originPageId` is a `Plan ·` page; it owns the
   milestone tasks of its project, the one exception to "other skills never create tasks".

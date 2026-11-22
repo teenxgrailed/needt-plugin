@@ -36,7 +36,7 @@ other → the newest holds, and the contradiction is named once.
 
 ## Write — the plugin saves on its own
 
-Save on your own, then report in one line (`Saved: never schedule before 10:00`):
+Save on your own, then report in one line (`Saved: never schedule before 10:00`; bookkeeping flags such as `needt work offered` and the `sessions` counter are saved silently):
 
 - An explicit ask: "remember", "don't ever", "from now on", "запомни", "больше так не делай".
 - A correction of how something was done ("no, shorter", "use the other workspace") — as a

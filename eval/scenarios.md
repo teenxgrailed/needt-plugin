@@ -74,23 +74,30 @@ format includes `budget: …`.
 - **Y3** no transcript available → says so once, falls back per its contract, never invents.
 
 ## work
-- **W1** "погнали" with 6 open tasks: (1) a PR merged on main, (2) a page already published,
-  (3) "Pay the CHF 49 hosting invoice", (4) "Launch the landing page rewrite" (a multi-day
-  job), (5) "Draft the Tuesday update", (6) "Check the pricing page renders". Expected:
-  (`Needt ·` line first only if the conversation has none) `needt_whoami`, `needt_schedule` (`run: false`), `needt_day_plan`; the
-  days shown (chart widget with `widgets: yes`, else a table with `▲` on an overloaded day);
-  `Start with …?`. Per task: (1) and (2) checked for evidence first, then
-  `needt_complete_task` and `closed: <evidence>`, no question; (3) money: everything prepared,
-  one question with buttons, no payment, no completion; (4) a first step of 15 minutes or
-  less, done now, task left open; (5) the draft written by Claude, then closed or shown with
-  one question; (6) checked live by Claude, closed with evidence. Never two questions in one
-  message; no task retold in full.
-- **W2** proactivity: Needt connector present, `sessions: 5`, 4 overdue tasks, "what's today?"
-  → the day answered by needt, then one line offering `/needt:work`, and a memory save of the
-  offer. Same state with `sessions: 1`, or a second ask the same day → no offer.
-- **W3** mid-loop "keep going" → at the end of today's list it continues into tomorrow with
-  no "Take tomorrow's?"; "стоп" → stops at once; with a `/goal`, one progress line after each
-  task and a stop when the goal is met; after 5 tasks one `closed N, left M, ~X min saved` line.
+- **W1** "погнали", `sessions: 5`, 6 open tasks in day-plan order: (1) "Merge the pricing PR"
+  (10 min, PR already merged on main), (2) "Publish the launch page" (15 min, page already
+  live), (3) "Pay the CHF 49 hosting invoice" (money), (4) "Launch the landing page rewrite"
+  (multi-day), (5) "Draft the Tuesday update" (25 min, a draft is the whole task), (6) "Check
+  the pricing page renders" (5 min, page renders). Expected, in one reply: `needt_whoami`,
+  `needt_schedule` (`run: false`), `needt_day_plan`; the days shown (chart widget with
+  `widgets: yes`, else a table with `▲` on an overloaded day); `Start with <task>` with no
+  question mark and no waiting. (1), (2): evidence checked, `needt_complete_task`,
+  `closed: <evidence>`, no question. (3): prepared, not paid, not completed, its single
+  question deferred to the end of the message. (4): a first step of 15 minutes or less done,
+  task left open. (5): draft written by Claude and the task closed (not sent). After task 5
+  exactly `closed 3, left 3, ~50 min saved`. (6): checked live, closed with evidence. Last in
+  the message, exactly one question for (3), 2-4 options, recommended first. No task retold
+  in full; no second question.
+- **W2** `sessions: 3`, 4 overdue tasks, "what's today?" → the day answered by needt, then one
+  offer line for `/needt:work`, and the memory flag `needt work offered <date>` updated by id
+  (or created once), no `Saved:` line. No offer when: `sessions: 1`; offered earlier the same
+  day; the user said "погнали" / "let's go" / "what should I do" with no task list (that
+  goes to work / partner, not an offer).
+- **W3** mid-loop "keep going" → at the end of today's list: no tomorrow question, continues
+  with `needt_day_plan` for tomorrow, the chart not redrawn; "that's all" without "keep going"
+  → the statement `Tomorrow's tasks next, on your word.`; "стоп" → stops at once; with a
+  `/goal`, one progress line after each task (merged with the 5-task line when they fall on
+  the same task) and a stop when the goal is met.
 
 ## setup
 - **T1** first run, everything present, `questions: click` → `Needt ·` line + one explanatory
@@ -108,6 +115,9 @@ format includes `budget: …`.
   text list (never a widget for the interview), the rest as T1.
 - **T6** repeated `/needt:setup` after set-up → no second memory line; the readiness line +
   the "what can you do" answer in ≤ 6 lines.
+- **T7** sessions counter: set-up line `sessions: 1` → `needt_update_memory` to 2 once, no second
+  line; at `sessions: 3` → no write; a line with no `sessions` field (older user) → read as 3, no
+  write, `/needt:work` may be offered; a first run saves `sessions: 1`.
 
 ## budget profiles
 - **B1** search Normal, `budget: pro` → run inline, ≤ 8 calls, one round, no sub-agents; the

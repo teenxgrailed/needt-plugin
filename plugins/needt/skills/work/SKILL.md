@@ -1,6 +1,6 @@
 ---
 name: work
-description: Works through your Needt tasks with you, one at a time. Checks if each is already done, does everything it can itself, asks only for a decision or a physical action. Use for "let's work", "work through my tasks", "/needt:work", "погнали", "давай делать задачи", "поїхали", "що робити", "lass uns loslegen", "Aufgaben durchgehen", "trabajemos", "au travail". Not for adding one task (needt) or a multi-session plan (roadmap).
+description: Works through your Needt tasks with you, one at a time. Checks if each is already done, does everything it can itself, asks only for a decision or a physical action. Use for "let's work", "work through my tasks", "/needt:work", "погнали", "давай делать задачи", "поїхали", "lass uns loslegen", "Aufgaben durchgehen", "trabajemos", "au travail". Not for adding one task (needt) or a multi-session plan (roadmap).
 ---
 
 # Needt · Work
@@ -20,7 +20,7 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 - [needt](../needt/SKILL.md) — every read and write of tasks, pages, memory; its title and permission rules apply.
 - [search](../search/SKILL.md) — a task that is a lookup; Quick per task, the evidence back as one line.
 - [partner](../partner/SKILL.md) — a task that is a business decision; it does the numbers, the verdict comes back.
-- [asking](../asking/SKILL.md) — the one question per task, in short mode.
+- [asking](../asking/SKILL.md) — the wording of the one question when a task needs the person's decision.
 - [roadmap](../roadmap/SKILL.md) — a task that is a milestone of a board: closing it needs the board's evidence rule.
 - [critic](../critic/SKILL.md) — a task that is a plan about to go live.
 
@@ -28,7 +28,7 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 
 1. `needt_whoami` once; then `needt_schedule` (`run: false`) and `needt_day_plan` for today.
 2. Show the days once. `widgets: yes` → one chart widget (bars per day, the limit as a line, overloaded days marked). Otherwise a compact table `day | tasks | load | over limit` with overload marked `▲`. The numbers come from the calls, never from memory.
-3. One line: `Start with <task>?` — the first task of today's day plan. The person's opening message ("погнали", "let's work") already says yes: do not wait, start the loop in the same reply. The line only names the first task.
+3. One line: `Start with <task>` — the first task of today's day plan. The person's opening message ("погнали", "let's work") already says yes: do not wait, start the loop in the same reply. The line only names the first task.
 
 ## 2. The loop: one task at a time, in day-plan order
 
@@ -39,7 +39,7 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 
 **b. Not done → do everything reachable yourself.** A draft, a lookup ([search](../search/SKILL.md)), a calculation, a plan ([partner](../partner/SKILL.md)), a Needt edit, a browser or connector action inside the permissions you have. Two independent parts → sub-agents per [delegation](../setup/references/delegation.md).
 
-Ask the person only for a login or password, money, sending or publishing, a physical action, or a decision. The ask is **one** question with 2–4 buttons (`AskUserQuestion` when `questions: click`; else one text line where "yes" accepts the recommended option), recommended option first. One open question at a time: the turn ends on the question, and the loop resumes on the answer. If the next tasks do not depend on it, do their no-question work (evidence checks, closes, drafts) before asking.
+Ask the person only for a login or password, money, sending or publishing, a physical action, or a decision. The ask is exactly one question with 2–4 options (`AskUserQuestion` when `questions: click`; else one text line where "yes" accepts the recommended option), recommended option first. Before asking, pre-work every remaining task you can do without the person (evidence checks, closes, drafts), then ask; the question comes last in the message and the loop resumes on the answer.
 
 **c. Close.** The work is done → `needt_complete_task`. A decision was made → `needt_remember` (kind `fact`) or the decisions page, one line `Saved: …`.
 
@@ -49,11 +49,11 @@ Ask the person only for a login or password, money, sending or publishing, a phy
 
 ## 3. Stop and continue
 
-- Nothing left on today's list to work or close (tasks waiting on the person do not count) → `That's all for today. Take tomorrow's?` Unless the person already said "keep going": then continue into tomorrow, no question, no pause.
+- Nothing left on today's list to work or close (tasks waiting on the person do not count; with a question outstanding, skip this line) → `That's all for today. Tomorrow's tasks next, on your word.` Unless the person already said "keep going": then continue into tomorrow, no pause.
 - Stop on "stop / enough / pause / хватит / стоп", when an ask gets no answer, or when a `/goal` target is reached.
 - With a `/goal`, the goal is the stop condition; after each task, one progress line toward it.
-- Every 5 tasks handled (closed or advanced), one line: `closed N, left M, ~X min saved` (X = the durations of tasks closed, whether on evidence or by Claude's work). With a `/goal`, merge it into the goal's progress line. Tomorrow's tasks: `needt_day_plan` for that date, chart not redrawn.
-- Fixed markers (`Start with`, `closed:`, `Saved:`) stay English; the rest follows the person's language. The offer flag in memory is saved silently.
+- Every 5 tasks handled (reached: closed, advanced, or prepared and waiting on the person), one line: `closed N, left M, ~X min saved` (M = not closed; X = the durations of tasks closed, whether on evidence or by Claude's work). With a `/goal`, merge it into the goal's progress line. Tomorrow's tasks: `needt_day_plan` for that date, chart not redrawn.
+- Fixed markers (`Start with`, `closed:`, `Saved:`) stay English; the rest follows the person's language.
 
 ## Rules that never bend
 
@@ -65,4 +65,4 @@ Ask the person only for a login or password, money, sending or publishing, a phy
 
 ## Failing behaviors
 
-Working on a task before checking it is done; asking about a task that evidence already closes; closing on a guess; two questions in one message; a question that is really a lookup; retelling the whole task; acting on money, sending or deleting without a word; a big task attempted whole instead of its first 15 minutes; asking "continue?" after "keep going"; stopping with no signal; a chart that does not come from the calls; a widget without `widgets: yes`; claiming a close, edit or save with no successful call.
+Working on a task before checking it is done; asking about a task that evidence already closes; closing on a guess; two questions in one message; a question that is really a lookup; retelling the whole task; acting on money, sending or deleting without a word; a big task attempted whole instead of its first 15 minutes; asking about tomorrow after "keep going"; stopping with no signal; a chart that does not come from the calls; a widget without `widgets: yes`; claiming a close, edit or save with no successful call.

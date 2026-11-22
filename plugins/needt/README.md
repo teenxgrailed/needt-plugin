@@ -37,8 +37,8 @@ line. Rules: `skills/needt/references/memory.md`.
 
 **How the skills call each other.** One skill owns each kind of request and the others
 hand over to it in the same reply — a YouTube link goes to youtube, an unsure fact to search
-(Quick), a missing answer to asking (short), a sequence that spans sessions to plan, work
-for one sitting to needt. The table of owners and hand-offs: `skills/setup/references/skills-map.md`.
+(Quick), a missing answer to asking (short), a sequence that spans sessions to roadmap, going
+through tasks together to work, a single task to needt. The table of owners and hand-offs: `skills/setup/references/skills-map.md`.
 
 **Your own skills.** Setup counts the other skills in the host catalog (`skills: n`), and
 every Needt skill hands the part they own to them — a deck to your pptx skill, a deploy to your

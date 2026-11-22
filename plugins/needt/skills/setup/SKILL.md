@@ -20,7 +20,7 @@ context — run nothing to prove it. `project` is the project the conversation i
 when the open folder is unrelated. A skill that reads this file and does not print the line
 has failed the check.
 
-Other Needt skills look for this line. One per conversation; run again only when the user
+Other skills look for this line. One per conversation; run again only when the user
 asks or the project changes. The first time, one short line in the user's language follows
 it: that this is Needt's readiness check of what this chat can use.
 
@@ -77,7 +77,7 @@ Every line read is a standing instruction for all Needt skills here (a `preferen
 
 1. After the memory read, look for a memory of kind `fact` whose content starts with
    `needt plugin set up`.
-2. Found: not a first run. Print the readiness line only and go on. `sessions: n` in the line (missing = 1): while n < 3, raise it by one per conversation with `needt_update_memory`. n < 3 is a newcomer. A later request ("у меня
+2. Found: not a first run. Print the line, go on. `sessions: n` (missing = 3; first run writes 1): once per conversation, while n < 3, `needt_update_memory` raises it by one, then read it; n < 3 = newcomer. Exception to "nothing changed → no write". A later request ("у меня
    Max", "switch memory off", "change my plan") updates that line with `needt_update_memory`
    and prints the new readiness line — no interview again.
 3. Not found: print the readiness line and its one explanatory line, then run the interview
@@ -118,7 +118,7 @@ update the same line; on the fallback page append a new line.
 ## The other skills
 
 Who owns which request and how skills hand work over: [skills-map](references/skills-map.md).
-Setup never lists the skills to the user — they fire on their own (work included).
+Setup never lists the skills to the user — they fire on their own.
 
 ## Bring back a useful start
 

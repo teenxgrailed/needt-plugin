@@ -11,13 +11,13 @@ what it would have done.
 |---|---|---|
 | A task, event, habit, page, "what's today", move, done | **needt** | roadmap (a milestone is a task of a board, see below) |
 | A project's roadmap, "where are we", "what's next on X", "what's left", a handoff, milestones | **roadmap** | needt (a day or week), partner (the decision itself) |
-| A business or project decision, "what should I do", money, a plan for the week | **partner** | critic (reviewing one), search (facts only) |
+| A business or project decision, "what should I do" with no task list, money, a plan for the week | **partner** | critic (reviewing one), search (facts only) |
 | Facts, options, "what's out there", "how do people do X", a price, a version | **search** | partner (the verdict), learn (an explanation) |
 | One well-built prompt or brief for an agent or another product | **prompt** | — |
 | Clickable questions until nothing is assumed; one short round for another skill | **asking** | critic (findings, not questions) |
 | A plan taken apart before launch: problem → solution → cost → confidence | **critic** | asking (questions), partner (making the plan) |
 | Understanding one thing: mechanism, example, diagram, one check question; "roadmap for learning X" | **learn** | search (a lookup), roadmap (a project is not a subject) |
-| Going through the open tasks together, one at a time: "let's work", "погнали", "/needt:work" | **work** | needt (one task), roadmap (a board's next step) |
+| Going through the open tasks together, one at a time: "let's work", "погнали", "/needt:work" (an explicit loop request only) | **work** | needt (one task), roadmap (a board's next step) |
 | What a YouTube video says | **youtube** | search (finding videos: it calls youtube per video) |
 
 ## Hand-offs — what travels between skills
@@ -36,7 +36,7 @@ what it would have done.
 | critic → **roadmap** | the reviewed plan has a board | findings become `add` / `defer` / `reprioritize` log lines, with the finding as reason |
 | asking (full) → **roadmap** / **partner** | the interview ends with decisions taken | the decisions, as milestones or as the plan's inputs |
 | learn → **search** | a question that is really a lookup | the question, entirely |
-| needt → **work** | one line offer: 3+ overdue, an overloaded day, or "what's today / let's go"; once a day, never to a newcomer (`sessions: n` < 3) | nothing until the user says yes; then the day plan |
+| needt → **work** | one line offer: 3+ overdue, an overloaded day, or "what's today"; once a day, never to a newcomer (`sessions: n` < 3, missing = 3) | nothing until the user says yes; then the day plan |
 | work → **needt** | every read and write of tasks, pages, memory | the task id; needt's title and permission rules apply |
 | work → **search** / **partner** / **asking** | a task is a lookup / a decision with numbers / needs the person's one answer | the task's gist; back come evidence, verdict or the answer |
 | work → **roadmap** | the task is a milestone of a board | the task id; closing follows the board's evidence rule |
