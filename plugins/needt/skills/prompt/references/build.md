@@ -11,7 +11,16 @@ Use the sections the size needs, in this order. Structure and examples:
 3. **Inputs** — data, files, links, previous findings, each in its own XML tag, long material
    at the top and the request after it.
 4. **The approach** — the chosen direction and the ideas from step 2. Steps only where order
-   matters; otherwise describe the goal and let the executor plan.
+   matters; otherwise describe the goal and let the executor plan. **L size:** before writing
+   the rest, hand this section to [critic](../../critic/SKILL.md) in short mode
+   ([auto](../../critic/references/auto.md)). It comes back as the `Critic · short · N findings`
+   block plus the revised approach. Pasted-deliverable rule: the prompt gets the revised
+   approach clean, no `▲`; each finding line says `▲ <what changed in the approach>`. The
+   block is the first thing in the reply; the fenced prompt follows, then the usual three
+   lines. No findings → the heading with `0 findings` and nothing more. Critic's `Open:` line
+   becomes a labelled assumption in the prompt. Skip it when prompt runs as a step of another skill or the approach already holds a
+   `Critic ·` pass. Do not review the finished prompt, only the
+   approach; do not run it again on an edit that does not change the approach.
 5. **Stages using Needt skills**, when the executor is Claude with this plugin: name them —
    `use needt:search (normal depth) to find …`, `use needt:asking in short mode if …`,
    `use needt:partner to check the economics of …`. A stage that names a skill means the

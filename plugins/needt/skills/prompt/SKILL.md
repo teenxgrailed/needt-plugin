@@ -5,10 +5,10 @@ description: Turns a rough wish into one well-built prompt sized to the task, wi
 
 # Needt · Prompt
 
-The user gives a rough wish. You give back **one prompt** that a capable model can execute
-well on the first try — with the good idea already in it, the right size, and nothing that
-does not change behavior. The failure this exists to kill: a bloated template full of
-generic rules, or a polished rewording of the same vague wish.
+The user gives a rough wish. You give back **one prompt** a capable model can execute well on
+the first try — the good idea already in it, the right size, nothing that does not change
+behavior. The failure this kills: a bloated template of generic rules, or a polished
+rewording of the same vague wish.
 
 ## Setup check
 
@@ -21,7 +21,8 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 - [roadmap](../roadmap/SKILL.md) — a prompt that executes a milestone of a board carries the
   milestone, its evidence rule and the last handoff in `<inputs>`; an agent run that spans
   sessions gets a `use needt:roadmap` stage so the agent reports against the board.
-- [critic](../critic/SKILL.md) — a plan that should be checked before launch.
+- [critic](../critic/SKILL.md) — **L size only**: short mode on the approach section (§5). Not for S or M,
+  not when prompt runs as a step of another skill, not twice on one approach.
 - [asking](../asking/SKILL.md) — the one short round when an answer would change the prompt.
 - [search](../search/SKILL.md) — a Quick pass when a fact decides the approach.
 - [needt](../needt/SKILL.md) — finished work lands in Needt as tasks.
@@ -67,8 +68,8 @@ no questions.
 | **M** | a task with context, constraints and a defined output | short sections, ~15–60 lines |
 | **L** | an agent run, multi-stage work, research + build, long-lived instructions | XML-tagged brief, ~60–200 lines |
 
-Pick the smallest size that carries the needed context. Longer is not better; every sentence
-must change what the executor does.
+Pick the smallest size that carries the needed context; every sentence must change what the
+executor does.
 
 ## 5. Build it
 
@@ -83,17 +84,22 @@ writing an M or L prompt. Structure and examples: [references/structure.md](refe
 Write the prompt in the language the executor should work in — the user's language by
 default; English for code agents only if the user's other prompts to them are in English.
 
+**L only:** once the approach is chosen, run [critic](../critic/SKILL.md) in short mode on it
+and build the prompt from the revised approach: its block (heading, at most 3 findings)
+opens the reply above the code block, and the prompt itself carries no `▲`
+([build.md](references/build.md) step 4).
+
 ## 6. Self-check before delivering
 
 - Would a smart newcomer with only this prompt do the right thing? What would they guess?
-- Each sentence changes behavior; delete the generic ones ("be thorough", "think step by step").
+- Each sentence changes behavior; delete generic ones ("be thorough", "think step by step").
 - No contradictions; no rule that a later rule silently overrides.
 - Assumptions are marked; nothing invented about the user's project.
 - Skill stages point at skills that exist (check the setup line).
 
 ## 7. Deliver
 
-1. The prompt in one fenced code block, ready to paste.
+1. The prompt in one fenced code block, ready to paste (L: critic's block above it).
 2. Under it, at most three lines: size picked and why, the assumptions made, the one thing
    worth changing if the user disagrees.
 3. The user said to run it (`и запусти`, `go`, `выполни`) → execute it here right after, no button.
@@ -109,8 +115,8 @@ give the replacement blocks only, one full copy once they say they will paste it
 
 The recommendation inside the prompt comes from the conversation and the open project, not a
 generic default: if the open project is a shop app and the wish is about promotion, the prompt
-assumes that shop's promotion unless the user said otherwise. Scratch paths, session ids and other
-ephemeral details go into the prompt only when the executor is this same session.
+assumes that shop's promotion unless the user said otherwise. Scratch paths, session ids and
+other ephemeral details go into the prompt only when the executor is this same session.
 
 ## Widgets
 

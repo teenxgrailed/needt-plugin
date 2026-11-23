@@ -26,7 +26,14 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
    assets, access to customers and reversibility. Pick one, say why in one line; the others
    get a line each. Explain the mechanism: who wants it, why they would care or pay.
 4. **Do the work**, pulling in skills and tools as needed.
-5. **Land it.** A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
+5. **Review, then land it.** A plan or strategy of more than 3 moves, or any plan with real
+   stakes (money, a public launch, a hire), runs through [critic](../critic/SKILL.md) in
+   **short mode** first ([auto](../critic/references/auto.md)) and is handed over as the
+   revised plan with its `▲`, never the original beside it. Not for a verdict, an answer or a
+   plan of 3 moves or fewer. A plan that already holds a `Critic ·` pass in this chat (a
+   search Deep recommendation it came from, a plan sent back from critic) is not reviewed
+   again, and partner called as a step of another skill never starts critic.
+   Then land it. A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
    the user asked for a plan or roadmap or the project has a board (plan's board is then the
    reply's one widget), else it is offered once. Other settled work goes to Needt through
    [needt](../needt/SKILL.md) — offer once,
@@ -50,7 +57,7 @@ Call these inline; the reply never says "now I'll run X" — it shows the result
 |---|---|
 | Facts from outside: prices, fees, competitors | [search](../search/SKILL.md) |
 | Several open decisions only the user can make | [asking](../asking/SKILL.md), short mode |
-| A plan worth checking before it is acted on | [critic](../critic/SKILL.md) |
+| A plan of more than 3 moves or with stakes, before it is handed over | [critic](../critic/SKILL.md), short mode |
 | An agent, a bot or another product will execute the work | [prompt](../prompt/SKILL.md) |
 | Tasks, events, pages, habits | [needt](../needt/SKILL.md) |
 | A full workflow the user already has a skill for | the user's installed skills per [user-skills](../setup/references/user-skills.md); hints in [references/marketing-skills.md](references/marketing-skills.md) |

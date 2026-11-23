@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "needt",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "Your Needt planner in every chat, plus partner, search, prompt, asking, critic, roadmap, learn, youtube and work skills, and memory that follows you.",
   "author": {
     "name": "Needt"

@@ -48,8 +48,8 @@ A plan from partner is a sequence a person can start today, not a strategy memo:
 - **Who does it** — what the user does, what an agent or a tool can do (with a
   [prompt](../../prompt/SKILL.md) when the executor is another agent).
 
-A plan with real stakes (money, a public launch, a hire) passes [critic](../../critic/SKILL.md)
-first. Then it goes to [needt](../../needt/SKILL.md) as tasks when the user says so, or at once
+A plan of more than 3 moves, or with real stakes (money, a public launch, a hire), passes
+[critic](../../critic/SKILL.md) in short mode first (SKILL.md step 5; once per plan; never for a verdict or an answer). Then it goes to [needt](../../needt/SKILL.md) as tasks when the user says so, or at once
 if they asked for a plan "in Needt".
 
 No invented deadlines or calendar dates. Use sequence and dependencies ("сначала это, потом

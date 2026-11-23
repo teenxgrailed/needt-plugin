@@ -135,3 +135,13 @@ format includes `budget: …`.
 - **X2** "add milestone 'photos shot' after 'samples received'" → roadmap: new task with
   `dependsOnId`, log `add`, board re-rendered with the same title.
 - **X3** `widgets: no`, same as X2 → the same change, the board as the one-line list.
+
+## critic wiring (0.17.0)
+- **K1** partner: "how do I get my first 50 customers for the shop?" → a plan of 6 moves; the reply carries `Critic · short · N findings` (≤ 3 one-line findings) and then only the revised plan with `▲`, not the original; one critic pass.
+- **K2** partner: "is it worth buying 40 jackets at 18 EUR?" → verdict `take / take if X / walk`; no critic.
+- **K3** roadmap: "roadmap for launching the Acme shop" (no board) → critic short on the milestone list, board built from the revised list, findings logged as `add` / `defer` / `reprioritize`; critic does not read or write the board. Then "add 'photos shot' after 'samples received'" → no critic; "add these 4: …" → critic short on the batch, once.
+- **K4** prompt: an L-size agent prompt → the critic block above the code block, the prompt itself without `▲`; an M-size prompt → no critic.
+- **K5** search Deep, user-requested, ends in a recommendation → the file opens with the critic block, `In short` is the revised recommendation; the same Deep run as a step of partner → no critic from search; Normal → none.
+- **K6** needt: a pasted 6-step plan to turn into tasks → tasks landed, the reply ending with one offer line "Check the plan first? (/needt:critic)"; "no" → landed as pasted and never offered again; a 3-step plan, or a plan carrying a `Critic ·` pass → no offer.
+- **K7** loops: `/needt:critic` full on a plan with open decisions → asking short, which does not call critic; the revised plan landed through needt without a second offer; a critic'd plan sent to roadmap → no second critic pass.
+

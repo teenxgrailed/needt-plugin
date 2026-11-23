@@ -16,7 +16,9 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
 - [critic](../critic/SKILL.md) — a plan that should be checked before launch; critic sends
-  its open decisions here in short mode.
+  its open decisions here in short mode. **Asking never calls or offers critic**, in either
+  mode, and a round run from inside critic ends the chain: critic's findings are not asked
+  about again.
 - [roadmap](../roadmap/SKILL.md) — a full interview on a project with a board starts from the
   board; the decisions taken at the end become milestones or `Decide: …` milestones there.
 - [partner](../partner/SKILL.md) — decisions that need numbers or the actual work.

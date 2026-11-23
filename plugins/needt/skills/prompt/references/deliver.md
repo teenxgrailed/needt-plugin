@@ -2,9 +2,11 @@
 
 Read when delivering (SKILL.md §7).
 
+0. L size, critic ran: its block (heading, findings) comes first and is outside the line limits below.
 1. The prompt in one fenced code block, ready to paste.
 2. Under it, at most three lines: size picked and why, the assumptions made, the one thing
-   worth changing if the user disagrees.
+   worth changing if the user disagrees. A user's own L prompt improved: critic's findings are
+   the approach changes; list only other changes here (2 at most).
 3. If the user said to run it (`и запусти`, `go`, `выполни`), execute it in this chat right
    after delivering — no button.
 4. Otherwise end with a **one-click choice**, in the same reply, right after the three lines:

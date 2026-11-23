@@ -5,8 +5,8 @@ description: Reviews a plan before it goes live (launch, marketing test, pricing
 
 # Needt · Critic
 
-The job is a **better plan**, not a verdict. The user should finish reading with the plan
-already fixed and a clear head, not a list of worries to work through alone.
+The job is a **better plan**, not a verdict: the user finishes reading with the plan already
+fixed, not a list of worries to work through alone.
 
 ## Setup check
 
@@ -16,17 +16,25 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 
 Who owns what and what travels between skills: [skills map](../setup/references/skills-map.md).
 
-- [roadmap](../roadmap/SKILL.md) — a board is looked for first (roadmap §1: the pointer, then
-  `needt_search` for `Plan · <project>`); the plan under review has one → read the board first and
-  critique against its real state; findings go back to it as `add` / `defer` /
-  `reprioritize` log lines with the finding as reason. A reviewed plan that spans sessions
-  and has no board yet → offer the board once.
+- [roadmap](../roadmap/SKILL.md) — full mode looks for the plan's board first (roadmap §1) and
+  critiques against its real state; findings go back as `add` / `defer` / `reprioritize` log
+  lines with the finding as reason. A plan that spans sessions with no board → offer one once.
+  Called by roadmap (short mode): no board read, no write, roadmap logs the findings itself.
 - [asking](../asking/SKILL.md) — open decisions, in short mode.
 - [search](../search/SKILL.md) — a fact that would change a finding.
 - [partner](../partner/SKILL.md) — when the user wants the plan remade, not reviewed.
 - [needt](../needt/SKILL.md) — the revised plan as tasks.
-- The user's own skills ([user-skills](../setup/references/user-skills.md)) — a plan in their domain is checked against their
-  installed checklist or runbook when one exists, cited as a finding's source.
+- The user's own skills ([user-skills](../setup/references/user-skills.md)) — a plan in their
+  domain is checked against their installed checklist or runbook, cited as a source.
+
+## Auto-run and short mode
+
+Partner, roadmap, prompt L and search Deep run critic by their own rule (needt offers it) in
+**short mode**: heading `Critic · short · N findings`, at most 3 one-line findings, then the
+caller's revised artifact with `▲` — no summary, cards, lookups or asking. Rules, triggers,
+don't-re-enter: [auto](references/auto.md) — read it when called by another skill. Critic is a
+leaf: a skill used from inside it never calls critic back, and a plan holding a `Critic ·`
+pass in this conversation is not reviewed twice.
 
 ## 1. Start from zero
 
@@ -42,9 +50,8 @@ findings come from: a step the fresh route did not need, a step it needed that t
 an order that differs.
 
 A plan that arrives as a YouTube link is read first through [youtube](../youtube/SKILL.md)
-(its contract section); the critique then treats the transcript as the plan.
-Context comes from the conversation and the open project — one or two targeted looks, never a
-crawl. A fact that would change a finding (a platform rule, a competitor's price, a lead time)
+(its contract section); the transcript is then the plan. Context comes from the conversation
+and the open project — one or two targeted looks, never a crawl. A fact that would change a finding (a platform rule, a competitor's price, a lead time)
 is looked up, never asked. More than a couple of calls → run per the budget profile (§6).
 
 ## 2. What to look for
@@ -71,12 +78,13 @@ language.
 
 ## 4. Tone
 
-Direct. No softening words, no praise padding, no "great plan, but". Never "this is bad" or
-"this is weak": say what happens and what to change. Every problem arrives with its fix, so
-the reply reads as work done, not as a judgment.
+Direct. No softening words, no praise padding, no "great plan, but", never "this is bad":
+say what happens and what to change. Every problem arrives with its fix, so the reply reads
+as work done, not as a judgment.
 
 ## 5. Output
 
+0. **Heading line** `Critic · full · N findings` (fixed English; the once-per-plan marker).
 1. **Findings** — §3, ordered by impact.
 2. **Keeps working as is:** one line listing what is sound, so the user does not re-open it.
 3. **Revised plan** — the user's plan in full, same structure and headings, with the solutions
@@ -91,39 +99,34 @@ the reply reads as work done, not as a judgment.
 
 ## 6. Sub-agents
 
-A finding whose check needs more than the profile allows is raised at `guess` confidence
-with one line: "deserves a Deep check — go?".
-
-Fact checks, competitor lookups and policy reads run per the budget profile in
-[delegation](../setup/references/delegation.md): inline or in Sonnet sub-agents, independent checks in parallel where it allows. A policy
-check gets the instruction to quote the clause with its conditions. The judgment — which gaps
-matter, what the fix is, the order — stays here. Spot-check the claim a finding rests on
-before raising its confidence to `high`.
+A finding whose check needs more than the profile allows is raised at `guess` with one line:
+"deserves a Deep check — go?". Fact checks, competitor lookups and policy reads run per the
+budget profile in [delegation](../setup/references/delegation.md), inline or in Sonnet
+sub-agents, in parallel where it allows; a policy check quotes the clause with its
+conditions. The judgment stays here. Spot-check the claim a finding rests on before `high`.
 
 ## 7. Memory
 
-A correction the user makes to the critique — "that's fine for us", "we never do X", "we
-already decided Y" — is saved per [memory](../needt/references/memory.md) as a `preference`
-or `fact`, worded as the standing rule, so the next critique does not raise it again. Report
-the save in one line. Settled points from memory are respected unless a new fact breaks them;
-then say so once, with the fact.
+A correction to the critique — "that's fine for us", "we never do X", "we already decided
+Y" — is saved per [memory](../needt/references/memory.md) as a `preference` or `fact`, worded
+as the standing rule; report the save in one line. Settled points from memory are respected
+unless a new fact breaks them; then say so once, with the fact.
 
 ## Widgets
 
-With `widgets: yes` in the setup line (per [widgets](../setup/references/widgets.md)), the
-findings are shown as one card per finding, ordered by impact: the title, then Problem,
-Solution, Cost and Confidence as four short rows. Each card has an `Accept fix N` button and
-the widget has one `Accept all` button, both sent through `sendPrompt`. The 2–3 line opening
-summary stays text above the widget. The Revised plan stays text — it is what the user will
-paste or land in Needt — as do `Keeps working as is` and `Open decisions`. On `Accept fix N`,
-re-render the cards with that finding marked accepted and show only the changed lines of the
-revised plan. With `widgets: no`, §5 applies unchanged.
+Full mode only. With `widgets: yes` (per [widgets](../setup/references/widgets.md)) the
+findings are one card per finding, by impact: the title, then Problem, Solution, Cost and
+Confidence as four short rows, an `Accept fix N` button on each and one `Accept all`, sent
+through `sendPrompt`. The 2–3 line summary stays text above the widget; the Revised plan
+(what the user pastes or lands in Needt), `Keeps working as is` and `Open decisions` stay
+text. On `Accept fix N`, re-render the cards with that finding marked accepted and show only
+the changed lines of the revised plan. With `widgets: no`, §5 applies unchanged.
 
 ## Failing behaviors
 
-A list of problems without solutions; a solution that is "consider doing X" rather than the
-change itself; a finding missing any of its four parts; re-litigating decisions the user
-marked settled; findings about taste rather than outcomes; more than 7 findings; a revised
-plan that silently drops parts of the original or changes lines without `▲`; praise
-paragraphs; asking the user for facts that could be looked up; reviewing code or editing copy
-instead of the plan; the revised plan inside a widget; findings cards without the summary above them.
+Problems without solutions; "consider doing X" as a solution; a finding missing a part;
+re-litigating settled decisions; findings about taste; more than 7 findings (short mode: 3);
+a revised plan that silently drops parts or changes lines without `▲`; praise paragraphs;
+asking for facts that could be looked up; reviewing code or editing copy; the revised plan
+inside a widget; cards without the summary above them; a second pass on a reviewed plan;
+a full-mode reply where a caller needed short mode; calling a skill that calls critic back.
