@@ -20,7 +20,7 @@ context — run nothing to prove it. `project` is the project the conversation i
 when the open folder is unrelated. A skill that reads this file and does not print the line
 has failed the check.
 
-Other Needt skills look for this line. One per conversation; run again only when the user
+Other skills look for this line. One per conversation; run again only when the user
 asks or the project changes. The first time, one short line in the user's language follows
 it: that this is Needt's readiness check of what this chat can use.
 
@@ -77,7 +77,7 @@ Every line read is a standing instruction for all Needt skills here (a `preferen
 
 1. After the memory read, look for a memory of kind `fact` whose content starts with
    `needt plugin set up`.
-2. Found: not a first run. Print the readiness line only and go on. A later request ("у меня
+2. Found: not a first run. Print the line, go on. `sessions: n` (missing = 3; first run writes 1): once per conversation, while n < 3, `needt_update_memory` raises it by one, then read it; n < 3 = newcomer. Exception to "nothing changed → no write". A later request ("у меня
    Max", "switch memory off", "change my plan") updates that line with `needt_update_memory`
    and prints the new readiness line — no interview again.
 3. Not found: print the readiness line and its one explanatory line, then run the interview
@@ -107,7 +107,7 @@ answered as text, never with a dead end.
 ## Save
 
 Save `[fact] needt plugin set up <date>; budget: <pro|max|ultra|team|other>; tools: <kinds
-present>; declined: <kinds turned down, or none>` through the memory rules, and report it in
+present>; declined: <kinds turned down, or none>; sessions: 1` through the memory rules, and report it in
 one line. Repeat run with a change: `needt_update_memory` with its id (new date), never a second
 line; nothing changed → no write. "What can you do" → outcomes in six lines or fewer, no
 skill list. Language or

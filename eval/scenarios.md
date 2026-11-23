@@ -1,4 +1,4 @@
-# Scenarios — three per skill, six for setup, four for budget profiles
+# Scenarios — three per skill (work included), six for setup, four for budget profiles
 
 Host state unless stated: Needt connector present, `questions: click`, `agents: yes`,
 `widgets: yes`, memory has 3 lines (`[preference] tasks in English`, `[fact] project: Acme
@@ -73,6 +73,32 @@ format includes `budget: …`.
 - **Y2** "what does this video say" → title, chapters, the answer with timestamps.
 - **Y3** no transcript available → says so once, falls back per its contract, never invents.
 
+## work
+- **W1** "погнали", `sessions: 5`, 6 open tasks in day-plan order: (1) "Merge the pricing PR"
+  (10 min, PR already merged on main), (2) "Publish the launch page" (15 min, page already
+  live), (3) "Pay the CHF 49 hosting invoice" (money), (4) "Launch the landing page rewrite"
+  (multi-day), (5) "Draft the Tuesday update" (25 min, a draft is the whole task), (6) "Check
+  the pricing page renders" (5 min, page renders). Expected, in one reply: `needt_whoami`,
+  `needt_schedule` (`run: false`), `needt_day_plan`; the days shown (chart widget with
+  `widgets: yes`, else a table with `▲` on an overloaded day); `Start with <task>` with no
+  question mark and no waiting. (1), (2): evidence checked, `needt_complete_task`,
+  `closed: <evidence>`, no question. (3): prepared, not paid, not completed, its single
+  question deferred to the end of the message. (4): a first step of 15 minutes or less done,
+  task left open. (5): draft written by Claude and the task closed (not sent). After task 5
+  exactly `closed 3, left 3, ~50 min saved`. (6): checked live, closed with evidence. Last in
+  the message, exactly one question for (3), 2-4 options, recommended first. No task retold
+  in full; no second question.
+- **W2** `sessions: 3`, 4 overdue tasks, "what's today?" → the day answered by needt, then one
+  offer line for `/needt:work`, and the memory flag `needt work offered <date>` updated by id
+  (or created once), no `Saved:` line. No offer when: `sessions: 1`; offered earlier the same
+  day; the user said "погнали" / "let's go" / "what should I do" with no task list (that
+  goes to work / partner, not an offer).
+- **W3** mid-loop "keep going" → at the end of today's list: no tomorrow question, continues
+  with `needt_day_plan` for tomorrow, the chart not redrawn; "that's all" without "keep going"
+  → the statement `Tomorrow's tasks next, on your word.`; "стоп" → stops at once; with a
+  `/goal`, one progress line after each task (merged with the 5-task line when they fall on
+  the same task) and a stop when the goal is met.
+
 ## setup
 - **T1** first run, everything present, `questions: click` → `Needt ·` line + one explanatory
   line, then ONE AskUserQuestion round of ≤ 3 questions (plan of the host, language/tone,
@@ -89,6 +115,9 @@ format includes `budget: …`.
   text list (never a widget for the interview), the rest as T1.
 - **T6** repeated `/needt:setup` after set-up → no second memory line; the readiness line +
   the "what can you do" answer in ≤ 6 lines.
+- **T7** sessions counter: set-up line `sessions: 1` → `needt_update_memory` to 2 once, no second
+  line; at `sessions: 3` → no write; a line with no `sessions` field (older user) → read as 3, no
+  write, `/needt:work` may be offered; a first run saves `sessions: 1`.
 
 ## budget profiles
 - **B1** search Normal, `budget: pro` → run inline, ≤ 8 calls, one round, no sub-agents; the
