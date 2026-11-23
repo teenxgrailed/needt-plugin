@@ -29,15 +29,17 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
 5. **Review, then land it.** A plan or strategy of more than 3 moves, or any plan with real
    stakes (money, a public launch, a hire), runs through [critic](../critic/SKILL.md) in
    **short mode** first ([auto](../critic/references/auto.md)) and is handed over as the
-   revised plan with its `▲`, never the original beside it. Not for a verdict, an answer or a
+   revised plan with its `▲`, never the original beside it. Order: the `Critic · short` block
+   first, then the revised plan, which ends with one `Decisions:` line (your assumptions plus
+   the critic's open points; never a separate `Open:` line). Not for a verdict, an answer or a
    plan of 3 moves or fewer. A plan that already holds a `Critic ·` pass in this chat (a
    search Deep recommendation it came from, a plan sent back from critic) is not reviewed
    again, and partner called as a step of another skill never starts critic.
    Then land it. A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
    the user asked for a plan or roadmap or the project has a board (plan's board is then the
    reply's one widget), else it is offered once. Other settled work goes to Needt through
-   [needt](../needt/SKILL.md) — offer once,
-   or do it at once when the user asked for it "in Needt".
+   [needt](../needt/SKILL.md) — offer once in one line and
+   write nothing until the user says yes, unless they asked for it "in Needt".
 
 Identify the project from the chat and workspace; ask only if the ambiguity changes the work.
 Stay on it. Never pitch Needt unless Needt is the project the user is working on.

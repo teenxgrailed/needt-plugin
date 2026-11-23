@@ -2,7 +2,8 @@
 
 Read when another Needt skill runs critic by its own rule, and before writing such a rule.
 The output contract never changes: **findings first, then the revised plan with `▲`**. Short
-mode only cuts everything around it.
+mode only cuts everything around it. In the caller's reply the block sits directly above the
+revised artifact, never after it.
 
 ## Two modes
 
@@ -31,7 +32,7 @@ section, a recommendation) and what the conversation already holds. Work it from
    sub-agents, no lookups (a fact that would change a finding → that finding is `guess`),
    no memory saves, no `asking`. An open decision → one line `Open: <decision>` after the
    revised artifact; the caller turns it into a labelled assumption (partner folds it into the
-   plan's Decisions, no separate line).
+   plan's closing `Decisions:` line and prints no `Open:` line).
 5. **Pasted deliverable** (a prompt, anything the user copies elsewhere): the artifact holds no
    `▲`; each finding line ends `· ▲ <what changed in the artifact>` instead, and the artifact
    is the revised one. The critic block sits above the artifact and is not counted in the

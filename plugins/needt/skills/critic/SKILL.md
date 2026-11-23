@@ -70,7 +70,7 @@ Every finding has all four parts, in this shape:
 - **Confidence** — `high` / `medium` / `guess`, and the fact or source it rests on.
 
 Order by impact. At most 5–7 findings; a plan with fewer real problems gets fewer findings,
-and none is padded in. Two findings with one fix merge into one.
+and none is padded in. Two findings with one fix merge.
 
 Markers stay in English in this file; when the reply is not in English, translate `Problem`,
 `Solution`, `Cost`, `Confidence`, `Keeps working as is` and `Open decisions` into the user's
@@ -84,16 +84,16 @@ as work done, not as a judgment.
 
 ## 5. Output
 
-0. **Heading line** `Critic · full · N findings` (fixed English; the once-per-plan marker).
+0. **Heading line** `Critic · full · N findings` (fixed English; once-per-plan marker).
 1. **Findings** — §3, ordered by impact.
-2. **Keeps working as is:** one line listing what is sound, so the user does not re-open it.
+2. **Keeps working as is:** one line listing what is sound, so it is not re-opened.
 3. **Revised plan** — the user's plan in full, same structure and headings, with the solutions
    applied. Every changed or added line is marked `▲`. Nothing from the original is dropped
    silently: a removed step stays as `▲ removed: <step> — <why, a few words>`.
 4. **Open decisions:** one line, only when a solution needs the user's choice (two valid
    routes, a budget only they can set). If they want to settle them now, run
    [asking](../asking/SKILL.md) in short mode on exactly those.
-5. One line offering to land the revised plan: as a board through [roadmap](../roadmap/SKILL.md)
+5. One line offering (write nothing before a yes) to land the revised plan: as a board through [roadmap](../roadmap/SKILL.md)
    when it spans sessions, else as tasks through [needt](../needt/SKILL.md); a plan that already
    has a board gets its findings offered as log lines, written on `Accept`.
 
@@ -125,8 +125,8 @@ the changed lines of the revised plan. With `widgets: no`, §5 applies unchanged
 ## Failing behaviors
 
 Problems without solutions; "consider doing X" as a solution; a finding missing a part;
-re-litigating settled decisions; findings about taste; more than 7 findings (short mode: 3);
+re-litigating settled decisions; taste findings; landing unasked; more than 7 findings (short mode: 3);
 a revised plan that silently drops parts or changes lines without `▲`; praise paragraphs;
 asking for facts that could be looked up; reviewing code or editing copy; the revised plan
-inside a widget; cards without the summary above them; a second pass on a reviewed plan;
+in a widget; cards without the summary above them; a second pass on a reviewed plan;
 a full-mode reply where a caller needed short mode; calling a skill that calls critic back.
