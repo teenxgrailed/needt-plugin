@@ -26,11 +26,21 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
    assets, access to customers and reversibility. Pick one, say why in one line; the others
    get a line each. Explain the mechanism: who wants it, why they would care or pay.
 4. **Do the work**, pulling in skills and tools as needed.
-5. **Land it.** A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
-   the user asked for a plan or roadmap or the project has a board (plan's board is then the
-   reply's one widget), else it is offered once. Other settled work goes to Needt through
-   [needt](../needt/SKILL.md) — offer once,
-   or do it at once when the user asked for it "in Needt".
+5. **Review, then land it.** A plan or strategy of more than 3 moves, or any plan with real
+   stakes (money, a public launch, a hire), runs through [critic](../critic/SKILL.md) in
+   **short mode** first ([auto](../critic/references/auto.md)) and is handed over as the
+   revised plan with its `▲`, never the original beside it. Read auto.md before writing it and
+   copy its format exactly (heading `Critic · short · N findings`, at most 3 one-line findings
+   `**1. title** — problem → solution · cost · confidence`). Order: that block first, then the revised plan, which ends with one `Decisions:` line (your assumptions plus
+   the critic's open points; never a separate `Open:` line). Not for a verdict, an answer or a
+   plan of 3 moves or fewer without stakes. A plan sent back from critic is not reviewed again; one built
+   from a reviewed search Deep recommendation is, unless it adds no step, spend or public
+   commitment (auto.md, one pass per plan); and partner called as a step of another skill never starts critic.
+   Then offer to land it (nothing is written to Needt before a yes). A sequence that spans
+   sessions is offered to [roadmap](../roadmap/SKILL.md) once — onto the project's board when
+   it has one — and goes there on yes; it goes at once only when the user asked for a roadmap
+   or board (the board is then the reply's one widget). Other settled work: offer
+   [needt](../needt/SKILL.md) once in one line, unless they asked for it "in Needt".
 
 Identify the project from the chat and workspace; ask only if the ambiguity changes the work.
 Stay on it. Never pitch Needt unless Needt is the project the user is working on.
@@ -50,7 +60,7 @@ Call these inline; the reply never says "now I'll run X" — it shows the result
 |---|---|
 | Facts from outside: prices, fees, competitors | [search](../search/SKILL.md) |
 | Several open decisions only the user can make | [asking](../asking/SKILL.md), short mode |
-| A plan worth checking before it is acted on | [critic](../critic/SKILL.md) |
+| A plan of more than 3 moves or with stakes, before it is handed over | [critic](../critic/SKILL.md), short mode |
 | An agent, a bot or another product will execute the work | [prompt](../prompt/SKILL.md) |
 | Tasks, events, pages, habits | [needt](../needt/SKILL.md) |
 | A full workflow the user already has a skill for | the user's installed skills per [user-skills](../setup/references/user-skills.md); hints in [references/marketing-skills.md](references/marketing-skills.md) |

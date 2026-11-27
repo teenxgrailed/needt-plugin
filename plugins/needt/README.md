@@ -96,6 +96,11 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Changelog
 
+0.17.0 (2026-11-23)
+
+- Critic now runs on its own at the right moment, in a new **short mode**: a `Critic · short · N findings` line, at most 3 one-line findings (problem → solution · cost · confidence), then your plan revised with `▲`. No summary, no cards, no lookups, no questions. Partner runs it before handing over a plan of more than 3 moves (or one with real stakes); roadmap on a new board's milestones and before an add/reprioritize batch of 3 or more; prompt on the approach of an L-size prompt; search Deep on its recommendation. The main skill only offers it, once, when you paste a plan of 4+ steps to turn into tasks.
+- No loops, no double passes: critic is a leaf (it never triggers a skill that calls it back), only the skill that owns your request runs or offers it, a plan that already went through critic (or whose review you declined) is not reviewed again, and asking never calls critic. Rules in `critic/references/auto.md`.
+
 0.16.0 (2026-11-22)
 
 - New skill `/needt:work`: works through your open tasks with you, one at a time, in day-plan order. It shows the load per day first, checks every task for "already done" before touching it (and closes it with the evidence), does everything it can itself, and asks you only for a login, money, sending, a physical action or a decision, as one question with buttons. Big tasks start with a first step of 15 minutes or less. Keeps going on "keep going", stops on "stop" or a `/goal` target, and sums up every 5 tasks.

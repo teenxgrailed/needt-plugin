@@ -2,6 +2,7 @@
 
 Read when turning a plan, checklist, research, prompt stages or a decision into tasks.
 
+- **A critic-revised plan lands without `▲`**; a `▲ removed:` line is never a task.
 - **One task per outcome** — something either done or not. Usually 1–7; more means the
   outcomes are too small or belong in subtasks.
 - **`entry`** = the first small concrete step, doable in one sitting without deciding anything

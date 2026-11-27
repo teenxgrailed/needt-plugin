@@ -15,7 +15,7 @@ what it would have done.
 | Facts, options, "what's out there", "how do people do X", a price, a version | **search** | partner (the verdict), learn (an explanation) |
 | One well-built prompt or brief for an agent or another product | **prompt** | — |
 | Clickable questions until nothing is assumed; one short round for another skill | **asking** | critic (findings, not questions) |
-| A plan taken apart before launch: problem → solution → cost → confidence | **critic** | asking (questions), partner (making the plan) |
+| A plan taken apart before launch: problem → solution → cost → confidence (also run by partner, roadmap, prompt L and search Deep in short mode) | **critic** | asking (questions), partner (making the plan) |
 | Understanding one thing: mechanism, example, diagram, one check question; "roadmap for learning X" | **learn** | search (a lookup), roadmap (a project is not a subject) |
 | Going through the open tasks together, one at a time: "let's work", "погнали", "/needt:work" (an explicit loop request only) | **work** | needt (one task), roadmap (a board's next step) |
 | What a YouTube video says | **youtube** | search (finding videos: it calls youtube per video) |
@@ -30,7 +30,11 @@ what it would have done.
 | partner / critic / asking → **roadmap** | the result is a sequence that spans sessions, with milestones that wait on each other | the milestones in order, what blocks what, open decisions as `Decide: …` milestones |
 | partner / search / prompt / critic → **needt** | the result is work for one sitting or one week | outcomes, one task each, by needt's breakdown rules |
 | roadmap → **needt** | a milestone is started, done or opened | the task id; needt's title and permission rules apply |
-| roadmap → **critic** | a board is built from an invented plan and the stakes are high | the milestone list; back come findings and the revised sequence |
+| partner → **critic** (short) | a plan or strategy of more than 3 moves, or with real stakes, before it is handed over | the plan; back come ≤3 findings and the revised plan with `▲`, which is what the user gets |
+| roadmap → **critic** (short) | a board is created; an `add` / `reprioritize` batch of 3+ milestones | the milestone list or the batch; back come ≤3 findings and the revised list; roadmap applies and logs them only on the user's yes |
+| prompt → **critic** (short) | size L only, on the approach section | the approach; back come ≤3 findings and the revised approach; the prompt stays free of `▲` |
+| search → **critic** (short) | Deep only, a request the user made to search itself, on the recommendation | the recommendation; back come ≤3 findings and the revised recommendation, above `In short` |
+| needt → **critic** | the user pastes a plan of 4+ steps to turn into tasks: one-line offer, once | nothing until yes; then the plan, full mode; the landed tasks change only on a second yes |
 | roadmap → **search** | a milestone needs a fact or an option (a vendor, a library) | the question; back comes the find, logged on the plan page |
 | roadmap → **prompt** | a milestone will be executed by a coding agent or another product | the milestone, its evidence rule and the board's handoff; back comes one prompt |
 | critic → **roadmap** | the reviewed plan has a board | findings become `add` / `defer` / `reprioritize` log lines, with the finding as reason |
@@ -58,6 +62,14 @@ the Needt skill's voice, never for what Needt owns.
   sessions — keeping it as a board") and never asks the user to invoke the other skill.
 - A board exists for the project (roadmap's §1 finds one) → every skill working on that project
   reads it before proposing work, and reports work against its milestones.
+- **Critic is a leaf and runs once per plan** (an explicit user request always runs) ([auto](../../critic/references/auto.md)). Only the
+  skill that owns the user's request runs or offers it; a skill used as a step of another
+  never does (so search Deep inside partner, prompt inside roadmap, needt inside critic never
+  start critic). Critic calls only youtube, search Quick, asking (short, full mode) and
+  roadmap (full mode); asking never calls critic. A plan with a `Critic ·` pass in the
+  conversation, or one whose review was offered and not accepted, is not reviewed again when it moves
+  on to a board, tasks or a prompt. Called by another skill, critic runs in short mode:
+  `Critic · short · N findings`, ≤3 one-line findings, the caller's revised artifact with `▲`.
 - Memory lines read at setup are standing instructions for every skill
   ([memory](../../needt/references/memory.md)).
 - One widget per reply, owned by the skill that answers ([widgets](widgets.md)).

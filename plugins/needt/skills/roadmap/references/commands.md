@@ -3,6 +3,17 @@
 Read when a `roadmap:` message or board button arrives (SKILL.md). `plan: …` is accepted as an
 alias of `roadmap: …`.
 
+**Critic before a batch.** Batch size = milestones added, or milestones whose position changes
+in the final order (moving A before B changes A only). Size 3 or more, in one message, runs
+[critic](../../critic/SKILL.md) in short mode on the batch first. The user's batch is applied
+as asked; a finding that changes it (drops, reorders, adds a milestone) is applied only on the
+user's yes, then logged with the finding as reason. One `add`, `defer`, `remove`, `done`,
+`start` and `handoff` never trigger it, nor a batch taken from a result that already holds a
+`Critic ·` pass (a pasted critic or partner plan). A batch the user types fresh is reviewed
+even when the board was reviewed at creation. Once per batch. Reply: critic block, directly under it `Revised batch (▲) — apply?`, then the
+board with the user's batch applied as asked; on yes apply the revised batch and log with the
+finding as reason, no new pass.
+
 Buttons and short messages the board understands, in any language (the English form is
 what the widget sends):
 
