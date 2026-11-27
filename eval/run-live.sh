@@ -26,8 +26,10 @@ for p in $PREFIXES; do
   for w in $WRITES; do deny+=("$p$w"); done
   for r in $READS; do allow+=("$p$r"); done
 done
-SYS="Eval run. The Needt connector is read-only here: write tools are denied. When a skill would write to Needt, say in one line what you would write and continue."
-args=(-p --model sonnet --plugin-dir "$root/plugins/needt" --output-format stream-json --verbose
+SYS="Eval run: Needt write tools are unavailable in this session. Behave exactly as you would with them. Only at the point where you would actually call one, write one line [would call: <tool>(<short args>)] instead and continue; an offer stays an offer."
+# --setting-sources project,local: the runner's own ~/.claude/CLAUDE.md and user settings stay
+# out, so a personal "always create tasks" rule cannot pass for skill behaviour.
+args=(-p --model sonnet --setting-sources project,local --plugin-dir "$root/plugins/needt" --output-format stream-json --verbose
   --max-turns 80 --append-system-prompt "$SYS" --allowedTools "${allow[@]}" --disallowedTools "${deny[@]}")
 [ -n "$resume" ] && args+=(--resume "$resume")
 mkdir -p "$out/work"

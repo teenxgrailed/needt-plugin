@@ -36,11 +36,10 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
    plan of 3 moves or fewer. A plan sent back from critic is not reviewed again; one built
    from a reviewed search Deep recommendation is, unless it adds no step, spend or public
    commitment (auto.md, one pass per plan); and partner called as a step of another skill never starts critic.
-   Then land it. A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
-   the user asked for a plan or roadmap or the project has a board (plan's board is then the
-   reply's one widget), else it is offered once. Other settled work goes to Needt through
-   [needt](../needt/SKILL.md) — offer once in one line and
-   write nothing until the user says yes, unless they asked for it "in Needt".
+   Then offer to land it (nothing is written to Needt before a yes). A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once only when
+   the user asked for a roadmap or board, or the project has one (plan's board is then the
+   reply's one widget), else it is offered once. Other settled work: offer
+   [needt](../needt/SKILL.md) once in one line, unless they asked for it "in Needt".
 
 Identify the project from the chat and workspace; ask only if the ambiguity changes the work.
 Stay on it. Never pitch Needt unless Needt is the project the user is working on.
