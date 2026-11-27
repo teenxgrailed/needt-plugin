@@ -70,7 +70,8 @@ Memory respected as in full mode: a settled point is not raised again.
   removed or reordered by the user) → no second pass. Moving a reviewed plan on (to a board, to
   tasks, into a prompt) is not a change. A review of a recommendation or an approach covers a
   plan built from it only when the plan adds no step, spend or public commitment; otherwise
-  the plan is a new artifact. The critic's own output is never reviewed.
+  the plan is a new artifact. The critic's own output is never reviewed. None of this limits the user: an explicit
+  `/needt:critic` or "critique this" always runs, in full mode, even on a reviewed plan.
 - **asking never calls critic**, and critic's asking round (full mode) is the end of the chain.
 - **roadmap never re-runs critic on findings it applied**: the board's `add` / `defer` /
   `reprioritize` log lines with the finding as the reason are written by roadmap; critic called

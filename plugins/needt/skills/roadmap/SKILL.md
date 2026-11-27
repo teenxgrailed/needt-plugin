@@ -26,10 +26,10 @@ Who owns what and what travels between skills: [skills map](../setup/references/
 - [partner](../partner/SKILL.md) — decides the move; hands over the sequence once it spans
   more than one session. "Should we do X" on a board's milestone goes back to it.
 - [critic](../critic/SKILL.md) — short mode ([auto](../critic/references/auto.md)) on a new
-  board's milestones and before an `add` / `reprioritize` batch of 3+ milestones; roadmap
-  applies the findings and logs them as `add` / `defer` / `reprioritize` lines with the
-  finding as reason. Critic called from here never calls roadmap back; a plan that already
-  holds a `Critic ·` pass is not reviewed again.
+  board's milestones and before an `add` / `reprioritize` batch of 3+; roadmap applies the
+  findings only on the user's yes and logs them (`add` / `defer` / `reprioritize`, the finding
+  as reason). Critic from here never calls roadmap back; a plan with a `Critic ·` pass is not
+  reviewed again.
 - [asking](../asking/SKILL.md) — short mode when the milestones cannot be cut without the
   user (scope, order); a full interview's decisions become milestones or `Decide: …` ones.
 - [search](../search/SKILL.md) — a milestone that needs a fact or an option; the find is
@@ -61,7 +61,7 @@ project). The board is what Needt returns now, never the chat or memory.
 
 ## 2. Create — first call only
 
-3–9 outcome milestones, critic on them (short mode; skips in create.md), then project, plan page, one task per milestone (`autoSchedule: false`,
+3–9 outcome milestones, critic on them (short mode, applied on yes; create.md), then project, plan page, one task per milestone (`autoSchedule: false`,
 `dependsOnId`), `plan-page:` in the project description, `.needt/plan.json`, first log line.
 Steps, with the critic step: [references/create.md](references/create.md) — read on the first call. Re-running on a
 project that already has a board never creates a second one: §1 finds it.
@@ -110,7 +110,8 @@ Marks: `✓` done · `●` current · `○` next · `✕` blocked.
 - `widgets: no` → one line, same marks:
   `✓ Auth flow · ● Billing · ○ Onboarding (after Billing) · ✕ Launch (blocked by Billing, Onboarding)`.
 - No Needt connector → `PLAN.md` in the open folder (or one chat block) with the same table,
-  `## Log` and `## Handoff`; tell the user once the board moves to Needt with the connector.
+  `## Log` and `## Handoff`, same rules; tell the user once the board moves to Needt with the
+  connector.
 
 ## 7. Handoff — end of a session
 

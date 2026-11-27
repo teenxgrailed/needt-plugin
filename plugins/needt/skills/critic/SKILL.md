@@ -34,7 +34,7 @@ Partner, roadmap, prompt L and search Deep run critic by their own rule (needt o
 caller's revised artifact with `▲` — no summary, cards, lookups or asking. Rules, triggers,
 don't-re-enter: [auto](references/auto.md) — read it when called by another skill. Critic is a
 leaf: a skill used from inside it never calls critic back, and a plan holding a `Critic ·`
-pass in this conversation is not reviewed twice.
+pass is not auto-reviewed twice (the user asking always runs).
 
 ## 1. Start from zero
 
@@ -78,7 +78,7 @@ language.
 
 ## 4. Tone
 
-Direct. No softening words, no praise padding, no "great plan, but", never "this is bad":
+Direct. No softening, no praise padding, no "great plan, but", never "this is bad":
 say what happens and what to change. Every problem arrives with its fix, so the reply reads
 as work done, not as a judgment.
 
@@ -128,5 +128,5 @@ Problems without solutions; "consider doing X" as a solution; a finding missing 
 re-litigating settled decisions; taste findings; landing unasked; more than 7 findings (short mode: 3);
 a revised plan that silently drops parts or changes lines without `▲`; praise paragraphs;
 asking for facts that could be looked up; reviewing code or editing copy; the revised plan
-in a widget; cards without the summary above them; a second pass on a reviewed plan;
+in a widget; cards without the summary above them; an unasked second pass;
 a full-mode reply where a caller needed short mode; calling a skill that calls critic back.

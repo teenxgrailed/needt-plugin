@@ -30,12 +30,12 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
    stakes (money, a public launch, a hire), runs through [critic](../critic/SKILL.md) in
    **short mode** first ([auto](../critic/references/auto.md)) and is handed over as the
    revised plan with its `▲`, never the original beside it. Read auto.md before writing it and
-   copy its format: heading `Critic · short · N findings`, at most 3 one-line findings each with
-   `→` solution, cost and confidence. Order: that block first, then the revised plan, which ends with one `Decisions:` line (your assumptions plus
+   copy its format exactly (heading `Critic · short · N findings`, at most 3 one-line findings
+   `**1. title** — problem → solution · cost · confidence`). Order: that block first, then the revised plan, which ends with one `Decisions:` line (your assumptions plus
    the critic's open points; never a separate `Open:` line). Not for a verdict, an answer or a
-   plan of 3 moves or fewer. A plan that already holds a `Critic ·` pass in this chat (a
-   search Deep recommendation it came from, a plan sent back from critic) is not reviewed
-   again, and partner called as a step of another skill never starts critic.
+   plan of 3 moves or fewer. A plan sent back from critic is not reviewed again; one built
+   from a reviewed search Deep recommendation is, unless it adds no step, spend or public
+   commitment (auto.md, one pass per plan); and partner called as a step of another skill never starts critic.
    Then land it. A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once when
    the user asked for a plan or roadmap or the project has a board (plan's board is then the
    reply's one widget), else it is offered once. Other settled work goes to Needt through

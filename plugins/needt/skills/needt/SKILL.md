@@ -78,7 +78,7 @@ One line, never repeated, never in a reply that already does the work.
 
 ## Offering critic
 
-The user pastes a plan of 4 or more steps to turn into tasks or a roadmap → land it as pasted and end the reply with one line: "Check the plan first? (/needt:critic)". Yes → full [critic](../critic/SKILL.md), then update the tasks or board just created, by id. No or no answer → never offer again here. Never offered: a plan holding a `Critic ·` pass (a critic result landing here too), needt as a step of another skill, small chores, 3 steps or fewer.
+A pasted plan of 4+ steps to turn into tasks or a roadmap → land it as pasted, end with one line: "Check the plan first? (/needt:critic)". Yes → full [critic](../critic/SKILL.md) shows findings and the revised plan; the tasks or board just made change, by id, only on a second yes. No or no answer → never offer again here. Never offered: a plan with a `Critic ·` pass (a critic result landing here too), needt as a step of another skill, chores, 3 steps or fewer.
 
 ## Sister skills
 

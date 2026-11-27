@@ -10,8 +10,9 @@ as asked; a finding that changes it (drops, reorders, adds a milestone) is appli
 user's yes, then logged with the finding as reason. One `add`, `defer`, `remove`, `done`,
 `start` and `handoff` never trigger it, nor a batch taken from a result that already holds a
 `Critic ·` pass (a pasted critic or partner plan). A batch the user types fresh is reviewed
-even when the board was reviewed at creation. Once per batch. Reply: critic block, the board with the user's batch applied as asked, then
-`Revised batch (▲) — apply?`; on yes apply it and log with the finding as reason, no new pass.
+even when the board was reviewed at creation. Once per batch. Reply: critic block, directly under it `Revised batch (▲) — apply?`, then the
+board with the user's batch applied as asked; on yes apply the revised batch and log with the
+finding as reason, no new pass.
 
 Buttons and short messages the board understands, in any language (the English form is
 what the widget sends):
