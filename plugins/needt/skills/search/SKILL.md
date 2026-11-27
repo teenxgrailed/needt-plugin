@@ -89,8 +89,10 @@ the user's language when the report is not in English.
 3. Options compared (a table when there are 3+), each with the one reason for or against.
 4. **Still unclear** — one line; includes any required source kind that was skipped.
 
-**Deep** — a file, format in [report.md](references/report.md); the recommendation goes
-through critic in short mode first.
+**Deep** — always written to a file, never the full report in chat; format in
+[report.md](references/report.md). The recommendation goes through critic in short mode
+first, and its block comes first: in the file above `In short`, in chat one line
+(heading and finding titles) right after the search line, before any recommendation.
 
 When the research was for a task — a feature, a fix, a purchase — end with the concrete next
 step applied to that task, and do it if it is reversible and the user asked for it.
@@ -113,4 +115,5 @@ plausible answer reported without looking for a better one; ignoring the user's 
 articles only for a "how do people do it" question; a sub-agent brief without source-kind
 requirements; "no examples found" without the list tried; Deep without a warning;
 `Still unclear` missing or invented; fetching pages through shell commands; a widget for a
-Quick answer; the search line inside a widget.
+Quick answer; the search line inside a widget; a Deep report in chat instead of a file; the
+critic block after the recommendation.
