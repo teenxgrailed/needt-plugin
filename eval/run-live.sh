@@ -27,8 +27,8 @@ for p in $PREFIXES; do
   for r in $READS; do allow+=("$p$r"); done
 done
 SYS="Eval run: Needt write tools are unavailable in this session; local tools such as Write work normally. Behave exactly as you would with them. Only at the point where you would actually call one, write one line [would call: <tool>(<short args>)] instead and continue; an offer stays an offer."
-# --setting-sources project,local: the runner's own ~/.claude/CLAUDE.md and user settings stay
-# out, so a personal "always create tasks" rule cannot pass for skill behaviour.
+# --setting-sources project,local: user-level settings and instruction files stay out, so the
+# run sees the plugin's behaviour only.
 args=(-p --model sonnet --setting-sources project,local --plugin-dir "$root/plugins/needt" --output-format stream-json --verbose
   --max-turns 80 --append-system-prompt "$SYS" --allowedTools "${allow[@]}" --disallowedTools "${deny[@]}")
 [ -n "$resume" ] && args+=(--resume "$resume")
@@ -46,7 +46,7 @@ for line in open(path):
     if d.get('type') == 'assistant':
         for c in d['message']['content']:
             if c['type'] == 'tool_use' and 'needt_' in c['name'] and 'Needt-budget' not in c['name']:
-                tool = c['name'].split('needt_', 1)[1] if '__needt_' in c['name'] else c['name']
+                tool = c['name'].split('__needt_', 1)[1] if '__needt_' in c['name'] else c['name']
                 if tool not in reads: calls[c['id']] = c['name']
     if d.get('type') == 'user':
         for c in d.get('message', {}).get('content', []) or []:

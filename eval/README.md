@@ -49,7 +49,7 @@ set-up memory line exists with that value: no plan question, no first-run interv
 
 A live run uses `eval/run-live.sh <out-dir> <name> "<prompt>" [session-id]`, never a bare
 `claude -p`. The script loads `plugins/needt` with `--plugin-dir` and `--setting-sources
-project,local` (the runner's personal CLAUDE.md and user settings stay out), allows only Needt read
+project,local` (user-level settings and instruction files stay out), allows only Needt read
 tools (`get`, `list`, `search`, `list_memories`, `memory_search`, `whoami`), and denies every
 Needt write tool under both connector prefixes (`mcp__claude_ai_Needt__`, `mcp__plugin_needt_needt__`), budget and Bash (Write stays on for search report files in the run folder). It then scans the transcript: a successful call to any Needt tool outside the read list
 exits 3; a failed `claude` run or a transcript with no result exits 4. Either is a FAIL. A scenario that checks landing is judged on the attempted call and the

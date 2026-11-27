@@ -33,12 +33,13 @@ No line starting with `Needt ·` in this conversation yet → run [setup](../set
    copy its format exactly (heading `Critic · short · N findings`, at most 3 one-line findings
    `**1. title** — problem → solution · cost · confidence`). Order: that block first, then the revised plan, which ends with one `Decisions:` line (your assumptions plus
    the critic's open points; never a separate `Open:` line). Not for a verdict, an answer or a
-   plan of 3 moves or fewer. A plan sent back from critic is not reviewed again; one built
+   plan of 3 moves or fewer without stakes. A plan sent back from critic is not reviewed again; one built
    from a reviewed search Deep recommendation is, unless it adds no step, spend or public
    commitment (auto.md, one pass per plan); and partner called as a step of another skill never starts critic.
-   Then offer to land it (nothing is written to Needt before a yes). A sequence that spans sessions goes to [roadmap](../roadmap/SKILL.md) at once only when
-   the user asked for a roadmap or board, or the project has one (plan's board is then the
-   reply's one widget), else it is offered once. Other settled work: offer
+   Then offer to land it (nothing is written to Needt before a yes). A sequence that spans
+   sessions is offered to [roadmap](../roadmap/SKILL.md) once — onto the project's board when
+   it has one — and goes there on yes; it goes at once only when the user asked for a roadmap
+   or board (the board is then the reply's one widget). Other settled work: offer
    [needt](../needt/SKILL.md) once in one line, unless they asked for it "in Needt".
 
 Identify the project from the chat and workspace; ask only if the ambiguity changes the work.
