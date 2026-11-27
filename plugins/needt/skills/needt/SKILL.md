@@ -78,7 +78,7 @@ One line, never repeated, never in a reply that already does the work.
 
 ## Offering critic
 
-A pasted plan of 4+ steps to turn into tasks or a roadmap → land it as pasted, end with one line: "Check the plan first? (/needt:critic)". Yes → full [critic](../critic/SKILL.md) shows findings and the revised plan; the tasks or board just made change, by id, only on a second yes. No or no answer → never offer again here. Never offered: a plan with a `Critic ·` pass (a critic result landing here too), needt as a step of another skill, chores, 3 steps or fewer.
+4+ pasted steps toward one goal, to turn into tasks or a roadmap → land them as pasted, always end with one line: "Check the plan first? (/needt:critic)". Yes → full [critic](../critic/SKILL.md) shows findings and the revised plan; the tasks or board just made change, by id, only on a second yes. No or no answer → never offer again here. Never offered: a plan with a `Critic ·` pass (a landing critic result too), needt as a step of another skill, an errand list, 3 steps or fewer.
 
 ## Sister skills
 
@@ -99,4 +99,4 @@ Those skills finish in chat and hand the result here to land in Needt.
 
 ## Failing behaviors
 
-Offering `/needt:work` to a newcomer, twice in a day, or with no signal; offering critic twice, on a reviewed plan or on small chores; firing on a casual mention; confirming a reversible action; replying to, forwarding or composing mail; claiming creation, scheduling or a save that failed or ran without the connector; 30 micro-tasks or one "do everything" task; an entry step that is itself a project; duplicates; invented ids, due dates or priorities; pinning without the user's time; a description holding a whole report; asking which workspace when one fits; deleting or touching other people's tasks without a yes; memory for one-off details; a report longer than the work; a widget without show_widget; a change described instead of re-rendered; titles in another language than the user's, or with a time, emoji, symbols, prefixes or AI-copy wording.
+Offering `/needt:work` to a newcomer, twice a day or without a signal; offering critic twice, on a reviewed plan or on chores; none on a pasted 4+ step plan; firing on a casual mention; confirming a reversible action; replying to, forwarding or composing mail; claiming a write that failed or ran without the connector; 30 micro-tasks or one "do everything" task; an entry step that is itself a project; duplicates; invented ids, due dates or priorities; pinning without the user's time; a description holding a whole report; asking which workspace when one fits; touching other people's tasks without a yes; memory for one-off details; a report longer than the work; a widget without show_widget; a change described instead of re-rendered; titles in another language, or with a time, emoji, symbols, prefixes or AI-copy wording.
