@@ -47,6 +47,7 @@ claude plugin marketplace add teenxgrailed/needt-plugin && claude plugin install
 |---|---|
 | **Codex** | `codex plugin marketplace add teenxgrailed/needt-plugin` |
 | **Single skills** (Claude, Cursor, any agent that reads `SKILL.md`) | `npx skills add teenxgrailed/needt-plugin` and pick the ones you want, or download a skill zip from the [latest release](https://github.com/teenxgrailed/needt-plugin/releases/latest) → **Customize → Skills → Upload** |
+| **Gemini CLI** | `gemini extensions install https://github.com/teenxgrailed/needt-plugin`, then `/mcp auth needt` inside Gemini CLI |
 | **Any MCP client** | Remote server `https://mcp.needt.app/mcp` (streamable HTTP, OAuth) |
 
 Then start a new chat and just talk — *"what's on today?"*, *"help me think about pricing"*, *"find the best way to…"*, *"roadmap for my app"*. You never have to name a skill.
@@ -109,6 +110,7 @@ release.sh, build-standalone.py  gate + build
 .claude-plugin/marketplace.json   Claude Code marketplace
 .agents/plugins/marketplace.json  Codex marketplace
 server.json                    MCP Registry entry
+gemini-extension.json, GEMINI.md  Gemini CLI extension
 glama.json                     Glama listing
 assets/                        icon and screenshots
 ```

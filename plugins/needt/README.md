@@ -296,5 +296,5 @@ conversation without the connector); the plugin keeps no copy of its own. No bus
 
 ## Maintainer notes
 
-Keep root `plugin.json` and `.claude-plugin/plugin.json` name and version aligned.
+Keep root `plugin.json`, `.claude-plugin/plugin.json` and the repo-root `gemini-extension.json` name and version aligned.
 Project-specific taste belongs in user context, not in shared plugin instructions.
